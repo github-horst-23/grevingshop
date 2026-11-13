@@ -7,7 +7,7 @@
 ## Funktionen
 
 - **Geteilte Listen:** Neue Listen anlegen, umbenennen, mit Notizen versehen, archivieren und wiederherstellen. Alle Listen sind für die freigegebenen Konten sichtbar.
-- **Warenkatalog:** Produkte werden nur bei gesetztem Häkchen „Im Warenkatalog speichern“ aufgenommen. Vorhandene Produkte lassen sich durchsuchen, aus dem Katalog entfernen und erneut auf eine Liste setzen. Gleichnamige Produkte werden nicht doppelt angelegt. Listenprodukt und optionale Katalogaufnahme werden atomar gespeichert.
+- **Warenkatalog:** Produkte können direkt über „Neues Produkt“ im Katalog angelegt werden. Beim Hinzufügen zu einer Einkaufsliste erfolgt die Katalogaufnahme nur bei gesetztem Häkchen „Im Warenkatalog speichern“. Vorhandene Produkte lassen sich durchsuchen, aus dem Katalog entfernen und erneut auf eine Liste setzen. Gleichnamige Produkte werden nicht doppelt angelegt. Listenprodukt und optionale Katalogaufnahme werden atomar gespeichert.
 - **Änderungsnachweis:** Innerhalb einer Liste werden Bearbeiter und Zeitpunkt der letzten Änderung angezeigt. Auch Abhaken, Bearbeiten und Entfernen von Produkten aktualisieren den Nachweis serverseitig. Für historische Stände ohne Bearbeiterangabe wird kein Name erfunden.
 - **Produkte:** Name, Menge als Freitext (z. B. „2 Liter“), Notiz und Kategorie erfassen; Produkte bearbeiten oder entfernen.
 - **Beim Einkauf:** Produkte abhaken und wieder öffnen, Fortschritt verfolgen sowie alle Häkchen für einen erneuten Einkauf zurücksetzen.
@@ -155,3 +155,11 @@ Die neue Auslieferung enthält keine echten Familien-E-Mail-Adressen, Passwörte
 Die öffentlich hochladbaren SQL-Dateien verwenden Platzhalteradressen. Die tatsächliche Serverkonfiguration bleibt im Supabase-Projekt. Es sind keine Analyse- oder Werbedienste eingebunden; das Supabase-SDK wird lokal mitgeliefert. Details der Tests und ihre Grenzen stehen in `PRUEFBERICHT.md`.
 
 Die E-Mail-Bestätigung für neue Konten wurde im gemeinsamen Supabase-Projekt aktiviert; dies gilt auch für neue Registrierungen über Greving.Fit. Alte GitHub-Commits können frühere Kontaktkonfigurationen weiterhin enthalten. Git-Verlauf und bereits veröffentlichte Versionen wurden nicht verändert. Bei Abmeldung oder Kontowechsel wird der lokale Listen-/Katalogcache des bisherigen Kontos entfernt.
+
+## Mehrere Katalogprodukte übernehmen
+
+Im Warenkatalog die gewünschten Produkte anhaken, die Zielliste wählen und **Produkte übernehmen** antippen. Die Auswahl bleibt beim Suchen erhalten. Mengen, Notizen und Kategorien werden übernommen; die neuen Produkte sind noch nicht abgehakt. Der gemeinsame Speichervorgang legt alle ausgewählten Produkte zusammen an. Bei einem Fehler bleibt die Auswahl erhalten. Bereits vorhandene Listenprodukte bleiben bestehen.
+
+## Katalogprodukte direkt anlegen
+
+Unter **Warenkatalog → Neues Produkt** kannst du Name, Menge und Notiz erfassen. Die Kategorie wird automatisch erkannt und kann geändert werden. **Im Katalog speichern** speichert das Produkt direkt in Supabase und synchronisiert den Katalog. Dafür wird keine Einkaufsliste benötigt. Bereits vorhandene Produktnamen werden nicht doppelt angelegt.

@@ -4,11 +4,17 @@ Stand: 13.11.2026. Geprüft ist die in diesem ZIP enthaltene Fassung.
 
 ## Funktionen und Darstellung
 
+- Katalogübernahme kompakter: Zielliste und Übernahme nebeneinander. Dauerhafte Anzeige „Bildschirm an“ im Einkaufsmodus entfernt; Wake-Lock-Anforderung und Fehlerhinweis bleiben erhalten. Neue Darstellung automatisiert geprüft.
+
+- Direkte Produktanlage im Warenkatalog ohne Einkaufsliste: automatisierte Prüfung von Speicherung, Kategorien, Mengen, Duplikaten, ungültigen Eingaben, Offline-Zustand und fehlender Anmeldung.
+
+- Katalog-Mehrfachauswahl: gemeinsamer Insert aller ausgewählten Produkte, Mengen/Notizen/Kategorien, Suchauswahl, Offline- und Fehlerfall sowie Zurücksetzen bei Kontowechsel automatisiert geprüft. Die bestehenden Supabase-Zugriffsregeln und Änderungs-Trigger gelten auch für diesen Vorgang.
+
 - Kompakte Anmeldebox ohne großes Plus-Symbol und ohne Testzugang. Demo-Startfunktion und zugehörige Aktion entfernt.
 
 - Kontobutton wie in Greving.Fit: erster Buchstabe des Vornamens nach Anmeldung, sonst „?“. Wechsel und Abmeldung automatisiert geprüft.
 
-- Zehn automatisierte Tests bestanden: frischer Serverabruf beim Start, direkte Schreibvorgänge, Realtime-Nachladen, Kontowechsel und Abmeldung, kontogebundene Einstellungen, Reihenfolge schneller Einstellungsänderungen, erneute Speicherung vorgemerkter Offline-Einstellungen, automatische Kategorien, Katalog-Opt-in sowie HTML-Escaping und öffentliche Konfiguration.
+- Dreizehn automatisierte Tests bestanden: frischer Serverabruf beim Start, direkte Schreibvorgänge, Realtime-Nachladen, Kontowechsel und Abmeldung, kontogebundene Einstellungen, Reihenfolge schneller Einstellungsänderungen, erneute Speicherung vorgemerkter Offline-Einstellungen, automatische Kategorien, Katalog-Opt-in sowie HTML-Escaping und öffentliche Konfiguration.
 - Smartphone-Ansichten bei 320, 384 und 412 Pixel Breite sowie 832 × 384 im Querformat geprüft. Auch mit langen Produktnamen, Mengen und Notizen kein horizontaler Überlauf gemessen.
 - Kompakte Listenkarten, Produktformular, standardmäßig ausgeschaltetes Katalog-Häkchen, Kategorieerkennung, Kataloganzeige, Einkaufsmodus, Menübedienung und Beenden des Einkaufsmodus geprüft.
 - Lange Mengen stehen unter dem Produkttext statt in einer schmalen Randspalte. Hinweise und Mengen umbrechen innerhalb ihrer Kästen.

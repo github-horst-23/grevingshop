@@ -74,3 +74,11 @@ html,body{min-width:0;max-width:100%}.app-shell,main,.page,.card,.heading,.headi
 
 /* Kompakter Einstieg ohne Testzugang. */
 .login-card{padding:18px;text-align:left}.login-card h2{font-size:19px;line-height:1.3}.login-card p{font-size:14px;line-height:1.45;margin:6px 0 14px}.login-card .button{width:100%}
+
+/* Mehrfachauswahl im Warenkatalog. */
+.catalog-bulk{display:grid;gap:9px;padding:14px;margin-top:12px}.catalog-bulk .row{flex-wrap:wrap}.catalog-bulk strong{font-size:14px}.catalog-bulk .back{font-size:12px}.catalog-bulk label{margin-bottom:-5px}.catalog-bulk select{min-width:0}.catalog-bulk .button{width:100%;white-space:normal}.catalog-pick{display:flex;align-items:center;gap:9px;min-width:0;cursor:pointer;min-height:44px}.catalog-pick input{width:22px;height:22px;flex:0 0 22px;margin:0;accent-color:var(--primary)}.catalog-pick .item-info{display:grid;gap:2px;overflow-wrap:anywhere}
+
+@media(max-width:650px){.catalog-heading{align-items:flex-start;flex-direction:column;gap:10px}.catalog-heading .button{font-size:13px;padding:9px 12px}}
+
+/* Kompakte Übernahmeleiste: Ziel und Aktion nebeneinander. */
+.catalog-bulk{padding:10px 12px;gap:5px}.catalog-bulk .row{min-width:0;gap:6px}.catalog-bulk strong{font-size:12px}.catalog-bulk .back{font-size:11px;min-height:32px;padding:4px 0}.catalog-transfer{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:7px;align-items:center}.catalog-transfer select{width:100%;min-width:0;padding:9px 8px;height:44px}.catalog-transfer .button{width:auto;min-height:44px;font-size:12px;padding:9px 10px;white-space:nowrap}
