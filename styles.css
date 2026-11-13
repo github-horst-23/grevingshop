@@ -71,3 +71,6 @@ html,body{min-width:0;max-width:100%}.app-shell,main,.page,.card,.heading,.headi
 @media(max-width:350px){.app-shell{padding-left:10px;padding-right:10px}.heading h1{font-size:25px}.compact-heading .button{font-size:12px;padding:8px 10px}.item{grid-template-columns:36px minmax(0,1fr) minmax(0,62px) 26px;gap:6px}.item .quantity{max-width:62px}.shop-mode .app-shell{padding-left:8px;padding-right:8px}.shop-mode .item{grid-template-columns:42px minmax(0,1fr) minmax(0,62px)}.shop-mode .item-info strong{font-size:17px}}
 /* Lange Mengen stehen unter dem Text statt in einer zu schmalen Randspalte. */
 .item.long-quantity .item-info{grid-column:2/4;grid-row:1}.item.long-quantity .quantity{grid-column:2/4;grid-row:2;justify-self:start;max-width:100%;margin-top:-2px}.item.long-quantity .check{grid-column:1;grid-row:1/3;align-self:start;margin-top:2px}.item.long-quantity .edit{grid-column:4;grid-row:1/3;align-self:start}.shop-mode .item.long-quantity .item-info,.shop-mode .item.long-quantity .quantity{grid-column:2/-1}
+
+/* Kompakter Einstieg ohne Testzugang. */
+.login-card{padding:18px;text-align:left}.login-card h2{font-size:19px;line-height:1.3}.login-card p{font-size:14px;line-height:1.45;margin:6px 0 14px}.login-card .button{width:100%}

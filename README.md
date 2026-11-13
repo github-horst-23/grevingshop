@@ -27,12 +27,12 @@ Im Produktformular zeigt „Automatisch“ den erkannten Bereich. Du kannst stat
 ## Anmelden
 
 1. [GrevingShop. öffnen](https://github-horst-23.github.io/grevingshop/).
-2. Auf das Kontosymbol oder **Mit Greving.Fit-Konto anmelden** tippen.
+2. Auf das Kontosymbol oder **Anmelden** tippen.
 3. Die eigene E-Mail-Adresse und das bestehende Greving.Fit-Passwort eingeben.
 
 Die Anmeldung nutzt dasselbe Supabase-Projekt wie Greving.Fit. Es werden keine neuen Passwörter oder Konten durch die App erzeugt. Das Profil wird anhand der hinterlegten E-Mail-Adresse zugeordnet. Personennamen und E-Mail-Adressen der freigegebenen Konten werden ausschließlich im geschützten Menüpunkt Familie angezeigt. Der Änderungsnachweis einer Liste nennt den jeweiligen Bearbeiter.
 
-**App ausprobieren** öffnet lokale Beispieldaten. Diese Vorschau überträgt keine Einkaufslisten nach Supabase.
+Die App wird ausschließlich mit Anmeldung verwendet; ein Testzugang mit Beispieldaten ist nicht verfügbar.
 
 ## Auf dem Smartphone installieren
 
