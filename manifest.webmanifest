@@ -1,14 +1,14 @@
 {
-  "id": "./",
-  "name": "Greving.Shop",
-  "short_name": "Greving.Shop",
-  "description": "Geteilte Einkaufslisten für die Familie Greving",
+  "id": "/grevingshop/",
+  "name": "GrevingShop.",
+  "short_name": "GrevingShop.",
+  "description": "Gemeinsame Einkaufslisten und Warenkatalog",
   "lang": "de",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
   "background_color": "#f2f6ff",
-  "theme_color": "#126bff",
+  "theme_color": "#1769e0",
   "icons": [
     {
       "src": "icon-192.png",

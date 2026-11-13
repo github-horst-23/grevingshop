@@ -1,4 +1,4 @@
-const CACHE='grevingshop-shell-v8';
+const CACHE='grevingshop-shell-v9';
 const ASSETS=['./','./index.html','./styles.css','./app.js','./icon.svg','./icon-180.png','./icon-192.png','./icon-512.png','./manifest.webmanifest','./supabase.js'];
 self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(ASSETS)))});
 self.addEventListener('activate',event=>{event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(key=>key.startsWith('grevingshop-shell-')&&key!==CACHE).map(key=>caches.delete(key)))))});

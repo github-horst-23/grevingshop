@@ -1,4 +1,4 @@
-# Greving.Shop im Main-Branch veröffentlichen
+# GrevingShop. im Main-Branch veröffentlichen
 
 Das ZIP enthält die benötigten App-Dateien direkt auf oberster Ebene. Es gibt keinen zusätzlichen App- oder docs-Unterordner.
 
@@ -25,12 +25,20 @@ Die Einkaufslisten-Tabellen, Zugriffsregeln und Realtime sind bereits eingericht
 
 ## Neu in dieser Fassung
 
-- Einheitliche Abstände von 16 Pixeln zwischen den Inhaltskästen, auch zwischen Anmeldekarte und Infokarten.
-- Beschreibende Unterzeilen unter den Seitenüberschriften entfernt. Eigene Listennotizen bleiben erhalten.
-- Menüanimation wie in Greving.Fit: kreisförmiges Öffnen vom tatsächlichen Menüknopf und gestaffelt aufsteigende Menüeinträge.
-- Animationen werden bei der Systemeinstellung für reduzierte Bewegung deaktiviert.
-- Alle Dateien liegen weiterhin direkt auf ZIP-Hauptebene für **main → / (root)**.
+- Neuer App-Name **GrevingShop.**, feste Manifest-ID `/grevingshop/` und Icon-Blau `#1769e0` wie bei Greving.Fit.
+- Kompaktere Startseite, Listen und Einkaufsansicht; bereinigte Ränder und Umbrüche auch für lange Produktnamen, Mengen und Notizen.
+- Banner entfernt; Listentitel stehen direkt oben auf den Listenkarten.
+- Keine dekorativen Personennamen oder Initialen außerhalb von Familie; der Änderungsnachweis nennt den tatsächlichen Bearbeiter.
+- Warenkatalog mit ausdrücklichem, standardmäßig deaktiviertem Aufnahme-Häkchen. Produkte können aus dem Katalog wieder auf eine Liste gesetzt werden.
+- Bearbeiter und Zeitpunkt werden bei Listenänderungen serverseitig aktualisiert.
+- Kontaktdaten werden nach Anmeldung geschützt geladen; öffentliche App- und SQL-Dateien enthalten keine echten Kontaktadressen.
 
-- Produkte werden automatisch nach Hauptkategorien entlang einer üblichen Supermarkt-Laufrichtung gruppiert; eine manuelle Kategorieauswahl bleibt möglich.
-- Farbschema, Hell/Dunkel, Schriftgröße und Dichte werden pro Konto in Supabase gespeichert und beim Start mit abgerufen.
-- Nach erfolgreicher ZIP-Erstellung bleibt im Projektordner nur **Greving.Shop-main-root.zip** bestehen.
+## Supabase-Erweiterung dieses Updates
+
+Im bestehenden Projekt ist die Erweiterung für Warenkatalog, Änderungsnachweis und geschützte Profile eingerichtet. Zugriffsregeln und Katalogabläufe sind geprüft; sämtliche temporären Testdaten wurden zurückgerollt. Die vollständigen SQL-Dateien im ZIP sind für andere Installationen vorbereitet und verwenden bewusst Platzhalteradressen. Diese vor Ausführung im Supabase SQL Editor ersetzen; tatsächliche Adressen nicht in öffentlich hochladbare Dateien übernehmen.
+
+Für ein bereits vorhandenes anderes Projekt `supabase-update.sql`, für eine neue Installation `supabase-setup.sql` verwenden. `supabase-catalog.sql` enthält ausschließlich die neue Katalog-/Profil-Erweiterung.
+
+## Sicherheitsbefund
+
+Die neue Auslieferung enthält keine echten Kontaktadressen oder administrativen Schlüssel in öffentlichen Dateien. E-Mail-Bestätigung für neue Konten ist im gemeinsamen Supabase-Projekt aktiviert. Frühere GitHub-Commits können alte Kontaktkonfigurationen noch enthalten; es wurde kein Verlauf umgeschrieben. Einzelheiten stehen in `PRUEFBERICHT.md`.
