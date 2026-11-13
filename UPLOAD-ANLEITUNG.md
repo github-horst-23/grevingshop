@@ -41,4 +41,8 @@ Für ein bereits vorhandenes anderes Projekt `supabase-update.sql`, für eine ne
 
 ## Sicherheitsbefund
 
-Die neue Auslieferung enthält keine echten Kontaktadressen oder administrativen Schlüssel in öffentlichen Dateien. E-Mail-Bestätigung für neue Konten ist im gemeinsamen Supabase-Projekt aktiviert. Frühere GitHub-Commits können alte Kontaktkonfigurationen noch enthalten; es wurde kein Verlauf umgeschrieben. Einzelheiten stehen in `PRUEFBERICHT.md`.
+Die neue Auslieferung enthält keine echten Kontaktadressen oder administrativen Schlüssel in öffentlichen Dateien. E-Mail-Bestätigung für neue Konten ist auf ausdrücklichen Wunsch im gemeinsamen Supabase-Projekt ausgeschaltet. Noch nicht registrierte freigegebene Adressen sind dadurch ohne Besitznachweis registrierbar. Frühere GitHub-Commits können alte Kontaktkonfigurationen noch enthalten; es wurde kein Verlauf umgeschrieben. Einzelheiten stehen in `PRUEFBERICHT.md`.
+
+Registrierung: Die GrevingShop-Rücksprungadresse ist im bestehenden Supabase-Projekt erlaubt. Registrierung ist aktiv und E-Mail-Bestätigung ist ausgeschaltet; die Freigaben für Einkaufsdaten bleiben bestehen. Bei anderem Hosting die Adresse in app.js und den Supabase Redirect URLs anpassen. Für die Registrierung ohne Bestätigungsmail ist kein SMTP-Anbieter nötig.
+
+Passwortänderung: Nach Anmeldung über Kontobutton → Passwort ändern. Die Änderung gilt für beide Apps. Auch GrevingFit wurde lokal angepasst; dessen aktualisiertes ZIP liegt im GrevingFit-Projektordner. Keine automatischen GitHub-Uploads.

@@ -30,7 +30,7 @@ Im Produktformular zeigt „Automatisch“ den erkannten Bereich. Du kannst stat
 2. Auf das Kontosymbol oder **Anmelden** tippen.
 3. Die eigene E-Mail-Adresse und das bestehende Greving.Fit-Passwort eingeben.
 
-Die Anmeldung nutzt dasselbe Supabase-Projekt wie Greving.Fit. Es werden keine neuen Passwörter oder Konten durch die App erzeugt. Das Profil wird anhand der hinterlegten E-Mail-Adresse zugeordnet. Personennamen und E-Mail-Adressen der freigegebenen Konten werden ausschließlich im geschützten Menüpunkt Familie angezeigt. Der Änderungsnachweis einer Liste nennt den jeweiligen Bearbeiter.
+Die Anmeldung nutzt dasselbe Supabase-Projekt wie Greving.Fit. Über „Neues Konto erstellen“ können neue Konten registriert werden; bestehende Greving.Fit-Konten verwenden weiterhin ihr vorhandenes Passwort. Das Profil wird anhand der hinterlegten E-Mail-Adresse zugeordnet. Personennamen und E-Mail-Adressen der freigegebenen Konten werden ausschließlich im geschützten Menüpunkt Familie angezeigt. Der Änderungsnachweis einer Liste nennt den jeweiligen Bearbeiter.
 
 Die App wird ausschließlich mit Anmeldung verwendet; ein Testzugang mit Beispieldaten ist nicht verfügbar.
 
@@ -66,7 +66,7 @@ Für das bestehende Greving.Fit-Projekt sind Einkaufslisten, persönliche Einste
 
 Für eine eigene Installation:
 
-1. E-Mail-Anmeldung und **Confirm email** in Supabase Auth aktivieren und die vorgesehenen Konten bereitstellen. Anonyme Anmeldungen deaktiviert lassen. Neue Konten müssen ihre E-Mail-Adresse vor der ersten Anmeldung bestätigen.
+1. E-Mail-Anmeldung in Supabase Auth aktivieren und die vorgesehenen Konten bereitstellen. Anonyme Anmeldungen deaktiviert lassen. Im bestehenden gemeinsamen Projekt ist **Confirm email** auf ausdrücklichen Wunsch ausgeschaltet; neue Registrierungen benötigen keine Bestätigungsmail. Ohne Bestätigung wird der Besitz der E-Mail-Adresse nicht verifiziert.
 2. Das [SQL-Setup](supabase-setup.sql) im Supabase SQL Editor ausführen. Das Skript kann erneut ausgeführt werden und richtet Tabellen, RLS-Regeln und die Realtime-Veröffentlichung ein.
 3. Supabase-Projekt-URL und den **Publishable Key** in `app.js` anpassen. Die Platzhalter-Adressen in den SQL-Skripten vor Ausführung im SQL Editor durch die freigegebenen Konten ersetzen. Echte Kontaktadressen nicht in öffentlich hochladbare Dateien schreiben. Die App ruft die Profile nach der Anmeldung über eine geschützte Datenbankfunktion ab.
 4. Bei Nutzung von Bestätigungs- oder Wiederherstellungslinks die App-URL in der Supabase Auth-Konfiguration berücksichtigen.
@@ -154,7 +154,7 @@ Die neue Auslieferung enthält keine echten Familien-E-Mail-Adressen, Passwörte
 
 Die öffentlich hochladbaren SQL-Dateien verwenden Platzhalteradressen. Die tatsächliche Serverkonfiguration bleibt im Supabase-Projekt. Es sind keine Analyse- oder Werbedienste eingebunden; das Supabase-SDK wird lokal mitgeliefert. Details der Tests und ihre Grenzen stehen in `PRUEFBERICHT.md`.
 
-Die E-Mail-Bestätigung für neue Konten wurde im gemeinsamen Supabase-Projekt aktiviert; dies gilt auch für neue Registrierungen über Greving.Fit. Alte GitHub-Commits können frühere Kontaktkonfigurationen weiterhin enthalten. Git-Verlauf und bereits veröffentlichte Versionen wurden nicht verändert. Bei Abmeldung oder Kontowechsel wird der lokale Listen-/Katalogcache des bisherigen Kontos entfernt.
+Die E-Mail-Bestätigung wurde auf ausdrücklichen Wunsch im gemeinsamen Supabase-Projekt ausgeschaltet; dies gilt auch für neue Registrierungen über Greving.Fit. Noch nicht registrierte freigegebene Adressen können dadurch ohne Besitznachweis beansprucht werden. Alte GitHub-Commits können frühere Kontaktkonfigurationen weiterhin enthalten. Git-Verlauf und bereits veröffentlichte Versionen wurden nicht verändert. Bei Abmeldung oder Kontowechsel wird der lokale Listen-/Katalogcache des bisherigen Kontos entfernt.
 
 ## Mehrere Katalogprodukte übernehmen
 
@@ -163,3 +163,21 @@ Im Warenkatalog die gewünschten Produkte anhaken, die Zielliste wählen und **P
 ## Katalogprodukte direkt anlegen
 
 Unter **Warenkatalog → Neues Produkt** kannst du Name, Menge und Notiz erfassen. Die Kategorie wird automatisch erkannt und kann geändert werden. **Im Katalog speichern** speichert das Produkt direkt in Supabase und synchronisiert den Katalog. Dafür wird keine Einkaufsliste benötigt. Bereits vorhandene Produktnamen werden nicht doppelt angelegt.
+
+## Registrierung
+
+Auf der Startseite **Neues Konto erstellen** oder im Anmeldedialog **Registrieren** wählen. E-Mail-Adresse, Passwort (mindestens 8 Zeichen) und Passwortwiederholung eingeben. Im bestehenden Projekt erfolgt die Anmeldung ohne Bestätigungsmail. Das Passwort wird ausschließlich über Supabase Auth verarbeitet und nicht in App-Tabellen oder lokal gespeichert.
+
+Eine Registrierung erweitert die Freigabe der gemeinsamen Einkaufsdaten nicht. Zugriff erhalten weiterhin nur die serverseitig freigegebenen Konten. Ein bestehendes Greving.Fit-Konto muss nicht erneut registriert werden.
+
+Im bestehenden Supabase-Projekt wurde die exakte Redirect-URL `https://github-horst-23.github.io/grevingshop/` ergänzt. E-Mail-Bestätigung ist auf ausdrücklichen Wunsch ausgeschaltet, ein SMTP-Anbieter wird für diesen Registrierungsablauf deshalb nicht benötigt. Wird die Bestätigung später wieder aktiviert, benötigt der Versand an Empfänger außerhalb des Supabase-Projektteams einen eigenen SMTP-Anbieter. Bei anderem Hosting `SIGNUP_REDIRECT` und die Supabase Redirect URLs anpassen.
+
+## Passwort ändern
+
+Nach der Anmeldung **Settings → Login & Cloud-Synchronisierung → Passwort ändern** aufklappen. Alternativ den Kontobutton verwenden. Aktuelles Passwort, neues Passwort (mindestens 8 Zeichen) und Wiederholung eingeben. Das aktuelle Passwort wird vor der Änderung erneut über Supabase geprüft. Das neue Passwort gilt unmittelbar für **GrevingShop und GrevingFit**, weil beide dasselbe Auth-Projekt verwenden. Bei einer erneuten Anmeldung auf anderen Geräten das neue Passwort verwenden. Die Passwörter werden nicht im App-Code, in App-Tabellen oder lokal gespeichert.
+
+Das gewünschte Initialpasswort für neue Konten muss bei deren Registrierung eingegeben werden. Es wird nicht automatisch öffentlich vorbelegt. Bestehende Konten und Passwörter wurden nicht zurückgesetzt.
+
+## Settings wie in GrevingFit
+
+Personalisierung und Login/Cloud verwenden denselben Aufbau wie GrevingFit. Startbereich, Farbschema, Schriftgröße und Darstellungsdichte direkt auswählen und mit **Einstellungen übernehmen** speichern. Der Schalter für helles/dunkles Design steht daneben. Persönliche Einstellungen einschließlich Startbereich werden pro Konto in Supabase gespeichert. Die Kontokarte zeigt Profil und E-Mail, Synchronisieren, Abmelden sowie das aufklappbare Passwortformular.

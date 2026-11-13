@@ -4,6 +4,14 @@ Stand: 13.11.2026. Geprüft ist die in diesem ZIP enthaltene Fassung.
 
 ## Funktionen und Darstellung
 
+- Personalisierungs- und Kontokarte an GrevingFit angeglichen: direkte Auswahlfelder, Übernehmen/Design-Wechsel, Profil/E-Mail, Synchronisieren/Abmelden und aufklappbares Passwortformular. Bei 384 CSS-Pixeln im Browser geprüft: Seitenbreite und Scrollbreite jeweils 384 Pixel. Passwortformular geöffnet und geschlossen, ohne echte Zugangsdaten einzugeben. Startbereich und Speichern aller Darstellungswerte sowie das inline Passwortformular automatisiert geprüft.
+
+- Passwortänderung in beiden Apps: aktuelles Passwort vorab erneut geprüft, neues Passwort und Wiederholung validiert, Kontowechsel erkannt und Serverfehler behandelt. Die asynchronen Formularabläufe wurden automatisiert mit simulierten Auth-Antworten geprüft. Keine echten Kontopasswörter wurden geändert. Das Initialpasswort wurde nicht im Code hinterlegt.
+- Registrierung ohne Bestätigungsmail ist serverseitig aktiviert und per öffentlicher Auth-Konfiguration verifiziert. Beide Apps verwenden dasselbe Supabase-Auth-Projekt.
+
+- Registrierung: gemeinsames Supabase-Auth-Projekt beider Apps, Formular bei 384 × 832 geprüft. Passwortwiederholung, ungültige Eingaben, fehlendes Internet, Versandfehler sowie Registrierung mit und ohne sofortige Sitzung automatisiert geprüft. Datenfreigaben für fremde Konten werden weiterhin serverseitig geprüft. Keine Testkonten oder Testmails im Produktivprojekt erzeugt.
+- Die exakte GrevingShop-Rücksprungadresse wurde in Supabase gespeichert und sichtbar verifiziert. Eigener SMTP-Versand ist aktuell nicht eingerichtet.
+
 - Katalogübernahme kompakter: Zielliste und Übernahme nebeneinander. Dauerhafte Anzeige „Bildschirm an“ im Einkaufsmodus entfernt; Wake-Lock-Anforderung und Fehlerhinweis bleiben erhalten. Neue Darstellung automatisiert geprüft.
 
 - Direkte Produktanlage im Warenkatalog ohne Einkaufsliste: automatisierte Prüfung von Speicherung, Kategorien, Mengen, Duplikaten, ungültigen Eingaben, Offline-Zustand und fehlender Anmeldung.
@@ -14,7 +22,7 @@ Stand: 13.11.2026. Geprüft ist die in diesem ZIP enthaltene Fassung.
 
 - Kontobutton wie in Greving.Fit: erster Buchstabe des Vornamens nach Anmeldung, sonst „?“. Wechsel und Abmeldung automatisiert geprüft.
 
-- Dreizehn automatisierte Tests bestanden: frischer Serverabruf beim Start, direkte Schreibvorgänge, Realtime-Nachladen, Kontowechsel und Abmeldung, kontogebundene Einstellungen, Reihenfolge schneller Einstellungsänderungen, erneute Speicherung vorgemerkter Offline-Einstellungen, automatische Kategorien, Katalog-Opt-in sowie HTML-Escaping und öffentliche Konfiguration.
+- Achtzehn automatisierte Tests bestanden: frischer Serverabruf beim Start, direkte Schreibvorgänge, Realtime-Nachladen, Kontowechsel und Abmeldung, kontogebundene Einstellungen, Reihenfolge schneller Einstellungsänderungen, erneute Speicherung vorgemerkter Offline-Einstellungen, automatische Kategorien, Katalog-Opt-in sowie HTML-Escaping und öffentliche Konfiguration.
 - Smartphone-Ansichten bei 320, 384 und 412 Pixel Breite sowie 832 × 384 im Querformat geprüft. Auch mit langen Produktnamen, Mengen und Notizen kein horizontaler Überlauf gemessen.
 - Kompakte Listenkarten, Produktformular, standardmäßig ausgeschaltetes Katalog-Häkchen, Kategorieerkennung, Kataloganzeige, Einkaufsmodus, Menübedienung und Beenden des Einkaufsmodus geprüft.
 - Lange Mengen stehen unter dem Produkttext statt in einer schmalen Randspalte. Hinweise und Mengen umbrechen innerhalb ihrer Kästen.
@@ -52,7 +60,7 @@ Eine Testtransaktion mit `authenticated`-Rolle und wechselnden JWT-Claims wurde 
 
 ### Gefundene und behobene Punkte
 
-1. **E-Mail-Bestätigung war ausgeschaltet, während Registrierungen erlaubt waren.** Dadurch konnten noch nicht registrierte freigegebene Adressen ohne Verifizierung beansprucht werden. Die Bestätigung für neue Konten wurde aktiviert. Der Server meldet jetzt `mailer_autoconfirm: false`; anonyme Anmeldungen sind deaktiviert. Die Einstellung gilt im gemeinsamen Supabase-Projekt auch für neue Greving.Fit-Registrierungen. Bereits bestehende Kontoinhaber wurden dadurch nicht nachträglich identifiziert.
+1. **E-Mail-Bestätigung war ausgeschaltet, während Registrierungen erlaubt waren.** Dadurch konnten noch nicht registrierte freigegebene Adressen ohne Verifizierung beansprucht werden. Die Bestätigung wurde zunächst aktiviert und anschließend auf ausdrücklichen, nach Risikoaufklärung bestätigten Wunsch wieder ausgeschaltet. Der Server meldet aktuell `mailer_autoconfirm: true`; anonyme Anmeldungen sind weiterhin deaktiviert. Das Risiko für noch nicht registrierte freigegebene Adressen bleibt damit bewusst bestehen. Die Einstellung gilt im gemeinsamen Supabase-Projekt auch für neue Greving.Fit-Registrierungen. Bereits bestehende Kontoinhaber wurden dadurch nicht nachträglich identifiziert.
 2. **Kontaktkonfiguration war zuvor im Frontend enthalten.** In dieser Auslieferung werden die Profile ausschließlich nach Anmeldung über eine geschützte Funktion geladen. Die öffentlich hochladbaren SQL-Dateien enthalten nur Platzhalteradressen. Tatsächliche Serverkonfigurationen liegen nicht im ZIP.
 3. **Lokaler Cache nach Abmeldung.** Der Listen-/Katalogcache des bisherigen Kontos wird bei Abmeldung oder Kontowechsel entfernt; die serverseitigen Daten bleiben erhalten.
 4. **Zusätzliche Browserbegrenzung.** Eine Content Security Policy erlaubt Skripte nur aus der eigenen App und Verbindungen nur zur eigenen Adresse und zum konfigurierten Supabase-Projekt. Objekt-Einbettungen und fremde Formularziele sind gesperrt. HTML aus Namen und Notizen wird escaped. Es sind keine Analyse-, Werbe- oder externen CDN-Skripte eingebunden.
