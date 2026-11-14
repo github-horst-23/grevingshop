@@ -7,12 +7,25 @@ create table if not exists public.shopping_preferences (
  preferences jsonb not null default '{}'::jsonb,
  updated_at timestamptz not null default now(),
  constraint shopping_preferences_object check (jsonb_typeof(preferences)='object'),
- constraint shopping_preferences_keys check (preferences - array['theme','scheme','font','density'] = '{}'::jsonb),
+ constraint shopping_preferences_keys check (preferences - array['theme','scheme','font','density','startPage'] = '{}'::jsonb),
  constraint shopping_preferences_theme check (preferences->>'theme' is null or preferences->>'theme' in ('light','dark')),
  constraint shopping_preferences_scheme check (preferences->>'scheme' is null or preferences->>'scheme' in ('energy','lavender','lagoon','apricot','verdelia','noctara','iriselle','marea','rosavelle')),
  constraint shopping_preferences_font check (preferences->>'font' is null or preferences->>'font' in ('standard','large')),
  constraint shopping_preferences_density check (preferences->>'density' is null or preferences->>'density' in ('comfortable','compact'))
 );
+alter table public.shopping_preferences
+ drop constraint if exists shopping_preferences_keys,
+ add constraint shopping_preferences_keys check (
+  preferences - array['theme','scheme','font','density','startPage'] = '{}'::jsonb
+ );
+alter table public.shopping_preferences
+ drop constraint if exists shopping_preferences_start_page,
+ add constraint shopping_preferences_start_page check (
+  not (preferences ? 'startPage') or (
+   jsonb_typeof(preferences->'startPage') = 'string'
+   and preferences->>'startPage' in ('lists','catalog','archive','family')
+  )
+ );
 alter table public.shopping_preferences enable row level security;
 revoke all on public.shopping_preferences from anon,authenticated;
 grant select,insert,update on public.shopping_preferences to authenticated;

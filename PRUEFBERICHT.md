@@ -1,8 +1,23 @@
 # GrevingShop. – Prüfbericht
 
-Stand: 13.11.2026. Geprüft ist die in diesem ZIP enthaltene Fassung.
+Stand: 14.11.2026. Geprüft ist die in diesem ZIP enthaltene Fassung.
+
+## Reparatur vom 14.11.2026
+
+- Ursache: Der neue Schlüssel `startPage` fehlte im Check-Constraint `shopping_preferences_keys`.
+- Korrektur im bestehenden Supabase-Projekt angewendet: Schlüssel zugelassen und zusätzlicher Werte-/Typcheck für die vier Startbereiche eingerichtet. Keine Nutzerdaten oder Zugriffsrechte geändert.
+- Datenbanktest in temporärer Tabelle mit den echten Check-Constraints: vier vollständige Einstellungen mit verschiedenen Startbereichen und ein älterer Datensatz ohne Startbereich akzeptiert. Ungültiger Startbereich, falscher Typ, JSON-null, fremder Schlüssel und Nicht-Objekt abgewiesen. Testtransaktion zurückgerollt.
+- Ergebnis: `valid_payloads_accepted = 5`, `row_security_enabled = true`, `policy_count = 3`.
+- Regressionstest liest die erlaubten Schlüssel aus dem SQL-Schema. Fehlerhafte Schreibversuche bleiben lokal vorgemerkt, erfolgreiche Wiederholung entfernt die Vormerkung. App zeigt bei veraltetem Schema einen verständlichen Hinweis statt rohem Datenbankfehler.
+- Setup-, Update- und eigenständige Reparaturdateien vereinheitlicht. Keine Cache-Löschung nötig.
 
 ## Funktionen und Darstellung
+
+- Identische SVG-Symbole für Settings, Katalog und Listen in beiden Apps; die bisherigen GrevingShop-Symbole wurden übernommen. Geometrie und Strichstärke abgeglichen.
+- Klick auf Initialen: persönliche Startseite, geschlossene Navigation und Verlassen des Einkaufsmodus; ohne Sitzung Anmeldung. Alle vier Startbereiche automatisiert geprüft.
+- Produktanlage als Hauptaktion vor Suche/Filter; „Einkauf starten“ am rechten Rand, im Browser sowohl am Desktop als auch in der Smartphone-Ansicht mit rechtem Abstand 0 geprüft. Mobile Archivansicht ohne horizontalen Überlauf (Client-/Scrollbreite je 369 Pixel innerhalb des 384-Pixel-Vorschauframes).
+- Archiv-Löschfunktion automatisiert geprüft: Abbrechen, aktive Liste, Offline-Zustand, zwischenzeitliches Wiederherstellen sowie erfolgreiche Löschung mit zugehörigen Produkten in der simulierten Datenbank. Browserdarstellung der Löschbuttons geprüft; keine echten Listen oder Produkte gelöscht. Serverseitiger Delete ist zusätzlich auf `archived = true` begrenzt. Bestehende RLS-Regeln und Fremdschlüssel bleiben unverändert.
+
 
 - Personalisierungs- und Kontokarte an GrevingFit angeglichen: direkte Auswahlfelder, Übernehmen/Design-Wechsel, Profil/E-Mail, Synchronisieren/Abmelden und aufklappbares Passwortformular. Bei 384 CSS-Pixeln im Browser geprüft: Seitenbreite und Scrollbreite jeweils 384 Pixel. Passwortformular geöffnet und geschlossen, ohne echte Zugangsdaten einzugeben. Startbereich und Speichern aller Darstellungswerte sowie das inline Passwortformular automatisiert geprüft.
 
@@ -22,7 +37,7 @@ Stand: 13.11.2026. Geprüft ist die in diesem ZIP enthaltene Fassung.
 
 - Kontobutton wie in Greving.Fit: erster Buchstabe des Vornamens nach Anmeldung, sonst „?“. Wechsel und Abmeldung automatisiert geprüft.
 
-- Achtzehn automatisierte Tests bestanden: frischer Serverabruf beim Start, direkte Schreibvorgänge, Realtime-Nachladen, Kontowechsel und Abmeldung, kontogebundene Einstellungen, Reihenfolge schneller Einstellungsänderungen, erneute Speicherung vorgemerkter Offline-Einstellungen, automatische Kategorien, Katalog-Opt-in sowie HTML-Escaping und öffentliche Konfiguration.
+- Dreiundzwanzig automatisierte Tests bestanden: frischer Serverabruf beim Start, direkte Schreibvorgänge, Realtime-Nachladen, Kontowechsel und Abmeldung, kontogebundene Einstellungen, Reihenfolge schneller Einstellungsänderungen, erneute Speicherung vorgemerkter Offline-Einstellungen, automatische Kategorien, Katalog-Opt-in sowie HTML-Escaping und öffentliche Konfiguration.
 - Smartphone-Ansichten bei 320, 384 und 412 Pixel Breite sowie 832 × 384 im Querformat geprüft. Auch mit langen Produktnamen, Mengen und Notizen kein horizontaler Überlauf gemessen.
 - Kompakte Listenkarten, Produktformular, standardmäßig ausgeschaltetes Katalog-Häkchen, Kategorieerkennung, Kataloganzeige, Einkaufsmodus, Menübedienung und Beenden des Einkaufsmodus geprüft.
 - Lange Mengen stehen unter dem Produkttext statt in einer schmalen Randspalte. Hinweise und Mengen umbrechen innerhalb ihrer Kästen.

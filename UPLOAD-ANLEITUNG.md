@@ -46,3 +46,7 @@ Die neue Auslieferung enthält keine echten Kontaktadressen oder administrativen
 Registrierung: Die GrevingShop-Rücksprungadresse ist im bestehenden Supabase-Projekt erlaubt. Registrierung ist aktiv und E-Mail-Bestätigung ist ausgeschaltet; die Freigaben für Einkaufsdaten bleiben bestehen. Bei anderem Hosting die Adresse in app.js und den Supabase Redirect URLs anpassen. Für die Registrierung ohne Bestätigungsmail ist kein SMTP-Anbieter nötig.
 
 Passwortänderung: Nach Anmeldung über Kontobutton → Passwort ändern. Die Änderung gilt für beide Apps. Auch GrevingFit wurde lokal angepasst; dessen aktualisiertes ZIP liegt im GrevingFit-Projektordner. Keine automatischen GitHub-Uploads.
+
+### Einstellungen-Reparatur (14.11.2026)
+
+Im vorhandenen Supabase-Projekt bereits eingespielt: `startPage` ist als Einstellung zugelassen und auf gültige Startbereiche begrenzt. Für die Fehlerbehebung auf deinem Smartphone genügt erneutes Öffnen der App bzw. **Einstellungen übernehmen**. Kein Cache-Löschen nötig. Die enthaltene Datei `supabase-preferences-startpage.sql` dient zur Migration anderer bestehender Installationen. Nicht das vollständige Setup mit Platzhalteradressen über die vorhandene Familienkonfiguration ausführen.

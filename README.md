@@ -181,3 +181,15 @@ Das gewünschte Initialpasswort für neue Konten muss bei deren Registrierung ei
 ## Settings wie in GrevingFit
 
 Personalisierung und Login/Cloud verwenden denselben Aufbau wie GrevingFit. Startbereich, Farbschema, Schriftgröße und Darstellungsdichte direkt auswählen und mit **Einstellungen übernehmen** speichern. Der Schalter für helles/dunkles Design steht daneben. Persönliche Einstellungen einschließlich Startbereich werden pro Konto in Supabase gespeichert. Die Kontokarte zeigt Profil und E-Mail, Synchronisieren, Abmelden sowie das aufklappbare Passwortformular.
+
+## Reparatur der Einstellungen vom 14.11.2026
+
+Die Datenbankregel `shopping_preferences_keys` wurde um `startPage` erweitert. Zulässig sind `lists`, `catalog`, `archive` und `family`. Ältere Einstellungen ohne Startbereich bleiben gültig. Die Korrektur ist im bestehenden gemeinsamen Supabase-Projekt bereits angewendet und mit den tatsächlichen Datenbankregeln geprüft. App neu öffnen oder unter Settings **Einstellungen übernehmen** antippen; lokal vorgemerkte Einstellungen werden erneut gespeichert. Cache-Löschen ist nicht erforderlich.
+
+Für andere bestehende Installationen nur **supabase-preferences-startpage.sql** im Supabase SQL Editor ausführen. Diese Datei ändert keine Nutzerdaten oder Zugriffsrechte. Die vollständigen Setup- und Update-Dateien enthalten dieselbe Korrektur.
+
+## Navigation und Listenaktionen
+
+Der Klick auf die eigenen Initialen öffnet den eingestellten Startbereich. Ohne Anmeldung öffnet das Fragezeichen die Anmeldung. Settings, Katalog und Listen verwenden in GrevingShop und GrevingFit identische Symbole aus GrevingShop.
+
+Innerhalb einer Liste steht **Produkt hinzufügen** als Hauptaktion direkt unter dem Titel; **Einkauf starten** steht rechts. Im Archiv besitzt jede Listenkarte eine eigene Aktion **Löschen**. Die Rückfrage weist auf die endgültige Löschung der Liste einschließlich aller Produkte für alle Nutzer hin. Der Katalog bleibt davon unberührt. Eine zwischenzeitlich wiederhergestellte Liste wird nicht gelöscht.
