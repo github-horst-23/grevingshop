@@ -96,3 +96,7 @@ html,body{min-width:0;max-width:100%}.app-shell,main,.page,.card,.heading,.headi
 @media(max-width:650px){.list-primary-actions{display:grid;grid-template-columns:minmax(0,1fr)}.list-primary-actions .button{width:100%}.compact-tools .search{grid-column:auto}.compact-tools select{width:auto;max-width:110px}}
 .list-primary-actions>.button.secondary{margin-left:auto}
 @media(max-width:650px){.list-primary-actions>.button.secondary{width:auto;justify-self:end}}
+
+/* Klar erkennbares Bearbeitungssymbol mit großer Tippfläche. */
+.more-icon{width:22px;height:22px;display:block;fill:currentColor;stroke:none}.item .edit-item-button{display:grid;place-items:center;width:44px;min-height:44px;padding:0;border:1px solid var(--line);border-radius:10px;background:var(--panel2);color:var(--primary)}.item{grid-template-columns:40px minmax(0,1fr) minmax(0,76px) 44px}
+@media(max-width:350px){.item{grid-template-columns:36px minmax(0,1fr) minmax(0,62px) 44px}}

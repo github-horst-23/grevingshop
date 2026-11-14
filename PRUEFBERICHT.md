@@ -13,6 +13,10 @@ Stand: 14.11.2026. Geprüft ist die in diesem ZIP enthaltene Fassung.
 
 ## Funktionen und Darstellung
 
+- Vorschau-Aktualisierung: Versionskennung für HTML-Vorschau, App-JavaScript und CSS; passender Offline-Cache und erneute Netzwerkvalidierung. Lokaler Server erneut gestartet. Serverseitig ausgelieferter App-Code wird mit der Projektdatei verglichen und auf fehlende Stiftzeichen geprüft.
+
+- Kleine Stiftzeichen durch einheitliche Drei-Punkte-SVGs ersetzt. Produktbearbeitung mit 44 Pixel breiter Tippfläche; bestehende Bearbeitungsaktionen und Beschriftungen bleiben erhalten. Im Einkaufsmodus sind Bearbeitungsaktionen weiterhin ausgeblendet.
+
 - Identische SVG-Symbole für Settings, Katalog und Listen in beiden Apps; die bisherigen GrevingShop-Symbole wurden übernommen. Geometrie und Strichstärke abgeglichen.
 - Klick auf Initialen: persönliche Startseite, geschlossene Navigation und Verlassen des Einkaufsmodus; ohne Sitzung Anmeldung. Alle vier Startbereiche automatisiert geprüft.
 - Produktanlage als Hauptaktion vor Suche/Filter; „Einkauf starten“ am rechten Rand, im Browser sowohl am Desktop als auch in der Smartphone-Ansicht mit rechtem Abstand 0 geprüft. Mobile Archivansicht ohne horizontalen Überlauf (Client-/Scrollbreite je 369 Pixel innerhalb des 384-Pixel-Vorschauframes).
@@ -37,7 +41,7 @@ Stand: 14.11.2026. Geprüft ist die in diesem ZIP enthaltene Fassung.
 
 - Kontobutton wie in Greving.Fit: erster Buchstabe des Vornamens nach Anmeldung, sonst „?“. Wechsel und Abmeldung automatisiert geprüft.
 
-- Dreiundzwanzig automatisierte Tests bestanden: frischer Serverabruf beim Start, direkte Schreibvorgänge, Realtime-Nachladen, Kontowechsel und Abmeldung, kontogebundene Einstellungen, Reihenfolge schneller Einstellungsänderungen, erneute Speicherung vorgemerkter Offline-Einstellungen, automatische Kategorien, Katalog-Opt-in sowie HTML-Escaping und öffentliche Konfiguration.
+- Sechsundzwanzig automatisierte Tests bestanden: frischer Serverabruf beim Start, direkte Schreibvorgänge, Realtime-Nachladen, Kontowechsel und Abmeldung, kontogebundene Einstellungen, Reihenfolge schneller Einstellungsänderungen, erneute Speicherung vorgemerkter Offline-Einstellungen, automatische Kategorien, Katalog-Opt-in sowie HTML-Escaping und öffentliche Konfiguration.
 - Smartphone-Ansichten bei 320, 384 und 412 Pixel Breite sowie 832 × 384 im Querformat geprüft. Auch mit langen Produktnamen, Mengen und Notizen kein horizontaler Überlauf gemessen.
 - Kompakte Listenkarten, Produktformular, standardmäßig ausgeschaltetes Katalog-Häkchen, Kategorieerkennung, Kataloganzeige, Einkaufsmodus, Menübedienung und Beenden des Einkaufsmodus geprüft.
 - Lange Mengen stehen unter dem Produkttext statt in einer schmalen Randspalte. Hinweise und Mengen umbrechen innerhalb ihrer Kästen.

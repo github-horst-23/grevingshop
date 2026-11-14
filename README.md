@@ -193,3 +193,7 @@ Für andere bestehende Installationen nur **supabase-preferences-startpage.sql**
 Der Klick auf die eigenen Initialen öffnet den eingestellten Startbereich. Ohne Anmeldung öffnet das Fragezeichen die Anmeldung. Settings, Katalog und Listen verwenden in GrevingShop und GrevingFit identische Symbole aus GrevingShop.
 
 Innerhalb einer Liste steht **Produkt hinzufügen** als Hauptaktion direkt unter dem Titel; **Einkauf starten** steht rechts. Im Archiv besitzt jede Listenkarte eine eigene Aktion **Löschen**. Die Rückfrage weist auf die endgültige Löschung der Liste einschließlich aller Produkte für alle Nutzer hin. Der Katalog bleibt davon unberührt. Eine zwischenzeitlich wiederhergestellte Liste wird nicht gelöscht.
+
+Listen und Produkte werden über die Drei-Punkte-Schaltfläche bearbeitet. Die Produkt-Schaltfläche besitzt eine 44 Pixel große Tippfläche und ist im Einkaufsmodus ausgeblendet.
+
+Die Smartphone-Vorschau verwendet eine Versionskennung und lädt bei „Neu laden“ die aktuelle App neu. JavaScript und CSS tragen dieselbe Versionskennung im App-Dokument und Offline-Cache. Lokale Vorschauen benötigen einen laufenden Server.
