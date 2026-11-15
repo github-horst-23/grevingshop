@@ -1,5 +1,5 @@
 'use strict';
-const APP_VERSION='25';
+const APP_VERSION='26';
 const FAMILY={};
 const catalogSelection=new Set();let catalogTarget='';
 let updateRegistration=null,updateWorker=null,availableVersion='',updateApplying=false,updateReloaded=false;

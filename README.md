@@ -217,3 +217,5 @@ Version 23: Der Installieren-Button ist im PWA-Fenster bereits per CSS vor dem J
 Version 24: Das Update-Symbol verwendet die gewählte Variante G – Smartphone mit Kreis-Pfeil. Der farbige Hinweis-Punkt bleibt erhalten.
 
 Version 25: App-Symbol C (Einkaufstasche mit G) in allen Größen, weiterhin Blau #1769e0. Im Warenkatalog entfällt der einzelne „+ Liste“-Button; Produkte werden über die gemeinsame Auswahl übernommen. Produktname und Menge stehen nebeneinander, Notizen darunter.
+
+Version 26: Tasche und G im App-Symbol um 20 % um den Mittelpunkt verkleinert. Blauer Hintergrund (#1769e0) unverändert; Icons mit 180, 192 und 512 Pixeln erneuert.
