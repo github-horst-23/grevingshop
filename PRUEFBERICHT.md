@@ -1,6 +1,6 @@
 # GrevingShop. – Prüfbericht
 
-Stand: 14.11.2026. Geprüft ist die in diesem ZIP enthaltene Fassung.
+Stand: 15.11.2026. Geprüft ist die in diesem ZIP enthaltene Fassung.
 
 ## Reparatur vom 14.11.2026
 
@@ -11,9 +11,21 @@ Stand: 14.11.2026. Geprüft ist die in diesem ZIP enthaltene Fassung.
 - Regressionstest liest die erlaubten Schlüssel aus dem SQL-Schema. Fehlerhafte Schreibversuche bleiben lokal vorgemerkt, erfolgreiche Wiederholung entfernt die Vormerkung. App zeigt bei veraltetem Schema einen verständlichen Hinweis statt rohem Datenbankfehler.
 - Setup-, Update- und eigenständige Reparaturdateien vereinheitlicht. Keine Cache-Löschung nötig.
 
+## Update-Zustimmung und Installation vom 15.11.2026
+
+- Version 22 führt einen bestätigten App-Cache ein. Eine neue Worker-Fassung darf nach dem Schließen aller Ansichten aktiv werden, liefert aber weiterhin die zuvor bestätigten Programmdateien aus. Erst eine ausdrückliche Versionsbestätigung stellt den Cache um. Query-Parameter umgehen diese Entscheidung nicht. Erstinstallation bzw. erstmalige Umstellung setzt die bereits laufende Fassung als Ausgangsversion.
+- Automatisiert geprüft: konsistente Versionsnummern, Neustart ohne Zustimmung, ausdrückliche Übernahme, Schutz bei falscher Versionsnummer/fremder Quelle/unvollständigem Download, Erstinitialisierung, „Später“, kein ungefragtes Neuladen, Fehlerbehandlung und Schutz offener Bearbeitungen. Installationsanleitung für iPhone/iPad, Ausblendung im App-Modus und native Browserinstallation nach Klick ebenfalls geprüft.
+- Echter Browserablauf in einer getrennten Testadresse ohne angemeldete Konten: Version 22 geladen; Version 23 als neue Serverfassung bereitgestellt. Reload, „Später“, Schließen und erneutes Öffnen ließen Version 22 aktiv. Erst „Jetzt aktualisieren“ führte zu Version 23. Browser-Prüfung mit Testversion 24 zeigte den Update-Hinweis erneut. Kein Produktiv-Upload oder Kontoeingriff.
+- Beide Kopfzeilen-Buttons bei 384 und 320 Pixel breiten Smartphone-Frames geprüft. Kein horizontaler Überlauf: Client-/Scrollbreite je 369 bzw. 305 Pixel. Eine echte Installation auf einem physischen iPhone wurde nicht durchgeführt; der manuelle Safari-Ablauf entspricht der Apple-Anleitung.
+- Neue Assets werden bei der Vorbereitung mit `cache: reload` geladen, die laufende Fassung wird anschließend ausschließlich aus ihrem bestätigten Cache ausgeliefert. Keine externen Bibliotheken, administrativen Schlüssel oder zusätzlichen Datenrechte hinzugefügt. Live-Datenabgleich bleibt bestehen.
+
 ## Funktionen und Darstellung
 
-- Vorschau-Aktualisierung: Versionskennung für HTML-Vorschau, App-JavaScript und CSS; passender Offline-Cache und erneute Netzwerkvalidierung. Lokaler Server erneut gestartet. Serverseitig ausgelieferter App-Code wird mit der Projektdatei verglichen und auf fehlende Stiftzeichen geprüft.
+- Version 24: gewählte Variante G (Smartphone mit Kreis-Pfeil) im Update-Button übernommen; SVG-Geometrie mit dem freigegebenen Entwurf abgeglichen. Versionskennungen konsistent erhöht.
+
+- Version 23: Installationssymbol im Standalone-Modus per CSS vorab verborgen. Wiederholte Modusprüfung bei pageshow, focus und visibilitychange. iPhone-PWA-Erkennung sowie Rückkehr zum Browser automatisiert geprüft. Keine echte iPhone-Installation durchgeführt.
+
+- Vorschau-Aktualisierung: Versionskennung für HTML-Vorschau, App-JavaScript und CSS; inzwischen auf Auslieferung der bestätigten Fassung umgestellt. Lokaler Server erneut gestartet. Serverseitig ausgelieferter App-Code wird mit der Projektdatei verglichen und auf fehlende Stiftzeichen geprüft.
 
 - Kleine Stiftzeichen durch einheitliche Drei-Punkte-SVGs ersetzt. Produktbearbeitung mit 44 Pixel breiter Tippfläche; bestehende Bearbeitungsaktionen und Beschriftungen bleiben erhalten. Im Einkaufsmodus sind Bearbeitungsaktionen weiterhin ausgeblendet.
 
@@ -41,7 +53,7 @@ Stand: 14.11.2026. Geprüft ist die in diesem ZIP enthaltene Fassung.
 
 - Kontobutton wie in Greving.Fit: erster Buchstabe des Vornamens nach Anmeldung, sonst „?“. Wechsel und Abmeldung automatisiert geprüft.
 
-- Sechsundzwanzig automatisierte Tests bestanden: frischer Serverabruf beim Start, direkte Schreibvorgänge, Realtime-Nachladen, Kontowechsel und Abmeldung, kontogebundene Einstellungen, Reihenfolge schneller Einstellungsänderungen, erneute Speicherung vorgemerkter Offline-Einstellungen, automatische Kategorien, Katalog-Opt-in sowie HTML-Escaping und öffentliche Konfiguration.
+- Dreiunddreißig automatisierte Tests bestanden: frischer Serverabruf beim Start, direkte Schreibvorgänge, Realtime-Nachladen, Kontowechsel und Abmeldung, kontogebundene Einstellungen, Reihenfolge schneller Einstellungsänderungen, erneute Speicherung vorgemerkter Offline-Einstellungen, automatische Kategorien, Katalog-Opt-in sowie HTML-Escaping und öffentliche Konfiguration.
 - Smartphone-Ansichten bei 320, 384 und 412 Pixel Breite sowie 832 × 384 im Querformat geprüft. Auch mit langen Produktnamen, Mengen und Notizen kein horizontaler Überlauf gemessen.
 - Kompakte Listenkarten, Produktformular, standardmäßig ausgeschaltetes Katalog-Häkchen, Kategorieerkennung, Kataloganzeige, Einkaufsmodus, Menübedienung und Beenden des Einkaufsmodus geprüft.
 - Lange Mengen stehen unter dem Produkttext statt in einer schmalen Randspalte. Hinweise und Mengen umbrechen innerhalb ihrer Kästen.
@@ -94,3 +106,5 @@ Eine Testtransaktion mit `authenticated`-Rolle und wechselnden JWT-Claims wurde 
 ## Auslieferung
 
 Nur die aktuelle Datei **GrevingShop-main-root.zip** wird im Projektordner vorgehalten. Sie enthält alle benötigten App-Dateien direkt auf oberster Ebene für GitHub Pages **main → / (root)** sowie README, Upload-Anleitung, diesen Bericht und SQL-Vorlagen mit Platzhaltern.
+
+Version 25: App-Symbol C (Einkaufstasche mit G) in allen Größen, weiterhin Blau #1769e0. Im Warenkatalog entfällt der einzelne „+ Liste“-Button; Produkte werden über die gemeinsame Auswahl übernommen. Produktname und Menge stehen nebeneinander, Notizen darunter.

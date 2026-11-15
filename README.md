@@ -196,4 +196,24 @@ Innerhalb einer Liste steht **Produkt hinzufügen** als Hauptaktion direkt unter
 
 Listen und Produkte werden über die Drei-Punkte-Schaltfläche bearbeitet. Die Produkt-Schaltfläche besitzt eine 44 Pixel große Tippfläche und ist im Einkaufsmodus ausgeblendet.
 
-Die Smartphone-Vorschau verwendet eine Versionskennung und lädt bei „Neu laden“ die aktuelle App neu. JavaScript und CSS tragen dieselbe Versionskennung im App-Dokument und Offline-Cache. Lokale Vorschauen benötigen einen laufenden Server.
+Die Smartphone-Vorschau verwendet eine Versionskennung und lädt bei „Neu laden“ die zuletzt bestätigte App-Fassung neu. JavaScript und CSS tragen dieselbe Versionskennung im App-Dokument und Offline-Cache. Lokale Vorschauen benötigen einen laufenden Server.
+
+## App installieren
+
+In der Website-Kopfzeile gibt es einen Download-Button **App installieren**. In unterstützten Browsern öffnet er nach dem Tippen den nativen Installationsdialog. Auf iPhone und iPad zeigt er stattdessen die Safari-Schritte: **Teilen → Zum Home-Bildschirm / Zu Home-Bildschirm hinzufügen → Als Web-App öffnen → Hinzufügen**. Je nach Safari-Ansicht liegt „Teilen“ im Menü „…“. Fehlt der Eintrag, unter **Aktionen bearbeiten** nachsehen. In einer bereits als App geöffneten Fassung wird der Button ausgeblendet. Siehe [Apple-Anleitung](https://support.apple.com/de-de/guide/iphone/iphea86e5236/ios).
+
+## App-Versionen nur nach Zustimmung
+
+Ab App-Version **22** wird eine neue Programmfassung vorbereitet, aber nicht ungefragt eingeblendet. Der Hinweis bietet **Jetzt aktualisieren** und **Später**. Bei „Später“ bleibt die bisher bestätigte Fassung erhalten, auch nach erneutem Öffnen. Über das Update-Symbol in der Kopfzeile lässt sich der Hinweis wieder anzeigen. Unter Settings steht die laufende App-Version.
+
+Offene Bearbeitungsdialoge, ungespeicherte Settings, laufende Schreibvorgänge und der Einkaufsmodus verhindern eine Aktualisierung, bis die Arbeit abgeschlossen ist. Nach ausdrücklicher Bestätigung lädt die betreffende Ansicht neu. Andere offene Ansichten werden nicht zwangsweise neu geladen. Die bestätigte Version gilt für denselben Browser und dieselbe Website-Adresse; bei anderer Browser-App, anderem Gerät oder anderer Domain wird sie getrennt verwaltet. Einkaufslisten und persönliche Einstellungen synchronisieren weiterhin automatisch mit Supabase.
+
+**Einmalige Umstellung:** Bisherige Versionen bis 21 kennen diesen Zustimmungsmechanismus noch nicht. Diese Fassung muss einmal über die bisherige Aktualisierung geladen werden. Ab dann gilt die neue Regel für spätere App-Versionen. Die aktuell laufende Erstfassung wird als Ausgangsversion übernommen; das ist kein Wechsel auf eine andere Programmfassung. Ein Löschen aller Website-Daten setzt auch die gespeicherte Ausgangsversion zurück.
+
+Für spätere Veröffentlichungen die Versionsnummer konsistent erhöhen: `APP_VERSION` in app.js; `VERSION`, Cache-Name und Asset-URLs im Service Worker; CSS-/JavaScript-URLs in index.html sowie die Vorschaukennung in s24fe.html. Alle Dateien gemeinsam veröffentlichen. Der Browser lädt neue Programmdateien vollständig und ohne Wiederverwendung des HTTP-Caches vor; Supabase-Daten werden davon nicht im Service-Worker-Cache gespeichert.
+
+Version 23: Der Installieren-Button ist im PWA-Fenster bereits per CSS vor dem JavaScript-Start verborgen. Beim erneuten Aktivieren und Zurückkehren in die App wird der Modus nochmals geprüft, einschließlich der iPhone-Erkennung über navigator.standalone. In der normalen Website und eingebetteten Smartphone-Vorschau bleibt die Installationshilfe sichtbar.
+
+Version 24: Das Update-Symbol verwendet die gewählte Variante G – Smartphone mit Kreis-Pfeil. Der farbige Hinweis-Punkt bleibt erhalten.
+
+Version 25: App-Symbol C (Einkaufstasche mit G) in allen Größen, weiterhin Blau #1769e0. Im Warenkatalog entfällt der einzelne „+ Liste“-Button; Produkte werden über die gemeinsame Auswahl übernommen. Produktname und Menge stehen nebeneinander, Notizen darunter.

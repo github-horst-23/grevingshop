@@ -50,3 +50,7 @@ Passwortänderung: Nach Anmeldung über Kontobutton → Passwort ändern. Die Ä
 ### Einstellungen-Reparatur (14.11.2026)
 
 Im vorhandenen Supabase-Projekt bereits eingespielt: `startPage` ist als Einstellung zugelassen und auf gültige Startbereiche begrenzt. Für die Fehlerbehebung auf deinem Smartphone genügt erneutes Öffnen der App bzw. **Einstellungen übernehmen**. Kein Cache-Löschen nötig. Die enthaltene Datei `supabase-preferences-startpage.sql` dient zur Migration anderer bestehender Installationen. Nicht das vollständige Setup mit Platzhalteradressen über die vorhandene Familienkonfiguration ausführen.
+
+### Update-Zustimmung und iPhone-Installation (15.11.2026)
+
+Die neue Fassung trägt Version **22**. Nach deinem Upload aller Dateien auf main muss diese Ausgangsfassung einmal über den bisherigen Aktualisierungsweg geladen werden. Danach bleiben spätere App-Versionen bis zur ausdrücklichen Bestätigung bei **Jetzt aktualisieren** zurückgestellt, auch nach Neustart. **Später** blendet den Hinweis aus; das Update-Symbol öffnet ihn erneut. Keine Datenbankänderung erforderlich. Der Installieren-Button in der Kopfzeile zeigt auf iPhone/iPad die Safari-Anleitung.
