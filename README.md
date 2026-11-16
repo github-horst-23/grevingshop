@@ -30,7 +30,7 @@ Im Produktformular zeigt „Automatisch“ den erkannten Bereich. Du kannst stat
 2. Auf das Kontosymbol oder **Anmelden** tippen.
 3. Die eigene E-Mail-Adresse und das bestehende Greving.Fit-Passwort eingeben.
 
-Die Anmeldung nutzt dasselbe Supabase-Projekt wie Greving.Fit. Über „Neues Konto erstellen“ können neue Konten registriert werden; bestehende Greving.Fit-Konten verwenden weiterhin ihr vorhandenes Passwort. Das Profil wird anhand der hinterlegten E-Mail-Adresse zugeordnet. Personennamen und E-Mail-Adressen der freigegebenen Konten werden ausschließlich im geschützten Menüpunkt Familie angezeigt. Der Änderungsnachweis einer Liste nennt den jeweiligen Bearbeiter.
+Die Anmeldung nutzt dasselbe Supabase-Projekt wie Greving.Fit. Die App bietet ausschließlich die Anmeldung mit bestehenden Konten an. Greving.Fit-Konten verwenden weiterhin ihr vorhandenes Passwort. Das Profil wird anhand der hinterlegten E-Mail-Adresse zugeordnet. Personennamen und E-Mail-Adressen der freigegebenen Konten werden ausschließlich im geschützten Menüpunkt Familie angezeigt. Der Änderungsnachweis einer Liste nennt den jeweiligen Bearbeiter.
 
 Die App wird ausschließlich mit Anmeldung verwendet; ein Testzugang mit Beispieldaten ist nicht verfügbar.
 
@@ -164,19 +164,15 @@ Im Warenkatalog die gewünschten Produkte anhaken, die Zielliste wählen und **P
 
 Unter **Warenkatalog → Neues Produkt** kannst du Name, Menge und Notiz erfassen. Die Kategorie wird automatisch erkannt und kann geändert werden. **Im Katalog speichern** speichert das Produkt direkt in Supabase und synchronisiert den Katalog. Dafür wird keine Einkaufsliste benötigt. Bereits vorhandene Produktnamen werden nicht doppelt angelegt.
 
-## Registrierung
+## Bestehende Konten
 
-Auf der Startseite **Neues Konto erstellen** oder im Anmeldedialog **Registrieren** wählen. E-Mail-Adresse, Passwort (mindestens 8 Zeichen) und Passwortwiederholung eingeben. Im bestehenden Projekt erfolgt die Anmeldung ohne Bestätigungsmail. Das Passwort wird ausschließlich über Supabase Auth verarbeitet und nicht in App-Tabellen oder lokal gespeichert.
-
-Eine Registrierung erweitert die Freigabe der gemeinsamen Einkaufsdaten nicht. Zugriff erhalten weiterhin nur die serverseitig freigegebenen Konten. Ein bestehendes Greving.Fit-Konto muss nicht erneut registriert werden.
-
-Im bestehenden Supabase-Projekt wurde die exakte Redirect-URL `https://github-horst-23.github.io/grevingshop/` ergänzt. E-Mail-Bestätigung ist auf ausdrücklichen Wunsch ausgeschaltet, ein SMTP-Anbieter wird für diesen Registrierungsablauf deshalb nicht benötigt. Wird die Bestätigung später wieder aktiviert, benötigt der Versand an Empfänger außerhalb des Supabase-Projektteams einen eigenen SMTP-Anbieter. Bei anderem Hosting `SIGNUP_REDIRECT` und die Supabase Redirect URLs anpassen.
+GrevingShop bietet keine Selbstregistrierung mehr an. Die Anmeldung verwendet die bestehenden gemeinsamen Supabase-Konten von GrevingFit. Die serverseitigen Auth-Einstellungen werden durch dieses ZIP nicht geändert.
 
 ## Passwort ändern
 
 Nach der Anmeldung **Settings → Login & Cloud-Synchronisierung → Passwort ändern** aufklappen. Alternativ den Kontobutton verwenden. Aktuelles Passwort, neues Passwort (mindestens 8 Zeichen) und Wiederholung eingeben. Das aktuelle Passwort wird vor der Änderung erneut über Supabase geprüft. Das neue Passwort gilt unmittelbar für **GrevingShop und GrevingFit**, weil beide dasselbe Auth-Projekt verwenden. Bei einer erneuten Anmeldung auf anderen Geräten das neue Passwort verwenden. Die Passwörter werden nicht im App-Code, in App-Tabellen oder lokal gespeichert.
 
-Das gewünschte Initialpasswort für neue Konten muss bei deren Registrierung eingegeben werden. Es wird nicht automatisch öffentlich vorbelegt. Bestehende Konten und Passwörter wurden nicht zurückgesetzt.
+Ein automatisches Initialpasswort ist nicht eingerichtet. Bestehende Konten und Passwörter wurden nicht zurückgesetzt. Die erstmalige Vergabe muss geschützt in Supabase erfolgen, nicht im öffentlichen App-Code.
 
 ## Settings wie in GrevingFit
 
@@ -219,3 +215,11 @@ Version 24: Das Update-Symbol verwendet die gewählte Variante G – Smartphone 
 Version 25: App-Symbol C (Einkaufstasche mit G) in allen Größen, weiterhin Blau #1769e0. Im Warenkatalog entfällt der einzelne „+ Liste“-Button; Produkte werden über die gemeinsame Auswahl übernommen. Produktname und Menge stehen nebeneinander, Notizen darunter.
 
 Version 26: Tasche und G im App-Symbol um 20 % um den Mittelpunkt verkleinert. Blauer Hintergrund (#1769e0) unverändert; Icons mit 180, 192 und 512 Pixeln erneuert.
+
+Version 27 (16.11.2026): Selbstregistrierung aus Startseite, Anmeldedialog, Settings und App-Logik entfernt. Login und Passwortänderung bleiben erhalten. App-Icons jetzt vollflächig blau ohne weißen Rand, mit weiterhin um 20 % verkleinertem Motiv. Icon-Adressen versioniert, Manifest-ID unverändert. Keine serverseitigen Konten oder Passwörter geändert; Initialpasswort nicht automatisch eingerichtet.
+
+## Anmeldung für 30 Tage beibehalten
+
+Version 28: Die bestehende Supabase-Sitzung wird für 30 Tage seit der letzten Nutzung lokal aufbewahrt. Nutzung und Token-Erneuerung verlängern diese Frist. Bestehende Anmeldungen werden ohne erzwungenen Wechsel übernommen. Passwörter werden nicht gespeichert; kurze Zugangstokens werden weiterhin automatisch erneuert. Nach Standby und Verbindungswechsel wird die Sitzung erneut aus dem sicheren Auth-Ablauf aufgenommen. „Abmelden“ beendet nur die aktuelle App-Sitzung, nicht die anderen Apps oder Geräte.
+
+Eine serverseitig widerrufene Sitzung, gelöschte Browserdaten oder ein kürzeres Supabase-Limit können eine frühere Neuanmeldung erfordern. Im gemeinsamen Supabase-Projekt unter Authentication → Sessions dürfen Time-box und Inactivity timeout nicht kürzer als 30 Tage sein; Single session per user muss für parallele Apps/Geräte ausgeschaltet sein. Diese Serverwerte wurden nicht geändert oder überprüft. Keine 30-Tage-Verlängerung der JWT-Laufzeit vornehmen.

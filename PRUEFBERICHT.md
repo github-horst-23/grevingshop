@@ -110,3 +110,13 @@ Nur die aktuelle Datei **GrevingShop-main-root.zip** wird im Projektordner vorge
 Version 25: App-Symbol C (Einkaufstasche mit G) in allen Größen, weiterhin Blau #1769e0. Im Warenkatalog entfällt der einzelne „+ Liste“-Button; Produkte werden über die gemeinsame Auswahl übernommen. Produktname und Menge stehen nebeneinander, Notizen darunter.
 
 Version 26: Tasche und G im App-Symbol um 20 % um den Mittelpunkt verkleinert. Blauer Hintergrund (#1769e0) unverändert; Icons mit 180, 192 und 512 Pixeln erneuert.
+
+Version 27 (16.11.2026): Selbstregistrierung aus Startseite, Anmeldedialog, Settings und App-Logik entfernt. Login und Passwortänderung bleiben erhalten. App-Icons jetzt vollflächig blau ohne weißen Rand, mit weiterhin um 20 % verkleinertem Motiv. Icon-Adressen versioniert, Manifest-ID unverändert. Keine serverseitigen Konten oder Passwörter geändert; Initialpasswort nicht automatisch eingerichtet.
+
+## Anmeldung für 30 Tage beibehalten
+
+Version 28: Die bestehende Supabase-Sitzung wird für 30 Tage seit der letzten Nutzung lokal aufbewahrt. Nutzung und Token-Erneuerung verlängern diese Frist. Bestehende Anmeldungen werden ohne erzwungenen Wechsel übernommen. Passwörter werden nicht gespeichert; kurze Zugangstokens werden weiterhin automatisch erneuert. Nach Standby und Verbindungswechsel wird die Sitzung erneut aus dem sicheren Auth-Ablauf aufgenommen. „Abmelden“ beendet nur die aktuelle App-Sitzung, nicht die anderen Apps oder Geräte.
+
+Eine serverseitig widerrufene Sitzung, gelöschte Browserdaten oder ein kürzeres Supabase-Limit können eine frühere Neuanmeldung erfordern. Im gemeinsamen Supabase-Projekt unter Authentication → Sessions dürfen Time-box und Inactivity timeout nicht kürzer als 30 Tage sein; Single session per user muss für parallele Apps/Geräte ausgeschaltet sein. Diese Serverwerte wurden nicht geändert oder überprüft. Keine 30-Tage-Verlängerung der JWT-Laufzeit vornehmen.
+
+Sitzungsprüfung Version 28: 40 Tests bestanden, einschließlich 30-Tage-Frist mit simuliertem Zeitablauf, Bestandsmigration, Token-Rotation, lokalem Logout und Wiederaufnahme nach Netzfehler in beiden Apps. Kein realer 30-Tage-Dauertest; Serverlimits nicht geprüft. GrevingFit v79 separat paketiert.
