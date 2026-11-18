@@ -120,3 +120,7 @@ Version 28: Die bestehende Supabase-Sitzung wird für 30 Tage seit der letzten N
 Eine serverseitig widerrufene Sitzung, gelöschte Browserdaten oder ein kürzeres Supabase-Limit können eine frühere Neuanmeldung erfordern. Im gemeinsamen Supabase-Projekt unter Authentication → Sessions dürfen Time-box und Inactivity timeout nicht kürzer als 30 Tage sein; Single session per user muss für parallele Apps/Geräte ausgeschaltet sein. Diese Serverwerte wurden nicht geändert oder überprüft. Keine 30-Tage-Verlängerung der JWT-Laufzeit vornehmen.
 
 Sitzungsprüfung Version 28: 40 Tests bestanden, einschließlich 30-Tage-Frist mit simuliertem Zeitablauf, Bestandsmigration, Token-Rotation, lokalem Logout und Wiederaufnahme nach Netzfehler in beiden Apps. Kein realer 30-Tage-Dauertest; Serverlimits nicht geprüft. GrevingFit v79 separat paketiert.
+
+Version 29 (18.11.2026): Doppelten „+ Produkt“-Button im Leerzustand einer Liste entfernt. Die Hauptaktion „Produkt hinzufügen“ oberhalb der Liste bleibt erhalten.
+
+Version 30 (18.11.2026): App-Icon mit exakt derselben Außenform wie GrevingFit: 512 × 512, Eckenradius 120. Motiv und Blau unverändert; Icon-Adressen versioniert.
