@@ -124,3 +124,5 @@ Sitzungsprüfung Version 28: 40 Tests bestanden, einschließlich 30-Tage-Frist m
 Version 29 (18.11.2026): Doppelten „+ Produkt“-Button im Leerzustand einer Liste entfernt. Die Hauptaktion „Produkt hinzufügen“ oberhalb der Liste bleibt erhalten.
 
 Version 30 (18.11.2026): App-Icon mit exakt derselben Außenform wie GrevingFit: 512 × 512, Eckenradius 120. Motiv und Blau unverändert; Icon-Adressen versioniert.
+
+Version 31 (18.11.2026): G anhand seiner sichtbaren Kontur horizontal und vertikal in der Taschenfläche zentriert. Buchstabe als feste Vektorform statt geräteabhängiger Schrift; Außenform, Blau und Motivgröße bleiben erhalten.
