@@ -126,3 +126,12 @@ Version 29 (18.11.2026): Doppelten „+ Produkt“-Button im Leerzustand einer L
 Version 30 (18.11.2026): App-Icon mit exakt derselben Außenform wie GrevingFit: 512 × 512, Eckenradius 120. Motiv und Blau unverändert; Icon-Adressen versioniert.
 
 Version 31 (18.11.2026): G anhand seiner sichtbaren Kontur horizontal und vertikal in der Taschenfläche zentriert. Buchstabe als feste Vektorform statt geräteabhängiger Schrift; Außenform, Blau und Motivgröße bleiben erhalten.
+
+## Version 32 - 20.11.2026
+
+- Kontoprüfung und Datenabruf parallel statt nacheinander; pro Anmeldung weiterhin ein frischer Abruf der vier Datensätze.
+- Vorhandener eigener Listenstand wird nach erfolgreicher Kontoprüfung vor Abschluss des Datenabrufs angezeigt. Während der Wiederaufnahme erscheint keine falsche Abmeldemaske. Doppelte Auth-Ereignisse werden während einer laufenden Kontoprüfung unterdrückt.
+- Offline-Lesemodus benötigt eine nutzbare gespeicherte Auth-Sitzung und ein zuvor online geprüftes eigenes Profil. Keine Serverabfragen im Offline-Start; Schreibaktionen deaktiviert. Geschützte Familienkontakte werden offline nicht angezeigt. Bei Rückkehr online erneute Kontoprüfung. Keine Offline-Schreibwarteschlange.
+- 43 Tests bestanden, darunter paralleler Start, Cache-Anzeige vor Abschluss der Abfragen, Offline-Start und Kontentrennung. Kein pauschales Zeitversprechen: tatsächliche Dauer hängt von Netz und Token-Erneuerung ab.
+- PDF-Anleitung: vier Seiten vollständig gerendert und visuell geprüft; Text, Seitenzahl und Datenschutz geprüft.
+- README auf die aktuelle Bedienung und Einrichtung reduziert. Keine Serverkonfiguration geändert.

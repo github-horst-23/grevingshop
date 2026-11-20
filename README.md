@@ -1,231 +1,106 @@
 # GrevingShop.
 
-**Gemeinsame Einkaufslisten für freigegebene Konten.** Eine installierbare Web-App im Design von Greving.Fit, mit Supabase als zentralem Datenspeicher und Live-Synchronisierung zwischen den Geräten.
+Gemeinsame Einkaufslisten und ein Warenkatalog für die freigegebenen Familienkonten. GrevingShop nutzt dieselben Supabase-Konten wie GrevingFit und übernimmt dessen Farbschemata.
 
-[App öffnen](https://github-horst-23.github.io/grevingshop/) · [Galaxy-S24-FE-Vorschau](https://github-horst-23.github.io/grevingshop/s24fe.html)
+[App öffnen](https://github-horst-23.github.io/grevingshop/) · [Smartphone-Vorschau](https://github-horst-23.github.io/grevingshop/s24fe.html) · [PDF-Anleitung](GrevingShop-Anleitung.pdf)
 
-## Funktionen
+**Aktuelle Fassung:** Version 32, Stand 20.11.2026.
 
-- **Geteilte Listen:** Neue Listen anlegen, umbenennen, mit Notizen versehen, archivieren und wiederherstellen. Alle Listen sind für die freigegebenen Konten sichtbar.
-- **Warenkatalog:** Produkte können direkt über „Neues Produkt“ im Katalog angelegt werden. Beim Hinzufügen zu einer Einkaufsliste erfolgt die Katalogaufnahme nur bei gesetztem Häkchen „Im Warenkatalog speichern“. Vorhandene Produkte lassen sich durchsuchen, aus dem Katalog entfernen und erneut auf eine Liste setzen. Gleichnamige Produkte werden nicht doppelt angelegt. Listenprodukt und optionale Katalogaufnahme werden atomar gespeichert.
-- **Änderungsnachweis:** Innerhalb einer Liste werden Bearbeiter und Zeitpunkt der letzten Änderung angezeigt. Auch Abhaken, Bearbeiten und Entfernen von Produkten aktualisieren den Nachweis serverseitig. Für historische Stände ohne Bearbeiterangabe wird kein Name erfunden.
-- **Produkte:** Name, Menge als Freitext (z. B. „2 Liter“), Notiz und Kategorie erfassen; Produkte bearbeiten oder entfernen.
-- **Beim Einkauf:** Produkte abhaken und wieder öffnen, Fortschritt verfolgen sowie alle Häkchen für einen erneuten Einkauf zurücksetzen.
-- **Suche und Filter:** Produkte suchen und zwischen allen, offenen und erledigten Einträgen wechseln.
-- **Einkaufsmodus:** Die aktive Liste steht im Mittelpunkt. Navigation und Bearbeitungsaktionen werden ausgeblendet; große Häkchen und Mengen erleichtern die Bedienung. Der Bildschirm wird automatisch wach gehalten, sofern der Browser und das Betriebssystem es erlauben.
-- **Live-Synchronisierung:** Jede bestätigte Änderung wird direkt in Supabase gespeichert. Andere geöffnete Apps werden über Supabase Realtime aktualisiert. Beim Start werden die Listen frisch vom Server geladen.
-- **Navigation:** Schwebendes Hamburgermenü wie in Greving.Fit: auf Smartphones unten rechts, auf größeren Bildschirmen oben links. Das Menü öffnet sich mit derselben Kreisblende und gestaffelt aufsteigenden Einträgen wie Greving.Fit. Bei reduzierter Bewegung werden die Animationen deaktiviert. Es schließt nach der Auswahl, beim Tippen außerhalb und mit Escape.
-- **Settings:** Neun vollständige Farbschemata aus Greving.Fit, jeweils hell und dunkel, sowie Schriftgröße, Darstellungsdichte und Kontoverwaltung.
-- **Installierbare PWA:** App-Icon, Web-App-Manifest und zwischengespeicherte Oberfläche für Smartphone und Desktop.
+## Schnellstart
 
-## Automatische Produktkategorien
+1. App öffnen und mit der eigenen E-Mail-Adresse und dem bestehenden GrevingFit-Passwort anmelden.
+2. Unter **Meine Listen → Neue Liste** eine Einkaufsliste anlegen.
+3. Liste öffnen und über **Produkt hinzufügen** Produkte erfassen.
+4. Mit **Einkauf starten** in die konzentrierte Einkaufsansicht wechseln und Produkte abhaken.
 
-Produkte werden anhand ihres Namens automatisch einer Hauptkategorie zugeordnet und in dieser Reihenfolge angezeigt: **Obst & Gemüse → Brot & Backwaren → Vorrat → Kühlregal → Getränke → Haushalt → Sonstiges**. Das ist eine allgemeine Laufrichtung; einzelne Supermärkte können anders aufgebaut sein.
+Es gibt keinen Testzugang und keine Selbstregistrierung. Neue Konten müssen geschützt in Supabase bereitgestellt und freigegeben werden. Ein automatisches Initialpasswort ist nicht eingerichtet; bestehende Passwörter werden durch die App nicht zurückgesetzt.
 
-Im Produktformular zeigt „Automatisch“ den erkannten Bereich. Du kannst stattdessen eine Kategorie fest wählen. Diese manuelle Auswahl hat Vorrang und bleibt gespeichert. Unbekannte Namen landen unter Sonstiges oder behalten ihre bisherige Kategorie. Die Gruppierung gilt sowohl in der normalen Liste als auch im Einkaufsmodus. Die Erkennung arbeitet lokal und sendet Produktnamen an keinen zusätzlichen Dienst.
+## Funktionen und Bedienung
 
-## Anmelden
-
-1. [GrevingShop. öffnen](https://github-horst-23.github.io/grevingshop/).
-2. Auf das Kontosymbol oder **Anmelden** tippen.
-3. Die eigene E-Mail-Adresse und das bestehende Greving.Fit-Passwort eingeben.
-
-Die Anmeldung nutzt dasselbe Supabase-Projekt wie Greving.Fit. Die App bietet ausschließlich die Anmeldung mit bestehenden Konten an. Greving.Fit-Konten verwenden weiterhin ihr vorhandenes Passwort. Das Profil wird anhand der hinterlegten E-Mail-Adresse zugeordnet. Personennamen und E-Mail-Adressen der freigegebenen Konten werden ausschließlich im geschützten Menüpunkt Familie angezeigt. Der Änderungsnachweis einer Liste nennt den jeweiligen Bearbeiter.
-
-Die App wird ausschließlich mit Anmeldung verwendet; ein Testzugang mit Beispieldaten ist nicht verfügbar.
-
-## Auf dem Smartphone installieren
-
-**Samsung/Android:** Die App in Chrome oder Samsung Internet öffnen und im Browser-Menü **App installieren**, **Zu Startbildschirm hinzufügen** oder die entsprechende Browseroption wählen.
-
-**iPhone/iPad:** In Safari **Teilen → Zum Home-Bildschirm** wählen.
-
-Die Installation und das Bildschirm-Wachhalten benötigen HTTPS oder eine lokale Entwicklungsadresse. Das Betriebssystem kann Wake Lock beispielsweise im Energiesparmodus beenden. Die App zeigt den tatsächlichen Status und bietet bei Problemen einen erneuten Versuch an. Nach Rückkehr zur aktiven App wird das Wachhalten erneut angefordert, solange der Einkaufsmodus läuft.
-
-## Farbschemata
-
-Unter **Settings → Farbschema & Darstellung** sind dieselben Paletten wie in Greving.Fit verfügbar:
-
-Energy, Lavender, Lagoon, Apricot, Verdelia, Noctara, Iriselle, Maréa und Rosavelle.
-
-Jede Palette enthält abgestimmte Hintergründe, Flächen, Schrift-, Haupt- und Akzentfarben für die helle und dunkle Darstellung. Angemeldete Nutzer speichern diese Optionen in ihrem eigenen Supabase-Datensatz. Beim App-Start werden sie zusammen mit den Listen abgerufen. Änderungen werden auch auf weiteren geöffneten Geräten desselben Kontos übernommen. Ohne Anmeldung werden die Optionen nur lokal gespeichert.
-
-## Synchronisierung und Offline-Verhalten
-
-- Beim Start einer angemeldeten App werden Listen, Produkte und die persönlichen Einstellungen aus Supabase abgefragt.
-- Anlegen, Bearbeiten, Abhaken, Entfernen und Archivieren schreiben unmittelbar in die Datenbank. Eine Änderung gilt erst nach Bestätigung durch Supabase als gespeichert.
-- Realtime-Ereignisse lösen einen erneuten Abruf des aktuellen Stands aus. Bei einer unterbrochenen Live-Verbindung erfolgt zusätzlich alle fünf Sekunden ein Abgleich, solange die App sichtbar ist.
-- Beim Zurückkehren zur App und nach Wiederherstellung der Internetverbindung wird erneut synchronisiert.
-- Darstellungsänderungen ohne Internet werden lokal vorgemerkt und nach Wiederherstellung der Verbindung erneut gespeichert. Der Settings-Bereich zeigt den Speicherstatus.
-- Ohne Internet sind die zwischengespeicherte Oberfläche und der zuletzt geladene Benutzerstand lesbar. **Änderungen benötigen eine Verbindung.** Es gibt keine Offline-Schreibwarteschlange.
-- Bei gleichzeitiger Änderung desselben Feldes gilt die zuletzt in Supabase gespeicherte Änderung. Einzelne Produkte werden separat gespeichert; eine Änderung ersetzt nicht die gesamte Einkaufsliste.
-
-## Supabase einrichten
-
-Für das bestehende Greving.Fit-Projekt sind Einkaufslisten, persönliche Einstellungen, Kategoriemodi, Warenkatalog, Änderungsnachweis und Realtime eingerichtet. Bei einer bestehenden eigenen Installation kann nur [supabase-update.sql](supabase-update.sql) ausgeführt werden; für eine neue Installation das vollständige Setup verwenden.
-
-Für eine eigene Installation:
-
-1. E-Mail-Anmeldung in Supabase Auth aktivieren und die vorgesehenen Konten bereitstellen. Anonyme Anmeldungen deaktiviert lassen. Im bestehenden gemeinsamen Projekt ist **Confirm email** auf ausdrücklichen Wunsch ausgeschaltet; neue Registrierungen benötigen keine Bestätigungsmail. Ohne Bestätigung wird der Besitz der E-Mail-Adresse nicht verifiziert.
-2. Das [SQL-Setup](supabase-setup.sql) im Supabase SQL Editor ausführen. Das Skript kann erneut ausgeführt werden und richtet Tabellen, RLS-Regeln und die Realtime-Veröffentlichung ein.
-3. Supabase-Projekt-URL und den **Publishable Key** in `app.js` anpassen. Die Platzhalter-Adressen in den SQL-Skripten vor Ausführung im SQL Editor durch die freigegebenen Konten ersetzen. Echte Kontaktadressen nicht in öffentlich hochladbare Dateien schreiben. Die App ruft die Profile nach der Anmeldung über eine geschützte Datenbankfunktion ab.
-4. Bei Nutzung von Bestätigungs- oder Wiederherstellungslinks die App-URL in der Supabase Auth-Konfiguration berücksichtigen.
-
-### Datenmodell und Zugriff
-
-| Tabelle | Inhalt |
+| Bereich | Möglichkeiten |
 | --- | --- |
-| `shopping_lists` | Listenname, Notiz, Ersteller, Erstellungszeit und Archivstatus |
-| `shopping_items` | Zugehörige Liste, Produktname, Menge, Notiz, Kategorie, automatischer/manueller Kategoriemodus und Erledigt-Status |
-| `shopping_catalog` | Gemeinsam gespeicherte Katalogprodukte, nur nach ausdrücklicher Aufnahme |
-| `shopping_preferences` | Individuelle Darstellungseinstellungen, gebunden an die Supabase-User-ID |
+| Meine Listen | Listen anlegen, über die drei Punkte umbenennen und mit Notizen versehen |
+| Produkte | Name, Menge, Notiz und Kategorie erfassen; bearbeiten, entfernen und abhaken |
+| Einkauf | Große Häkchen, Mengen und Fortschritt; mit **Beenden** zurück zur normalen Ansicht |
+| Warenkatalog | Produkte direkt anlegen, suchen und mehrere ausgewählte Produkte gemeinsam auf eine aktive Liste übernehmen |
+| Archiv | Listen wiederherstellen oder nach Bestätigung samt Produkten endgültig für alle löschen |
+| Familie | Geschützte Kontoprofile ausschließlich nach Anmeldung und online anzeigen |
+| Settings | Startbereich, Farbschema, Schriftgröße, Darstellungsdichte, helles/dunkles Design und Kontoverwaltung |
 
-Alle Tabellen verwenden **Row Level Security (RLS)**. Nur authentifizierte Konten mit einer der vier freigegebenen Familien-E-Mail-Adressen dürfen zugreifen. Persönliche Einstellungen können ausschließlich vom jeweiligen Konto gelesen und geändert werden; sie werden nicht mit den anderen Familienmitgliedern geteilt. Die vorhandenen Fitness-Tabellen werden durch das Setup nicht verändert.
+Produkte landen beim Hinzufügen zu einer Liste nur dann zusätzlich im Katalog, wenn **Im Warenkatalog speichern** angehakt ist. **Neues Produkt** im Warenkatalog speichert direkt im Katalog. Bei der Mehrfachauswahl werden Menge, Notiz und Kategorie übernommen; die Auswahl bleibt beim Suchen erhalten.
 
-Der im Frontend eingebundene Publishable Key ist für die Verwendung im Browser vorgesehen. **Secret Keys und Service-Role-Schlüssel gehören niemals ins Frontend.**
+Die automatische Gruppierung folgt dieser allgemeinen Supermarkt-Reihenfolge:
 
-## Lokal entwickeln
+**Obst & Gemüse → Brot & Backwaren → Vorrat → Kühlregal → Getränke → Haushalt → Sonstiges.**
 
-Die App besteht aus statischen Dateien. Ein Build-Schritt und eine Paketinstallation sind nicht erforderlich.
+Eine manuell gewählte Kategorie hat Vorrang. Die Erkennung arbeitet lokal ohne zusätzlichen Dienst. Innerhalb einer Liste werden Bearbeiter und Zeitpunkt der letzten Änderung angezeigt.
+
+Das Menü mit den drei Linien schwebt auf Smartphones unten rechts. Die eigenen Initialen öffnen den persönlichen Startbereich. Das Synchronisieren-Symbol ruft den aktuellen Cloud-Stand ab.
+
+## Anmeldung und schneller Start
+
+- Anmeldung und Passwort gelten für GrevingShop und GrevingFit. Die Apps behalten getrennte Sitzungen.
+- Die gespeicherte Sitzung wird lokal 30 Tage seit der letzten Nutzung aufbewahrt; Nutzung und Token-Erneuerung verlängern diese Frist. Passwörter werden nicht gespeichert.
+- Beim Start erscheint zunächst **Anmeldung wird wiederhergestellt**. Kontoprüfung und Datenabruf laufen parallel. Der eigene gespeicherte Stand wird nach der Kontoprüfung bereits angezeigt, während die aktuellen Daten nachladen.
+- Nach Standby und Verbindungswechsel wird die Sitzung erneut aufgenommen. Bei Fehlern steht **Erneut versuchen** bereit.
+- **Abmelden** beendet nur die aktuelle App-Sitzung. Unter **Settings → Login & Cloud-Synchronisierung → Passwort ändern** lässt sich das gemeinsame Kontopasswort ändern.
+
+Gelöschte Browserdaten, widerrufene Sitzungen oder kürzere Supabase-Limits können eine frühere Neuanmeldung erfordern. Die serverseitige Sitzungsdauer wurde nicht geprüft oder geändert. Für parallele Apps und Geräte muss **Single session per user** ausgeschaltet sein; Time-box und Inactivity timeout dürfen für die gewünschte Nutzung nicht kürzer als 30 Tage sein. Die kurze JWT-Laufzeit muss dafür nicht verlängert werden.
+
+## Online- und Offline-Modus
+
+**Online:** Listen, Produkte, Einstellungen und Katalog werden beim Start frisch aus Supabase geladen. Bestätigte Änderungen werden unmittelbar gespeichert und über Realtime auf anderen geöffneten Geräten nachgeladen. Beim Zurückkehren zur App und nach Wiederherstellung der Verbindung erfolgt ein erneuter Abgleich. Bei konkurrierenden Änderungen desselben Feldes gilt der zuletzt gespeicherte Stand.
+
+**Offline:** Ein auf diesem Gerät zuvor geprüftes Konto kann den gespeicherten Stand lesen, solange die gespeicherte Auth-Sitzung nutzbar ist. Ein Hinweis kennzeichnet den Offline-Modus. Listen- und Produktänderungen sind deaktiviert; es gibt keine Offline-Schreibwarteschlange. Familienkontakte werden offline nicht angezeigt. Ist eine Token-Erneuerung nötig, kann für die Wiederaufnahme der Anmeldung eine Verbindung erforderlich sein.
+
+Persönliche Darstellungsänderungen werden bei fehlender Verbindung lokal vorgemerkt und nach Rückkehr online gespeichert. Nach dem Abmelden werden der eigene Listen-Cache und das lokal geprüfte Profil entfernt.
+
+## Smartphone und Updates
+
+- **Android / Samsung:** Website in einem unterstützten Browser öffnen und das Installieren-Symbol oder den entsprechenden Menüpunkt des Browsers verwenden.
+- **iPhone / iPad:** In Safari **Teilen → Zum Home-Bildschirm** wählen. Das Installieren-Symbol der Website erklärt die Schritte und wird im installierten App-Fenster ausgeblendet.
+- **Bildschirm wach halten:** Wird im Einkaufsmodus automatisch angefordert. Browser, Betriebssystem und Energiesparmodus können die Funktion einschränken. Bei einem Hinweis **Erneut aktivieren** verwenden.
+- **Updates:** Neue App-Fassungen werden nur mit **Jetzt aktualisieren** übernommen. **Später** behält die bestätigte Fassung bei, auch nach Neustart. Vor dem Aktualisieren offene Eingaben abschließen und den Einkaufsmodus beenden.
+- **App-Icon:** Manifest-ID ist `/grevingshop/`. Versionierte Icon-Adressen ermöglichen die Erkennung neuer Symbole; der tatsächliche Austausch und eine mögliche zusätzliche Bestätigung werden vom Browser gesteuert.
+
+Farbschemata: Energy, Lavender, Lagoon, Apricot, Verdelia, Noctara, Iriselle, Maréa und Rosavelle, jeweils hell und dunkel. Angemeldete Nutzer speichern ihre Darstellungseinstellungen kontogebunden in Supabase.
+
+## Lokal öffnen
+
+Die App besteht aus statischen Dateien und benötigt keinen Build-Schritt:
 
 ```sh
-git clone https://github.com/github-horst-23/grevingshop.git
-cd grevingshop
 python3 -m http.server 4173
 ```
 
-Anschließend [localhost:4173](http://localhost:4173/) öffnen. Die Smartphone-Vorschau liegt unter [localhost:4173/s24fe.html](http://localhost:4173/s24fe.html).
+Danach [Website-Vorschau](http://127.0.0.1:4173/) oder [Smartphone-Vorschau](http://127.0.0.1:4173/s24fe.html) öffnen. Die Smartphone-Vorschau verwendet 384 × 832 CSS-Pixel; Bildschirmzoom und Browserleisten können die tatsächliche Darstellung verändern.
 
-```text
-grevingshop/
-├── index.html              # App-Oberfläche und Navigation
-├── app.js                  # Listen, Anmeldung, Synchronisierung und Wake Lock
-├── styles.css              # Responsive Gestaltung und Greving.Fit-Farbschemata
-├── supabase.js             # Lokal eingebundenes Supabase-JavaScript-SDK
-├── supabase-setup.sql       # Vollständige Einrichtung
-├── supabase-update.sql      # Vollständiges Upgrade bestehender Installationen
-├── supabase-catalog.sql     # Katalog, Änderungsnachweis und geschützte Profile
-├── PRUEFBERICHT.md          # Umfang und Grenzen der abschließenden Prüfungen
-├── service-worker.js       # Zwischenspeichern der App-Oberfläche
-├── manifest.webmanifest    # PWA-Metadaten
-├── icon.svg / icon-*.png    # App-Icons
-└── s24fe.html               # Interaktive Smartphone-Vorschau
-```
+## GitHub Pages bereitstellen
 
-Die Oberfläche lädt das Supabase-SDK lokal aus dem Repository und benötigt dafür keinen externen CDN-Aufruf.
+1. Das aktuelle **GrevingShop-main-root.zip** entpacken.
+2. Die enthaltenen Dateien direkt in das Stammverzeichnis des **main**-Branches hochladen.
+3. GitHub Pages auf **Deploy from a branch → main → / (root)** einstellen.
 
-## Auf GitHub Pages veröffentlichen
+Keinen zusätzlichen Ordner und keine `docs`-Verschachtelung hochladen. Der Upload erfolgt manuell. Das ZIP enthält die App, Anleitung, Vorschau, öffentlichen SQL-Vorlagen und Dokumentation; keine Tests, Agentenvorgaben, privaten Daten oder vorherigen ZIPs. Details stehen in [UPLOAD-ANLEITUNG.md](UPLOAD-ANLEITUNG.md).
 
-Unter **Settings → Pages → Build and deployment** einstellen:
+## Supabase einrichten
 
-- Source: **Deploy from a branch**
-- Branch: **main**
-- Folder: **/ (root)**
+Für eine neue Installation das [vollständige Setup](supabase-setup.sql) verwenden; für eine bestehende Installation die erforderlichen [Erweiterungen](supabase-update.sql), [Katalog-Erweiterung](supabase-catalog.sql) und [Startbereich-Korrektur](supabase-preferences-startpage.sql) beachten. Die Skripte vor Ausführung prüfen; das ZIP führt sie nicht automatisch aus.
 
-Nach dem Speichern und einer erfolgreichen Pages-Bereitstellung ist die App unter `https://<benutzername>.github.io/<repository>/` erreichbar. Bei Änderungen an zwischengespeicherten App-Dateien die Cache-Version in `service-worker.js` erhöhen.
+1. Bestehendes gemeinsames Auth-Projekt nutzen und vorgesehene Konten geschützt bereitstellen. Anonyme Anmeldung deaktiviert lassen.
+2. Platzhalter-Adressen in den SQL-Vorlagen erst im geschützten SQL Editor durch die freigegebenen Adressen ersetzen. Keine echten Kontakte öffentlich hochladen.
+3. Supabase-Projekt-URL und Publishable Key in `app.js` sowie gegebenenfalls die Verbindungsziele der Content Security Policy in `index.html` anpassen.
+4. Tabellen, Row Level Security, geschützte Profilfunktion und Realtime einrichten bzw. prüfen. Bestehende Fitness-Tabellen bleiben davon getrennt.
 
-## Validierung
+| Tabelle | Inhalt |
+| --- | --- |
+| shopping_lists | Listen, Notizen, Archivstatus und Änderungsnachweis |
+| shopping_items | Produkte, Mengen, Notizen, Kategorien und Häkchen |
+| shopping_catalog | Gemeinsamer Warenkatalog |
+| shopping_preferences | Persönlicher Startbereich und Darstellung pro Konto |
 
-JavaScript-Syntax lässt sich mit Node.js prüfen:
+Der Publishable Key ist für Browser vorgesehen. Secret Keys, Service-Role-Schlüssel und Passwörter dürfen niemals ins Frontend oder ZIP. RLS begrenzt gemeinsame Daten auf die freigegebenen Konten; persönliche Einstellungen sind nur dem jeweiligen Konto zugänglich. Das Entfernen der Registrierung aus GrevingShop ändert keine serverseitigen Auth-Einstellungen.
 
-```sh
-node --check app.js
-node --check service-worker.js
-```
+## Prüfung
 
-Die Synchronisierungslogik wurde automatisiert auf frischen Serverabruf beim Start, unmittelbare Schreibvorgänge, Offline-Schreibsperre, Realtime-Nachladen und das Leeren der sichtbaren Daten bei Abmeldung geprüft. Die Datenbankregeln wurden mit Familien- und fremden E-Mail-Claims sowie anonymen Tabellenrechten geprüft; Testdaten wurden zurückgerollt.
-
-Zusätzlich geprüft: Speichern und Laden persönlicher Einstellungen, Trennung nach Kontowechsel, Reihenfolge schneller Einstellungsänderungen, Offline-Schreibsperre bzw. lokale Einstellungsänderungen und automatische Produktzuordnung mit manueller Korrektur. Die Datenbankprüfung bestätigt, dass fremde Nutzer keine persönlichen Einstellungen lesen oder überschreiben können.
-
-Die Smartphone-Vorschau ist eine responsive Browserdarstellung, kein echter Samsung-Gerätetest. Anmeldung, Mehrgerätebetrieb und Bildschirm-Wachhalten sollten zusätzlich auf den verwendeten Smartphones geprüft werden.
-
-
-### Eigenständige App-Installation
-
-Die stabile Manifest-ID lautet `/grevingshop/`. GrevingFit verwendet `/grevingfit/`, GrevingShop. `/grevingshop/`; beide Apps werden dadurch getrennt erkannt. Die IDs bleiben bei künftigen Updates unverändert. Startadresse und Gültigkeitsbereich bleiben relativ zum jeweiligen App-Verzeichnis (`./`). Die aktualisierten Dateien müssen zuerst auf der jeweiligen App-Webadresse veröffentlicht werden. Bei einer bisherigen Installation ohne diese ID kann eine erneute Installation erforderlich sein; vorher die Daten sichern.
-
-## Stabile PWA-Identität
-
-Das Manifest verwendet den App-Namen **GrevingShop.** und die explizite ID **`/grevingshop/`**. Diese entspricht der bisherigen auf der GitHub-Startadresse aufgelösten ID. Greving.Fit verwendet eine aus seiner eigenen Startadresse abgeleitete Identität; beide Apps bleiben getrennt. Grundlage ist der [Manifest-Standard](https://www.w3.org/TR/appmanifest/#id-member). Das Icon-Blau entspricht in SVG und allen PNG-Größen exakt **`#1769e0`** wie bei Greving.Fit.
-
-## Öffentliche Dateien und Datenschutz
-
-Die neue Auslieferung enthält keine echten Familien-E-Mail-Adressen, Passwörter oder administrativen Supabase-Schlüssel. Kontaktdaten werden nach erfolgreicher Anmeldung aus einer geschützten Funktion geladen. Der Publishable Key und die Projektadresse sind öffentlich; der Zugriff auf Daten wird serverseitig mit RLS und Funktionsrechten begrenzt. Listen und Katalog sind für die freigegebenen Konten gemeinsam nutzbar, persönliche Einstellungen nur für das eigene Konto.
-
-Die öffentlich hochladbaren SQL-Dateien verwenden Platzhalteradressen. Die tatsächliche Serverkonfiguration bleibt im Supabase-Projekt. Es sind keine Analyse- oder Werbedienste eingebunden; das Supabase-SDK wird lokal mitgeliefert. Details der Tests und ihre Grenzen stehen in `PRUEFBERICHT.md`.
-
-Die E-Mail-Bestätigung wurde auf ausdrücklichen Wunsch im gemeinsamen Supabase-Projekt ausgeschaltet; dies gilt auch für neue Registrierungen über Greving.Fit. Noch nicht registrierte freigegebene Adressen können dadurch ohne Besitznachweis beansprucht werden. Alte GitHub-Commits können frühere Kontaktkonfigurationen weiterhin enthalten. Git-Verlauf und bereits veröffentlichte Versionen wurden nicht verändert. Bei Abmeldung oder Kontowechsel wird der lokale Listen-/Katalogcache des bisherigen Kontos entfernt.
-
-## Mehrere Katalogprodukte übernehmen
-
-Im Warenkatalog die gewünschten Produkte anhaken, die Zielliste wählen und **Produkte übernehmen** antippen. Die Auswahl bleibt beim Suchen erhalten. Mengen, Notizen und Kategorien werden übernommen; die neuen Produkte sind noch nicht abgehakt. Der gemeinsame Speichervorgang legt alle ausgewählten Produkte zusammen an. Bei einem Fehler bleibt die Auswahl erhalten. Bereits vorhandene Listenprodukte bleiben bestehen.
-
-## Katalogprodukte direkt anlegen
-
-Unter **Warenkatalog → Neues Produkt** kannst du Name, Menge und Notiz erfassen. Die Kategorie wird automatisch erkannt und kann geändert werden. **Im Katalog speichern** speichert das Produkt direkt in Supabase und synchronisiert den Katalog. Dafür wird keine Einkaufsliste benötigt. Bereits vorhandene Produktnamen werden nicht doppelt angelegt.
-
-## Bestehende Konten
-
-GrevingShop bietet keine Selbstregistrierung mehr an. Die Anmeldung verwendet die bestehenden gemeinsamen Supabase-Konten von GrevingFit. Die serverseitigen Auth-Einstellungen werden durch dieses ZIP nicht geändert.
-
-## Passwort ändern
-
-Nach der Anmeldung **Settings → Login & Cloud-Synchronisierung → Passwort ändern** aufklappen. Alternativ den Kontobutton verwenden. Aktuelles Passwort, neues Passwort (mindestens 8 Zeichen) und Wiederholung eingeben. Das aktuelle Passwort wird vor der Änderung erneut über Supabase geprüft. Das neue Passwort gilt unmittelbar für **GrevingShop und GrevingFit**, weil beide dasselbe Auth-Projekt verwenden. Bei einer erneuten Anmeldung auf anderen Geräten das neue Passwort verwenden. Die Passwörter werden nicht im App-Code, in App-Tabellen oder lokal gespeichert.
-
-Ein automatisches Initialpasswort ist nicht eingerichtet. Bestehende Konten und Passwörter wurden nicht zurückgesetzt. Die erstmalige Vergabe muss geschützt in Supabase erfolgen, nicht im öffentlichen App-Code.
-
-## Settings wie in GrevingFit
-
-Personalisierung und Login/Cloud verwenden denselben Aufbau wie GrevingFit. Startbereich, Farbschema, Schriftgröße und Darstellungsdichte direkt auswählen und mit **Einstellungen übernehmen** speichern. Der Schalter für helles/dunkles Design steht daneben. Persönliche Einstellungen einschließlich Startbereich werden pro Konto in Supabase gespeichert. Die Kontokarte zeigt Profil und E-Mail, Synchronisieren, Abmelden sowie das aufklappbare Passwortformular.
-
-## Reparatur der Einstellungen vom 14.11.2026
-
-Die Datenbankregel `shopping_preferences_keys` wurde um `startPage` erweitert. Zulässig sind `lists`, `catalog`, `archive` und `family`. Ältere Einstellungen ohne Startbereich bleiben gültig. Die Korrektur ist im bestehenden gemeinsamen Supabase-Projekt bereits angewendet und mit den tatsächlichen Datenbankregeln geprüft. App neu öffnen oder unter Settings **Einstellungen übernehmen** antippen; lokal vorgemerkte Einstellungen werden erneut gespeichert. Cache-Löschen ist nicht erforderlich.
-
-Für andere bestehende Installationen nur **supabase-preferences-startpage.sql** im Supabase SQL Editor ausführen. Diese Datei ändert keine Nutzerdaten oder Zugriffsrechte. Die vollständigen Setup- und Update-Dateien enthalten dieselbe Korrektur.
-
-## Navigation und Listenaktionen
-
-Der Klick auf die eigenen Initialen öffnet den eingestellten Startbereich. Ohne Anmeldung öffnet das Fragezeichen die Anmeldung. Settings, Katalog und Listen verwenden in GrevingShop und GrevingFit identische Symbole aus GrevingShop.
-
-Innerhalb einer Liste steht **Produkt hinzufügen** als Hauptaktion direkt unter dem Titel; **Einkauf starten** steht rechts. Im Archiv besitzt jede Listenkarte eine eigene Aktion **Löschen**. Die Rückfrage weist auf die endgültige Löschung der Liste einschließlich aller Produkte für alle Nutzer hin. Der Katalog bleibt davon unberührt. Eine zwischenzeitlich wiederhergestellte Liste wird nicht gelöscht.
-
-Listen und Produkte werden über die Drei-Punkte-Schaltfläche bearbeitet. Die Produkt-Schaltfläche besitzt eine 44 Pixel große Tippfläche und ist im Einkaufsmodus ausgeblendet.
-
-Die Smartphone-Vorschau verwendet eine Versionskennung und lädt bei „Neu laden“ die zuletzt bestätigte App-Fassung neu. JavaScript und CSS tragen dieselbe Versionskennung im App-Dokument und Offline-Cache. Lokale Vorschauen benötigen einen laufenden Server.
-
-## App installieren
-
-In der Website-Kopfzeile gibt es einen Download-Button **App installieren**. In unterstützten Browsern öffnet er nach dem Tippen den nativen Installationsdialog. Auf iPhone und iPad zeigt er stattdessen die Safari-Schritte: **Teilen → Zum Home-Bildschirm / Zu Home-Bildschirm hinzufügen → Als Web-App öffnen → Hinzufügen**. Je nach Safari-Ansicht liegt „Teilen“ im Menü „…“. Fehlt der Eintrag, unter **Aktionen bearbeiten** nachsehen. In einer bereits als App geöffneten Fassung wird der Button ausgeblendet. Siehe [Apple-Anleitung](https://support.apple.com/de-de/guide/iphone/iphea86e5236/ios).
-
-## App-Versionen nur nach Zustimmung
-
-Ab App-Version **22** wird eine neue Programmfassung vorbereitet, aber nicht ungefragt eingeblendet. Der Hinweis bietet **Jetzt aktualisieren** und **Später**. Bei „Später“ bleibt die bisher bestätigte Fassung erhalten, auch nach erneutem Öffnen. Über das Update-Symbol in der Kopfzeile lässt sich der Hinweis wieder anzeigen. Unter Settings steht die laufende App-Version.
-
-Offene Bearbeitungsdialoge, ungespeicherte Settings, laufende Schreibvorgänge und der Einkaufsmodus verhindern eine Aktualisierung, bis die Arbeit abgeschlossen ist. Nach ausdrücklicher Bestätigung lädt die betreffende Ansicht neu. Andere offene Ansichten werden nicht zwangsweise neu geladen. Die bestätigte Version gilt für denselben Browser und dieselbe Website-Adresse; bei anderer Browser-App, anderem Gerät oder anderer Domain wird sie getrennt verwaltet. Einkaufslisten und persönliche Einstellungen synchronisieren weiterhin automatisch mit Supabase.
-
-**Einmalige Umstellung:** Bisherige Versionen bis 21 kennen diesen Zustimmungsmechanismus noch nicht. Diese Fassung muss einmal über die bisherige Aktualisierung geladen werden. Ab dann gilt die neue Regel für spätere App-Versionen. Die aktuell laufende Erstfassung wird als Ausgangsversion übernommen; das ist kein Wechsel auf eine andere Programmfassung. Ein Löschen aller Website-Daten setzt auch die gespeicherte Ausgangsversion zurück.
-
-Für spätere Veröffentlichungen die Versionsnummer konsistent erhöhen: `APP_VERSION` in app.js; `VERSION`, Cache-Name und Asset-URLs im Service Worker; CSS-/JavaScript-URLs in index.html sowie die Vorschaukennung in s24fe.html. Alle Dateien gemeinsam veröffentlichen. Der Browser lädt neue Programmdateien vollständig und ohne Wiederverwendung des HTTP-Caches vor; Supabase-Daten werden davon nicht im Service-Worker-Cache gespeichert.
-
-Version 23: Der Installieren-Button ist im PWA-Fenster bereits per CSS vor dem JavaScript-Start verborgen. Beim erneuten Aktivieren und Zurückkehren in die App wird der Modus nochmals geprüft, einschließlich der iPhone-Erkennung über navigator.standalone. In der normalen Website und eingebetteten Smartphone-Vorschau bleibt die Installationshilfe sichtbar.
-
-Version 24: Das Update-Symbol verwendet die gewählte Variante G – Smartphone mit Kreis-Pfeil. Der farbige Hinweis-Punkt bleibt erhalten.
-
-Version 25: App-Symbol C (Einkaufstasche mit G) in allen Größen, weiterhin Blau #1769e0. Im Warenkatalog entfällt der einzelne „+ Liste“-Button; Produkte werden über die gemeinsame Auswahl übernommen. Produktname und Menge stehen nebeneinander, Notizen darunter.
-
-Version 26: Tasche und G im App-Symbol um 20 % um den Mittelpunkt verkleinert. Blauer Hintergrund (#1769e0) unverändert; Icons mit 180, 192 und 512 Pixeln erneuert.
-
-Version 27 (16.11.2026): Selbstregistrierung aus Startseite, Anmeldedialog, Settings und App-Logik entfernt. Login und Passwortänderung bleiben erhalten. App-Icons jetzt vollflächig blau ohne weißen Rand, mit weiterhin um 20 % verkleinertem Motiv. Icon-Adressen versioniert, Manifest-ID unverändert. Keine serverseitigen Konten oder Passwörter geändert; Initialpasswort nicht automatisch eingerichtet.
-
-## Anmeldung für 30 Tage beibehalten
-
-Version 28: Die bestehende Supabase-Sitzung wird für 30 Tage seit der letzten Nutzung lokal aufbewahrt. Nutzung und Token-Erneuerung verlängern diese Frist. Bestehende Anmeldungen werden ohne erzwungenen Wechsel übernommen. Passwörter werden nicht gespeichert; kurze Zugangstokens werden weiterhin automatisch erneuert. Nach Standby und Verbindungswechsel wird die Sitzung erneut aus dem sicheren Auth-Ablauf aufgenommen. „Abmelden“ beendet nur die aktuelle App-Sitzung, nicht die anderen Apps oder Geräte.
-
-Eine serverseitig widerrufene Sitzung, gelöschte Browserdaten oder ein kürzeres Supabase-Limit können eine frühere Neuanmeldung erfordern. Im gemeinsamen Supabase-Projekt unter Authentication → Sessions dürfen Time-box und Inactivity timeout nicht kürzer als 30 Tage sein; Single session per user muss für parallele Apps/Geräte ausgeschaltet sein. Diese Serverwerte wurden nicht geändert oder überprüft. Keine 30-Tage-Verlängerung der JWT-Laufzeit vornehmen.
-
-Version 29 (18.11.2026): Doppelten „+ Produkt“-Button im Leerzustand einer Liste entfernt. Die Hauptaktion „Produkt hinzufügen“ oberhalb der Liste bleibt erhalten.
-
-Version 30 (18.11.2026): App-Icon mit exakt derselben Außenform wie GrevingFit: 512 × 512, Eckenradius 120. Motiv und Blau unverändert; Icon-Adressen versioniert.
-
-Version 31 (18.11.2026): G anhand seiner sichtbaren Kontur horizontal und vertikal in der Taschenfläche zentriert. Buchstabe als feste Vektorform statt geräteabhängiger Schrift; Außenform, Blau und Motivgröße bleiben erhalten.
+Version 32: **43 Tests bestanden**, einschließlich Sitzungsaufbewahrung, parallelem Start, Cache-Anzeige vor Abschluss der Datenabfragen, Offline-Lesemodus, Kontentrennung, Cloud-Schreibvorgängen, Katalogauswahl und bestätigungspflichtigen Updates. Die vierseitige PDF wurde gerendert und visuell geprüft. Einzelheiten und Grenzen stehen im [Prüfbericht](PRUEFBERICHT.md).
