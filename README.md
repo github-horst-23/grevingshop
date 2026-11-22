@@ -4,7 +4,7 @@ Gemeinsame und private Einkaufslisten sowie ein Warenkatalog für die freigegebe
 
 [App öffnen](https://github-horst-23.github.io/grevingshop/) · [Smartphone-Vorschau](https://github-horst-23.github.io/grevingshop/s24fe.html) · [PDF-Anleitung](GrevingShop-Anleitung.pdf)
 
-**Aktuelle Fassung:** Version 35, Stand 22.11.2026.
+**Aktuelle Fassung:** Version 36, Stand 22.11.2026.
 
 ## Schnellstart
 
@@ -42,6 +42,8 @@ Das Menü mit den drei Linien schwebt auf Smartphones unten rechts. Die eigenen 
 ## Gemeinsame und private Listen
 
 Beim Anlegen einer Liste gibt es ein Kästchen **Privat**. Ohne Häkchen ist die Liste gemeinsam sichtbar, mit Häkchen nur für dich. Die Auswahl bleibt dauerhaft bestehen; sie kann später nicht geändert werden. Alle bisher angelegten Listen bleiben gemeinsam sichtbar. Private Listen und ihre Produkte sind ausschließlich für das erstellende freigegebene Konto zugänglich, auch im Archiv und bei der Katalog-Zielliste.
+
+Die Übersicht zeigt zuerst **Meine privaten Listen**, darunter **Gemeinsame Listen**, jeweils mit eigener Anzahl und klarer Trennlinie. Private Listen tragen ein kleines Schloss. Die gleiche Gliederung gilt im Archiv. Innerhalb eines Bereichs bleibt die bisherige Reihenfolge erhalten; leere Bereiche werden kurz gekennzeichnet.
 
 Die Trennung wird serverseitig durch zusätzliche restriktive RLS-Regeln für Listen und Produkte abgesichert. Besitzer und Sichtbarkeit werden bei Updates nicht verändert; bei neuen Listen setzt die Datenbank den angemeldeten Ersteller. Das bloße Ausblenden in der Oberfläche ist nicht die Zugriffssicherung. Der lokale Cache filtert ergänzend nach Konto und Listenbesitzer.
 
@@ -115,4 +117,4 @@ Der Publishable Key ist für Browser vorgesehen. Secret Keys, Service-Role-Schl�
 
 ## Prüfung
 
-Version 35: **52 App-Tests und 108 isolierte PostgreSQL-Zugriffsprüfungen bestanden**, einschließlich Sitzungsaufbewahrung, parallelem Start, Cache-Anzeige vor Abschluss der Datenabfragen, Offline-Lesemodus, Kontentrennung, Cloud-Schreibvorgängen, Katalogauswahl und bestätigungspflichtigen Updates. Die vierseitige PDF wurde gerendert und visuell geprüft. Einzelheiten und Grenzen stehen im [Prüfbericht](PRUEFBERICHT.md).
+Version 36: **54 App-Tests und 108 isolierte PostgreSQL-Zugriffsprüfungen bestanden**, einschließlich Sitzungsaufbewahrung, parallelem Start, Cache-Anzeige vor Abschluss der Datenabfragen, Offline-Lesemodus, Kontentrennung, Cloud-Schreibvorgängen, Katalogauswahl und bestätigungspflichtigen Updates. Die vierseitige PDF wurde gerendert und visuell geprüft. Einzelheiten und Grenzen stehen im [Prüfbericht](PRUEFBERICHT.md).

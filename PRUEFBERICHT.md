@@ -160,3 +160,9 @@ Regression mit der unveränderten, ausgelieferten supabase.js-Bibliothek und lok
 - 52 App-Tests bestanden. Zusätzliche Regressionen für Auswahl/Übernahme, HTML-Escaping, Trefferbegrenzung, Escape sowie gemeinsame Standardanlage.
 - Browserprüfung ausschließlich mit fiktiven lokalen Daten auf getrennter Vorschau-Adresse: 384 × 600 Pixel, 60 Katalogtreffer, Vorschlags-Scrollposition 0 → 168, Produkt 04 ausgewählt, Menge/Notiz/Kategorie korrekt übernommen. Dialog-Scrollposition anschließend 67 bei 605 Pixel Scrollhöhe und 538 Pixel sichtbarer Höhe. Privat initial nicht angehakt, nach Tippen angehakt. Kein produktiver Datenzugriff und keine Speicherung der Beispieldaten.
 - Echte Android/iOS-Tastatur und physische Touch-Eingabe nicht geprüft; Desktop-Browser mit kleinem Viewport als Layout- und Scrollprüfung. PDF und README aktualisiert. Keine SQL-Änderung.
+
+## Version 36 - getrennte Listenbereiche - 22.11.2026
+
+- Variante A umgesetzt: erst Meine privaten Listen, danach Gemeinsame Listen. Eigene Überschrift, Anzahl und Trennlinie pro Bereich; Schloss in privaten Listenkarten. Auch im Archiv konsistent. Kartenreihenfolge innerhalb der Gruppe, Öffnen, Fortschritt und Archivaktionen unverändert. Leere Gruppen mit kurzem Hinweis; vollständig leere Übersicht behält die Anlegen-Aktion.
+- 54 App-Tests bestanden. Neue Prüfungen für Gruppierung, Anzahl, fremde private Liste, gemeinsame Bestandslisten ohne Sichtbarkeitsfeld, Archiv/Löschen und Leerzustände. Kein SQL-Eingriff.
+- Isolierte Browservorschau mit fiktiven Daten, 384 × 832 Pixel: beide Bereiche sichtbar, privates Schloss und Zähler geprüft, kein horizontaler Überlauf. Keine Anmeldung oder Datenänderung in Supabase. README und PDF-Anleitung aktualisiert.

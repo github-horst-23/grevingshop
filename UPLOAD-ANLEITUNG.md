@@ -6,7 +6,7 @@ Vor der Nutzung privater Listen `supabase-private-lists.sql` im SQL Editor des g
 
 Alle vorhandenen Listen erhalten den Standard „Gemeinsam“. Sie werden weder gelöscht noch einzelnen Nutzern entzogen. Private Listen sind erst nach erfolgreicher Installation der Erweiterung auswählbar. Ohne Erweiterung bleiben gemeinsame Listen nutzbar.
 
-Die produktive Ausführung übernimmt der Benutzer. Wurde das SQL bereits erfolgreich ausgeführt, ist beim Update auf Version 35 kein erneuter SQL-Lauf nötig. Version 35 verbessert die mobile Produktauswahl und ersetzt die Sichtbarkeitsauswahl durch das Kästchen „Privat“. Die lokale Datenbankprüfung ersetzt nicht die Prüfung der produktiven Einrichtung.
+Die produktive Ausführung übernimmt der Benutzer. Wurde das SQL bereits erfolgreich ausgeführt, ist beim Update auf Version 36 kein erneuter SQL-Lauf nötig. Version 36 trennt die Übersicht in private und gemeinsame Listen. Die mobile Produktauswahl und das Kästchen „Privat“ bleiben erhalten. Die lokale Datenbankprüfung ersetzt nicht die Prüfung der produktiven Einrichtung.
 
 Für eine neue Installation `supabase-setup.sql` verwenden und dessen Platzhalter nur im geschützten SQL Editor durch die freigegebenen Adressen ersetzen. Niemals private Kontaktadressen oder Zugangsdaten hochladen. Das vollständige Setup und `supabase-update.sql` enthalten die Erweiterung für private Listen ebenfalls am Ende.
 
