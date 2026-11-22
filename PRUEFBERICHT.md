@@ -145,3 +145,9 @@ Version 31 (18.11.2026): G anhand seiner sichtbaren Kontur horizontal und vertik
 - Isolierte echte PostgreSQL-Engine PGlite 0.5.17: 108 Zugriffsprüfungen bestanden. Vier simulierte Familienkonten, gegenseitige Lese-/Schreib-/Löschversuche, Artikel-INSERT, übergebener fremder Besitzer, nachträgliche Sichtbarkeit/Owner-Änderung, fremde Elternliste, Anon/Outsider, gemeinsame Bestandsliste, eigenes Archivieren und Löschen, Migration zweimal ausgeführt. Sämtliche Testdaten lokal und fiktiv; keine produktiven Testlisten angelegt.
 - 47 App-Tests bestanden, einschließlich privater Auswahl, Katalogwarnung, Archiv/Ziellisten und Cache-Trennung. Keine Geschwindigkeits- oder Sicherheitsbehauptung über ein noch nicht migriertes Produktivsystem.
 - Gemeinsamer Katalog unverändert; ausdrückliche Katalogaufnahme zeigt „für alle sichtbar“. Anleitung und Upload-Hinweise aktualisiert.
+
+## Version 34 - Anmeldereparatur - 22.11.2026
+
+Ursache: Der echte Supabase PostgREST-RPC-Builder bietet `then`, aber kein direktes `catch`. Der mit async gemockte RPC im früheren Test hatte den Fehler verdeckt. Die Fähigkeitsprüfung wird nun über eine echte Promise-Kette ausgeführt.
+
+Regression mit der unveränderten, ausgelieferten supabase.js-Bibliothek und lokalem Fetch-Stub: Builder ohne catch, genau ein RPC-Abruf, erfolgreiche Kontowiederaufnahme und Erkennung der privaten Listen. Zusätzlich synchrone Fehler, abgelehnter Thenable und fehlende RPC-Funktion geprüft: bestehende gemeinsame Listen und Anmeldung bleiben nutzbar; private Auswahl bleibt gesperrt. 49 App-Tests bestanden. SQL unverändert; kein produktiver Eingriff und keine erneute Migration erforderlich, wenn diese bereits erfolgreich ausgeführt wurde.

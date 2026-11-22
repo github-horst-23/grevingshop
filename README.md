@@ -4,7 +4,7 @@ Gemeinsame und private Einkaufslisten sowie ein Warenkatalog für die freigegebe
 
 [App öffnen](https://github-horst-23.github.io/grevingshop/) · [Smartphone-Vorschau](https://github-horst-23.github.io/grevingshop/s24fe.html) · [PDF-Anleitung](GrevingShop-Anleitung.pdf)
 
-**Aktuelle Fassung:** Version 33, Stand 22.11.2026.
+**Aktuelle Fassung:** Version 34, Stand 22.11.2026.
 
 ## Schnellstart
 
@@ -45,7 +45,7 @@ Die Trennung wird serverseitig durch zusätzliche restriktive RLS-Regeln für Li
 
 **Der Warenkatalog bleibt gemeinsam.** Auch ein Produkt aus einer privaten Liste wird für alle sichtbar, wenn ausdrücklich **Im gemeinsamen Warenkatalog speichern (für alle sichtbar)** angehakt wird. Ohne dieses Häkchen bleibt das Listenprodukt privat.
 
-**Vor dem ersten Einsatz:** Im gemeinsamen Supabase-Projekt [supabase-private-lists.sql](supabase-private-lists.sql) ausführen. Die App bietet private Listen erst an, wenn die installierte Datenbank-Erweiterung über `shopping_privacy_version()` erkannt wird. Ohne Erweiterung funktionieren gemeinsame Listen weiter; die private Auswahl ist deaktiviert. Im vollständigen Setup und Update-Skript ist dieselbe Migration am Ende enthalten. Die Regeln wurden isoliert in einer PostgreSQL-Testumgebung geprüft; die produktive Ausführung benötigt noch die unmittelbare Freigabe des Benutzers.
+**Vor dem ersten Einsatz:** Im gemeinsamen Supabase-Projekt [supabase-private-lists.sql](supabase-private-lists.sql) ausführen. Die App bietet private Listen erst an, wenn die installierte Datenbank-Erweiterung über `shopping_privacy_version()` erkannt wird. Ohne Erweiterung funktionieren gemeinsame Listen weiter; die private Auswahl ist deaktiviert. Im vollständigen Setup und Update-Skript ist dieselbe Migration am Ende enthalten. Die Regeln wurden isoliert in einer PostgreSQL-Testumgebung geprüft. Die produktive Ausführung übernimmt der Benutzer. Wurde die Migration bereits erfolgreich ausgeführt, ist für das App-Update kein erneuter SQL-Lauf erforderlich.
 
 ## Anmeldung und schneller Start
 
@@ -113,4 +113,4 @@ Der Publishable Key ist für Browser vorgesehen. Secret Keys, Service-Role-Schl�
 
 ## Prüfung
 
-Version 33: **47 App-Tests und 108 isolierte PostgreSQL-Zugriffsprüfungen bestanden**, einschließlich Sitzungsaufbewahrung, parallelem Start, Cache-Anzeige vor Abschluss der Datenabfragen, Offline-Lesemodus, Kontentrennung, Cloud-Schreibvorgängen, Katalogauswahl und bestätigungspflichtigen Updates. Die vierseitige PDF wurde gerendert und visuell geprüft. Einzelheiten und Grenzen stehen im [Prüfbericht](PRUEFBERICHT.md).
+Version 34: **49 App-Tests und 108 isolierte PostgreSQL-Zugriffsprüfungen bestanden**, einschließlich Sitzungsaufbewahrung, parallelem Start, Cache-Anzeige vor Abschluss der Datenabfragen, Offline-Lesemodus, Kontentrennung, Cloud-Schreibvorgängen, Katalogauswahl und bestätigungspflichtigen Updates. Die vierseitige PDF wurde gerendert und visuell geprüft. Einzelheiten und Grenzen stehen im [Prüfbericht](PRUEFBERICHT.md).

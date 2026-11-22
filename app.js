@@ -1,5 +1,5 @@
 'use strict';
-const APP_VERSION='33';
+const APP_VERSION='34';
 const FAMILY={};
 const catalogSelection=new Set();let catalogTarget='';
 let updateRegistration=null,updateWorker=null,availableVersion='',updateApplying=false,updateReloaded=false;
@@ -175,7 +175,7 @@ async function setUser(next){
    for(const key of Object.keys(FAMILY))delete FAMILY[key];FAMILY[own.name]=own.email;
   }else{
    preloaded=fetchShopData(next.id).catch(()=>null);
-   const privacyCheck=client.rpc('shopping_privacy_version').catch(()=>null);
+   const privacyCheck=Promise.resolve().then(()=>client.rpc('shopping_privacy_version')).catch(()=>null);
    const {data,error}=await client.rpc('shopping_family_profiles');
    if(generation!==authGeneration)return;
    if(error)throw Error('Die Kontoprüfung konnte nicht abgeschlossen werden. Bitte Verbindung prüfen und erneut versuchen.');
