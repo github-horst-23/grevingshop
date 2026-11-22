@@ -151,3 +151,12 @@ Version 31 (18.11.2026): G anhand seiner sichtbaren Kontur horizontal und vertik
 Ursache: Der echte Supabase PostgREST-RPC-Builder bietet `then`, aber kein direktes `catch`. Der mit async gemockte RPC im früheren Test hatte den Fehler verdeckt. Die Fähigkeitsprüfung wird nun über eine echte Promise-Kette ausgeführt.
 
 Regression mit der unveränderten, ausgelieferten supabase.js-Bibliothek und lokalem Fetch-Stub: Builder ohne catch, genau ein RPC-Abruf, erfolgreiche Kontowiederaufnahme und Erkennung der privaten Listen. Zusätzlich synchrone Fehler, abgelehnter Thenable und fehlende RPC-Funktion geprüft: bestehende gemeinsame Listen und Anmeldung bleiben nutzbar; private Auswahl bleibt gesperrt. 49 App-Tests bestanden. SQL unverändert; kein produktiver Eingriff und keine erneute Migration erforderlich, wenn diese bereits erfolgreich ausgeführt wurde.
+
+## Version 35 - mobile Formulare - 22.11.2026
+
+- Native HTML-datalist durch Inline-Vorschläge ersetzt. Nach Produktname gefilterte Katalogtreffer, maximal 40 gleichzeitig, eigener begrenzter Scrollbereich, Ausblenden-Schaltfläche. Kein natives Popup, kein preventDefault für Touch-Scrollen. Auswahl übernimmt Name, Menge, Notiz und Kategorie, ohne automatisch zu speichern oder Katalogfreigaben zu setzen. Escape schließt zunächst die Vorschläge.
+- Mobile Dialoghöhe an sichtbaren Viewport angepasst, Dialog auf kleinen Bildschirmen am oberen Rand positioniert. Formular und Trefferliste bleiben getrennt scrollbar. Pinch-Zoom bleibt erlaubt.
+- Neue Liste: einzelnes nicht angehaktes Kästchen Privat. Ohne Häkchen shared, mit Häkchen private; ohne Server-Erweiterung deaktiviert. Bestehende Listensichtbarkeit bleibt unveränderlich.
+- 52 App-Tests bestanden. Zusätzliche Regressionen für Auswahl/Übernahme, HTML-Escaping, Trefferbegrenzung, Escape sowie gemeinsame Standardanlage.
+- Browserprüfung ausschließlich mit fiktiven lokalen Daten auf getrennter Vorschau-Adresse: 384 × 600 Pixel, 60 Katalogtreffer, Vorschlags-Scrollposition 0 → 168, Produkt 04 ausgewählt, Menge/Notiz/Kategorie korrekt übernommen. Dialog-Scrollposition anschließend 67 bei 605 Pixel Scrollhöhe und 538 Pixel sichtbarer Höhe. Privat initial nicht angehakt, nach Tippen angehakt. Kein produktiver Datenzugriff und keine Speicherung der Beispieldaten.
+- Echte Android/iOS-Tastatur und physische Touch-Eingabe nicht geprüft; Desktop-Browser mit kleinem Viewport als Layout- und Scrollprüfung. PDF und README aktualisiert. Keine SQL-Änderung.

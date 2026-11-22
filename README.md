@@ -4,12 +4,12 @@ Gemeinsame und private Einkaufslisten sowie ein Warenkatalog für die freigegebe
 
 [App öffnen](https://github-horst-23.github.io/grevingshop/) · [Smartphone-Vorschau](https://github-horst-23.github.io/grevingshop/s24fe.html) · [PDF-Anleitung](GrevingShop-Anleitung.pdf)
 
-**Aktuelle Fassung:** Version 34, Stand 22.11.2026.
+**Aktuelle Fassung:** Version 35, Stand 22.11.2026.
 
 ## Schnellstart
 
 1. App öffnen und mit der eigenen E-Mail-Adresse und dem bestehenden GrevingFit-Passwort anmelden.
-2. Unter **Meine Listen → Neue Liste** eine Einkaufsliste anlegen und **Gemeinsam** oder **Privat** wählen.
+2. Unter **Meine Listen → Neue Liste** eine Einkaufsliste anlegen; bei Bedarf **Privat** anhaken.
 3. Liste öffnen und über **Produkt hinzufügen** Produkte erfassen.
 4. Mit **Einkauf starten** in die konzentrierte Einkaufsansicht wechseln und Produkte abhaken.
 
@@ -27,6 +27,8 @@ Es gibt keinen Testzugang und keine Selbstregistrierung. Neue Konten müssen ges
 | Familie | Geschützte Kontoprofile ausschließlich nach Anmeldung und online anzeigen |
 | Settings | Startbereich, Farbschema, Schriftgröße, Darstellungsdichte, helles/dunkles Design und Kontoverwaltung |
 
+Beim Tippen eines Produktnamens erscheinen passende Katalogprodukte direkt im Formular. Die Vorschlagsliste lässt sich mit dem Finger scrollen; über **Ausblenden** kannst du sie schließen. Beim Antippen werden Name, Menge, Notiz und Kategorie in das Formular übernommen. Mit **Hinzufügen** wird das Produkt anschließend auf der Liste gespeichert. Es gibt kein natives Browser-Vorschlagsfenster mehr.
+
 Produkte landen beim Hinzufügen zu einer Liste nur dann zusätzlich im Katalog, wenn **Im Warenkatalog speichern** angehakt ist. **Neues Produkt** im Warenkatalog speichert direkt im Katalog. Bei der Mehrfachauswahl werden Menge, Notiz und Kategorie übernommen; die Auswahl bleibt beim Suchen erhalten.
 
 Die automatische Gruppierung folgt dieser allgemeinen Supermarkt-Reihenfolge:
@@ -39,7 +41,7 @@ Das Menü mit den drei Linien schwebt auf Smartphones unten rechts. Die eigenen 
 
 ## Gemeinsame und private Listen
 
-Beim Anlegen einer Liste wählst du **Gemeinsam - für alle** (Standard) oder **Privat - nur für mich**. Die Auswahl bleibt dauerhaft bestehen; sie kann später nicht geändert werden. Alle bisher angelegten Listen bleiben gemeinsam sichtbar. Private Listen und ihre Produkte sind ausschließlich für das erstellende freigegebene Konto zugänglich, auch im Archiv und bei der Katalog-Zielliste.
+Beim Anlegen einer Liste gibt es ein Kästchen **Privat**. Ohne Häkchen ist die Liste gemeinsam sichtbar, mit Häkchen nur für dich. Die Auswahl bleibt dauerhaft bestehen; sie kann später nicht geändert werden. Alle bisher angelegten Listen bleiben gemeinsam sichtbar. Private Listen und ihre Produkte sind ausschließlich für das erstellende freigegebene Konto zugänglich, auch im Archiv und bei der Katalog-Zielliste.
 
 Die Trennung wird serverseitig durch zusätzliche restriktive RLS-Regeln für Listen und Produkte abgesichert. Besitzer und Sichtbarkeit werden bei Updates nicht verändert; bei neuen Listen setzt die Datenbank den angemeldeten Ersteller. Das bloße Ausblenden in der Oberfläche ist nicht die Zugriffssicherung. Der lokale Cache filtert ergänzend nach Konto und Listenbesitzer.
 
@@ -113,4 +115,4 @@ Der Publishable Key ist für Browser vorgesehen. Secret Keys, Service-Role-Schl�
 
 ## Prüfung
 
-Version 34: **49 App-Tests und 108 isolierte PostgreSQL-Zugriffsprüfungen bestanden**, einschließlich Sitzungsaufbewahrung, parallelem Start, Cache-Anzeige vor Abschluss der Datenabfragen, Offline-Lesemodus, Kontentrennung, Cloud-Schreibvorgängen, Katalogauswahl und bestätigungspflichtigen Updates. Die vierseitige PDF wurde gerendert und visuell geprüft. Einzelheiten und Grenzen stehen im [Prüfbericht](PRUEFBERICHT.md).
+Version 35: **52 App-Tests und 108 isolierte PostgreSQL-Zugriffsprüfungen bestanden**, einschließlich Sitzungsaufbewahrung, parallelem Start, Cache-Anzeige vor Abschluss der Datenabfragen, Offline-Lesemodus, Kontentrennung, Cloud-Schreibvorgängen, Katalogauswahl und bestätigungspflichtigen Updates. Die vierseitige PDF wurde gerendert und visuell geprüft. Einzelheiten und Grenzen stehen im [Prüfbericht](PRUEFBERICHT.md).

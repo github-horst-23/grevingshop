@@ -1,7 +1,7 @@
-const VERSION='34';
-const CACHE='grevingshop-shell-v34';
+const VERSION='35';
+const CACHE='grevingshop-shell-v35';
 const CONTROL='grevingshop-update-control';
-const ASSETS=['./','./index.html','./styles.css?v=34','./app.js?v=34','./icon.svg?v=31','./icon-180.png?v=31','./icon-192.png?v=31','./icon-512.png?v=31','./manifest.webmanifest','./supabase.js','./auth-session.js?v=28'];
+const ASSETS=['./','./index.html','./styles.css?v=35','./app.js?v=35','./icon.svg?v=31','./icon-180.png?v=31','./icon-192.png?v=31','./icon-512.png?v=31','./manifest.webmanifest','./supabase.js','./auth-session.js?v=28'];
 const approvedKey=()=>new URL('./__approved_app_cache__',self.registration.scope).href;
 async function approvedCache(){const state=await caches.open(CONTROL),saved=await state.match(approvedKey());return saved?await saved.text():CACHE}
 async function setApproved(name){const state=await caches.open(CONTROL);await state.put(approvedKey(),new Response(name))}

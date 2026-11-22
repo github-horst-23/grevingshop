@@ -6,7 +6,7 @@ Vor der Nutzung privater Listen `supabase-private-lists.sql` im SQL Editor des g
 
 Alle vorhandenen Listen erhalten den Standard „Gemeinsam“. Sie werden weder gelöscht noch einzelnen Nutzern entzogen. Private Listen sind erst nach erfolgreicher Installation der Erweiterung auswählbar. Ohne Erweiterung bleiben gemeinsame Listen nutzbar.
 
-Die produktive Ausführung übernimmt der Benutzer. Wurde das SQL bereits erfolgreich ausgeführt, ist beim Update auf Version 34 kein erneuter SQL-Lauf nötig. Version 34 korrigiert ausschließlich die appseitige Prüfung der Erweiterung. Die lokale Datenbankprüfung ersetzt nicht die Prüfung der produktiven Einrichtung.
+Die produktive Ausführung übernimmt der Benutzer. Wurde das SQL bereits erfolgreich ausgeführt, ist beim Update auf Version 35 kein erneuter SQL-Lauf nötig. Version 35 verbessert die mobile Produktauswahl und ersetzt die Sichtbarkeitsauswahl durch das Kästchen „Privat“. Die lokale Datenbankprüfung ersetzt nicht die Prüfung der produktiven Einrichtung.
 
 Für eine neue Installation `supabase-setup.sql` verwenden und dessen Platzhalter nur im geschützten SQL Editor durch die freigegebenen Adressen ersetzen. Niemals private Kontaktadressen oder Zugangsdaten hochladen. Das vollständige Setup und `supabase-update.sql` enthalten die Erweiterung für private Listen ebenfalls am Ende.
 
@@ -23,7 +23,7 @@ Keinen zusätzlichen App-Ordner und keinen `docs`-Unterordner hochladen. Auch `a
 
 ## 3. Nach dem Update prüfen
 
-- Unter **Neue Liste** muss die Auswahl **Gemeinsam / Privat** verfügbar sein, sobald die Datenbank-Erweiterung aktiv ist.
+- Unter **Neue Liste** muss das Kästchen **Privat** verfügbar sein, sobald die Datenbank-Erweiterung aktiv ist.
 - Eine private Liste mit Konto A anlegen. Mit Konto B darf sie weder unter „Meine Listen“ noch im Archiv oder als Katalog-Zielliste erscheinen.
 - Bestehende gemeinsame Listen müssen weiterhin für alle freigegebenen Konten verfügbar sein.
 - Der Warenkatalog bleibt gemeinsam. Eine Aufnahme aus einer privaten Liste erfordert das ausdrückliche Häkchen mit dem Hinweis „für alle sichtbar“.

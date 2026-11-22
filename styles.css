@@ -111,3 +111,10 @@ html,body{min-width:0;max-width:100%}.app-shell,main,.page,.card,.heading,.headi
 .catalog-pick .item-info{flex:1}.catalog-product-line{display:flex;align-items:baseline;gap:10px;min-width:0}.catalog-product-line strong{flex:1;min-width:0}.catalog-product-line .quantity{flex:0 0 auto;max-width:35%;margin:0}
 
 .list-scope{display:inline-block;font-size:11px;line-height:1.4;color:var(--muted);margin:5px 0 0}.list-scope.private{color:var(--primary);font-weight:700}.shopping-state .list-scope{margin:0}.list-card .list-scope{display:block}
+
+/* Inline catalog suggestions: ordinary touch scrolling, no browser datalist popup. */
+dialog{max-height:min(90dvh,var(--dialog-visible-height,90dvh));touch-action:pan-y pinch-zoom;-webkit-overflow-scrolling:touch}
+.catalog-suggestions{border:1px solid var(--line);border-radius:12px;background:var(--panel2);margin-top:8px;overflow:hidden}.catalog-suggestions[hidden]{display:none}.suggestions-heading{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:4px 10px;font-size:12px;color:var(--muted)}.suggestions-heading .back{min-height:36px;font-size:12px}.suggestions-scroll{max-height:min(200px,28dvh);overflow-y:auto;touch-action:pan-y pinch-zoom;overscroll-behavior-y:auto;-webkit-overflow-scrolling:touch}.catalog-suggestion{display:flex;flex-direction:column;align-items:flex-start;gap:2px;text-align:left;width:100%;border:0;border-top:1px solid var(--line);border-radius:0;padding:10px 12px;background:var(--panel);color:var(--text);min-height:50px}.catalog-suggestion strong,.catalog-suggestion span{overflow-wrap:anywhere;max-width:100%}.catalog-suggestion span{font-size:12px;color:var(--muted)}.catalog-suggestion:hover{background:var(--panel2)}.catalog-suggestion:focus-visible{outline:2px solid var(--primary);outline-offset:-3px}.catalog-suggestions>.tiny{padding:0 10px}
+label.privacy-option{display:flex;align-items:center;gap:10px;min-height:44px;cursor:pointer;font-size:15px;font-weight:600}.privacy-option input{width:22px;height:22px;flex:0 0 22px;margin:0;accent-color:var(--primary)}
+
+@media(max-width:650px){dialog{top:0;bottom:auto;margin:12px auto}}
