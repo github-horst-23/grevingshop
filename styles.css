@@ -109,3 +109,5 @@ html,body{min-width:0;max-width:100%}.app-shell,main,.page,.card,.heading,.headi
 
 /* Product and quantity share a compact catalog row; notes stay underneath. */
 .catalog-pick .item-info{flex:1}.catalog-product-line{display:flex;align-items:baseline;gap:10px;min-width:0}.catalog-product-line strong{flex:1;min-width:0}.catalog-product-line .quantity{flex:0 0 auto;max-width:35%;margin:0}
+
+.list-scope{display:inline-block;font-size:11px;line-height:1.4;color:var(--muted);margin:5px 0 0}.list-scope.private{color:var(--primary);font-weight:700}.shopping-state .list-scope{margin:0}.list-card .list-scope{display:block}

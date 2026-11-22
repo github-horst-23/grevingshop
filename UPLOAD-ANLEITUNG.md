@@ -1,56 +1,38 @@
-# GrevingShop. im Main-Branch veröffentlichen
+# GrevingShop. bereitstellen
 
-Das ZIP enthält die benötigten App-Dateien direkt auf oberster Ebene. Es gibt keinen zusätzlichen App- oder docs-Unterordner.
+## 1. Datenbank-Erweiterung für private Listen
 
-1. ZIP auf dem Computer entpacken.
-2. https://github.com/github-horst-23/grevingshop öffnen.
-3. Im Branch **main** die Option **Add file → Upload files** wählen.
-4. Alle entpackten Dateien in die Upload-Fläche ziehen. Besonders wichtig: `index.html`, `app.js`, `styles.css`, `supabase.js`, `service-worker.js`, `manifest.webmanifest` und die Icons. README, diese Anleitung, die Smartphone-Vorschau und das SQL-Setup können mit hochgeladen werden. Das ZIP selbst wird von GitHub nicht automatisch entpackt.
-5. Mit **Commit changes** speichern.
-6. Unter **Settings → Pages** einstellen: **Deploy from a branch → main → / (root)** und speichern.
-7. Unter **Actions** auf den erfolgreichen Abschluss von **pages build and deployment** warten.
-8. https://github-horst-23.github.io/grevingshop/ öffnen.
+Vor der Nutzung privater Listen `supabase-private-lists.sql` im SQL Editor des gemeinsamen Supabase-Projekts ausführen. Das Skript benötigt keine Kontaktadressen oder Passwörter. Es ergänzt die Sichtbarkeit, zusätzliche restriktive Zugriffsregeln und einen Schutz vor Änderungen an Besitzer und Sichtbarkeit.
 
-Ein eventuell vorhandener alter docs-Ordner wird bei dieser Einstellung nicht für die App verwendet.
+Alle vorhandenen Listen erhalten den Standard „Gemeinsam“. Sie werden weder gelöscht noch einzelnen Nutzern entzogen. Private Listen sind erst nach erfolgreicher Installation der Erweiterung auswählbar. Ohne Erweiterung bleiben gemeinsame Listen nutzbar.
 
-## Smartphone-Vorschau
+Die produktive Ausführung wurde noch nicht vorgenommen; sie wartet auf die ausdrückliche Freigabe unmittelbar vor dem Ausführen. Die lokale Datenbankprüfung ersetzt nicht die Prüfung der produktiven Einrichtung.
 
-https://github-horst-23.github.io/grevingshop/s24fe.html
+Für eine neue Installation `supabase-setup.sql` verwenden und dessen Platzhalter nur im geschützten SQL Editor durch die freigegebenen Adressen ersetzen. Niemals private Kontaktadressen oder Zugangsdaten hochladen. Das vollständige Setup und `supabase-update.sql` enthalten die Erweiterung für private Listen ebenfalls am Ende.
 
-Lokal im entpackten Ordner `python3 -m http.server 4173` ausführen und http://localhost:4173/s24fe.html öffnen. Die Vorschau verwendet ein 384 × 832 CSS-Pixel großes Fenster; die tatsächliche Darstellung hängt von Bildschirmzoom und Browserleisten ab.
+## 2. GitHub Pages aktualisieren
 
-## Supabase
+1. Das aktuelle `GrevingShop-main-root.zip` auf dem Computer entpacken.
+2. Das Repository `github-horst-23/grevingshop` im Branch **main** öffnen.
+3. Über **Add file → Upload files** die entpackten Dateien direkt ins Stammverzeichnis hochladen und mit **Commit changes** speichern. Das ZIP selbst wird von GitHub nicht entpackt.
+4. Unter **Settings → Pages** die Quelle **Deploy from a branch → main → / (root)** wählen.
+5. Auf den erfolgreichen Abschluss des Pages-Deployments warten.
+6. https://github-horst-23.github.io/grevingshop/ öffnen und das angebotene App-Update mit **Jetzt aktualisieren** bestätigen.
 
-Die Einkaufslisten-Tabellen, Zugriffsregeln und Realtime sind bereits eingerichtet. Auch die Erweiterung für persönliche Einstellungen und automatische Kategorien wurde im bestehenden Projekt bereits ausgeführt. Es ist kein erneuter SQL-Lauf nötig. Für andere bestehende Supabase-Projekte zuerst `supabase-update.sql` ausführen; für neue Installationen `supabase-setup.sql`.
+Keinen zusätzlichen App-Ordner und keinen `docs`-Unterordner hochladen. Auch `auth-session.js`, `supabase.js`, Service Worker, Manifest, Icons, Smartphone-Vorschau, Dokumentation und PDF gehören zum vollständigen Paket. Der Benutzer führt den Upload selbst aus.
 
-## Neu in dieser Fassung
+## 3. Nach dem Update prüfen
 
-- Neuer App-Name **GrevingShop.**, feste Manifest-ID `/grevingshop/` und Icon-Blau `#1769e0` wie bei Greving.Fit.
-- Kompaktere Startseite, Listen und Einkaufsansicht; bereinigte Ränder und Umbrüche auch für lange Produktnamen, Mengen und Notizen.
-- Banner entfernt; Listentitel stehen direkt oben auf den Listenkarten.
-- Keine dekorativen Personennamen oder Initialen außerhalb von Familie; der Änderungsnachweis nennt den tatsächlichen Bearbeiter.
-- Warenkatalog mit ausdrücklichem, standardmäßig deaktiviertem Aufnahme-Häkchen. Produkte können aus dem Katalog wieder auf eine Liste gesetzt werden.
-- Bearbeiter und Zeitpunkt werden bei Listenänderungen serverseitig aktualisiert.
-- Kontaktdaten werden nach Anmeldung geschützt geladen; öffentliche App- und SQL-Dateien enthalten keine echten Kontaktadressen.
+- Unter **Neue Liste** muss die Auswahl **Gemeinsam / Privat** verfügbar sein, sobald die Datenbank-Erweiterung aktiv ist.
+- Eine private Liste mit Konto A anlegen. Mit Konto B darf sie weder unter „Meine Listen“ noch im Archiv oder als Katalog-Zielliste erscheinen.
+- Bestehende gemeinsame Listen müssen weiterhin für alle freigegebenen Konten verfügbar sein.
+- Der Warenkatalog bleibt gemeinsam. Eine Aufnahme aus einer privaten Liste erfordert das ausdrückliche Häkchen mit dem Hinweis „für alle sichtbar“.
 
-## Supabase-Erweiterung dieses Updates
+## Vorschau und Hilfe
 
-Im bestehenden Projekt ist die Erweiterung für Warenkatalog, Änderungsnachweis und geschützte Profile eingerichtet. Zugriffsregeln und Katalogabläufe sind geprüft; sämtliche temporären Testdaten wurden zurückgerollt. Die vollständigen SQL-Dateien im ZIP sind für andere Installationen vorbereitet und verwenden bewusst Platzhalteradressen. Diese vor Ausführung im Supabase SQL Editor ersetzen; tatsächliche Adressen nicht in öffentlich hochladbare Dateien übernehmen.
+- Website: https://github-horst-23.github.io/grevingshop/
+- Smartphone-Vorschau: https://github-horst-23.github.io/grevingshop/s24fe.html
+- Bedienung: `GrevingShop-Anleitung.pdf`
+- Umsetzung und Grenzen: `README.md` und `PRUEFBERICHT.md`
 
-Für ein bereits vorhandenes anderes Projekt `supabase-update.sql`, für eine neue Installation `supabase-setup.sql` verwenden. `supabase-catalog.sql` enthält ausschließlich die neue Katalog-/Profil-Erweiterung.
-
-## Sicherheitsbefund
-
-Die neue Auslieferung enthält keine echten Kontaktadressen oder administrativen Schlüssel in öffentlichen Dateien. E-Mail-Bestätigung für neue Konten ist auf ausdrücklichen Wunsch im gemeinsamen Supabase-Projekt ausgeschaltet. Noch nicht registrierte freigegebene Adressen sind dadurch ohne Besitznachweis registrierbar. Frühere GitHub-Commits können alte Kontaktkonfigurationen noch enthalten; es wurde kein Verlauf umgeschrieben. Einzelheiten stehen in `PRUEFBERICHT.md`.
-
-Registrierung: Die GrevingShop-Rücksprungadresse ist im bestehenden Supabase-Projekt erlaubt. Registrierung ist aktiv und E-Mail-Bestätigung ist ausgeschaltet; die Freigaben für Einkaufsdaten bleiben bestehen. Bei anderem Hosting die Adresse in app.js und den Supabase Redirect URLs anpassen. Für die Registrierung ohne Bestätigungsmail ist kein SMTP-Anbieter nötig.
-
-Passwortänderung: Nach Anmeldung über Kontobutton → Passwort ändern. Die Änderung gilt für beide Apps. Auch GrevingFit wurde lokal angepasst; dessen aktualisiertes ZIP liegt im GrevingFit-Projektordner. Keine automatischen GitHub-Uploads.
-
-### Einstellungen-Reparatur (14.11.2026)
-
-Im vorhandenen Supabase-Projekt bereits eingespielt: `startPage` ist als Einstellung zugelassen und auf gültige Startbereiche begrenzt. Für die Fehlerbehebung auf deinem Smartphone genügt erneutes Öffnen der App bzw. **Einstellungen übernehmen**. Kein Cache-Löschen nötig. Die enthaltene Datei `supabase-preferences-startpage.sql` dient zur Migration anderer bestehender Installationen. Nicht das vollständige Setup mit Platzhalteradressen über die vorhandene Familienkonfiguration ausführen.
-
-### Update-Zustimmung und iPhone-Installation (15.11.2026)
-
-Die neue Fassung trägt Version **22**. Nach deinem Upload aller Dateien auf main muss diese Ausgangsfassung einmal über den bisherigen Aktualisierungsweg geladen werden. Danach bleiben spätere App-Versionen bis zur ausdrücklichen Bestätigung bei **Jetzt aktualisieren** zurückgestellt, auch nach Neustart. **Später** blendet den Hinweis aus; das Update-Symbol öffnet ihn erneut. Keine Datenbankänderung erforderlich. Der Installieren-Button in der Kopfzeile zeigt auf iPhone/iPad die Safari-Anleitung.
+Lokal: im entpackten Ordner `python3 -m http.server 4173` starten und http://127.0.0.1:4173/ oder http://127.0.0.1:4173/s24fe.html öffnen.

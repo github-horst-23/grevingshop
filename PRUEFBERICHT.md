@@ -135,3 +135,13 @@ Version 31 (18.11.2026): G anhand seiner sichtbaren Kontur horizontal und vertik
 - 43 Tests bestanden, darunter paralleler Start, Cache-Anzeige vor Abschluss der Abfragen, Offline-Start und Kontentrennung. Kein pauschales Zeitversprechen: tatsächliche Dauer hängt von Netz und Token-Erneuerung ab.
 - PDF-Anleitung: vier Seiten vollständig gerendert und visuell geprüft; Text, Seitenzahl und Datenschutz geprüft.
 - README auf die aktuelle Bedienung und Einrichtung reduziert. Keine Serverkonfiguration geändert.
+
+## Version 33 - private Listen - 22.11.2026
+
+- Vorprüfung im produktiven Projekt: vier bestehende Listen, keine Sichtbarkeitsspalte, bekannte familienweite Policies, Replica Identity DEFAULT für Listen und Produkte. Keine Daten verändert.
+- Produktive Migration durch automatische Sicherheitsprüfung bis zur unmittelbaren Bestätigung blockiert. Skript im SQL Editor vorbereitet; noch nicht ausgeführt.
+- Neue Listen wählen Gemeinsam oder Privat, alte Listen bleiben standardmäßig gemeinsam. Auswahl bei fehlender Server-Erweiterung deaktiviert. Sichtbarkeit und Besitzer unveränderlich.
+- Restriktive RLS-Policies begrenzen auch zusätzliche permissive Policies; Artikelzugriffe prüfen die sichtbare Elternliste. Kein Sicherheitsdefiner für die neuen Regeln. DELETE-Realtime enthält durch DEFAULT-Identität keine alten Produktnamen oder Notizen; zufällige Primärschlüssel können Teil von Löschereignissen sein.
+- Isolierte echte PostgreSQL-Engine PGlite 0.5.17: 108 Zugriffsprüfungen bestanden. Vier simulierte Familienkonten, gegenseitige Lese-/Schreib-/Löschversuche, Artikel-INSERT, übergebener fremder Besitzer, nachträgliche Sichtbarkeit/Owner-Änderung, fremde Elternliste, Anon/Outsider, gemeinsame Bestandsliste, eigenes Archivieren und Löschen, Migration zweimal ausgeführt. Sämtliche Testdaten lokal und fiktiv; keine produktiven Testlisten angelegt.
+- 47 App-Tests bestanden, einschließlich privater Auswahl, Katalogwarnung, Archiv/Ziellisten und Cache-Trennung. Keine Geschwindigkeits- oder Sicherheitsbehauptung über ein noch nicht migriertes Produktivsystem.
+- Gemeinsamer Katalog unverändert; ausdrückliche Katalogaufnahme zeigt „für alle sichtbar“. Anleitung und Upload-Hinweise aktualisiert.

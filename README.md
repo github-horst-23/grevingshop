@@ -1,15 +1,15 @@
 # GrevingShop.
 
-Gemeinsame Einkaufslisten und ein Warenkatalog für die freigegebenen Familienkonten. GrevingShop nutzt dieselben Supabase-Konten wie GrevingFit und übernimmt dessen Farbschemata.
+Gemeinsame und private Einkaufslisten sowie ein Warenkatalog für die freigegebenen Familienkonten. GrevingShop nutzt dieselben Supabase-Konten wie GrevingFit und übernimmt dessen Farbschemata.
 
 [App öffnen](https://github-horst-23.github.io/grevingshop/) · [Smartphone-Vorschau](https://github-horst-23.github.io/grevingshop/s24fe.html) · [PDF-Anleitung](GrevingShop-Anleitung.pdf)
 
-**Aktuelle Fassung:** Version 32, Stand 20.11.2026.
+**Aktuelle Fassung:** Version 33, Stand 22.11.2026.
 
 ## Schnellstart
 
 1. App öffnen und mit der eigenen E-Mail-Adresse und dem bestehenden GrevingFit-Passwort anmelden.
-2. Unter **Meine Listen → Neue Liste** eine Einkaufsliste anlegen.
+2. Unter **Meine Listen → Neue Liste** eine Einkaufsliste anlegen und **Gemeinsam** oder **Privat** wählen.
 3. Liste öffnen und über **Produkt hinzufügen** Produkte erfassen.
 4. Mit **Einkauf starten** in die konzentrierte Einkaufsansicht wechseln und Produkte abhaken.
 
@@ -36,6 +36,16 @@ Die automatische Gruppierung folgt dieser allgemeinen Supermarkt-Reihenfolge:
 Eine manuell gewählte Kategorie hat Vorrang. Die Erkennung arbeitet lokal ohne zusätzlichen Dienst. Innerhalb einer Liste werden Bearbeiter und Zeitpunkt der letzten Änderung angezeigt.
 
 Das Menü mit den drei Linien schwebt auf Smartphones unten rechts. Die eigenen Initialen öffnen den persönlichen Startbereich. Das Synchronisieren-Symbol ruft den aktuellen Cloud-Stand ab.
+
+## Gemeinsame und private Listen
+
+Beim Anlegen einer Liste wählst du **Gemeinsam - für alle** (Standard) oder **Privat - nur für mich**. Die Auswahl bleibt dauerhaft bestehen; sie kann später nicht geändert werden. Alle bisher angelegten Listen bleiben gemeinsam sichtbar. Private Listen und ihre Produkte sind ausschließlich für das erstellende freigegebene Konto zugänglich, auch im Archiv und bei der Katalog-Zielliste.
+
+Die Trennung wird serverseitig durch zusätzliche restriktive RLS-Regeln für Listen und Produkte abgesichert. Besitzer und Sichtbarkeit werden bei Updates nicht verändert; bei neuen Listen setzt die Datenbank den angemeldeten Ersteller. Das bloße Ausblenden in der Oberfläche ist nicht die Zugriffssicherung. Der lokale Cache filtert ergänzend nach Konto und Listenbesitzer.
+
+**Der Warenkatalog bleibt gemeinsam.** Auch ein Produkt aus einer privaten Liste wird für alle sichtbar, wenn ausdrücklich **Im gemeinsamen Warenkatalog speichern (für alle sichtbar)** angehakt wird. Ohne dieses Häkchen bleibt das Listenprodukt privat.
+
+**Vor dem ersten Einsatz:** Im gemeinsamen Supabase-Projekt [supabase-private-lists.sql](supabase-private-lists.sql) ausführen. Die App bietet private Listen erst an, wenn die installierte Datenbank-Erweiterung über `shopping_privacy_version()` erkannt wird. Ohne Erweiterung funktionieren gemeinsame Listen weiter; die private Auswahl ist deaktiviert. Im vollständigen Setup und Update-Skript ist dieselbe Migration am Ende enthalten. Die Regeln wurden isoliert in einer PostgreSQL-Testumgebung geprüft; die produktive Ausführung benötigt noch die unmittelbare Freigabe des Benutzers.
 
 ## Anmeldung und schneller Start
 
@@ -103,4 +113,4 @@ Der Publishable Key ist für Browser vorgesehen. Secret Keys, Service-Role-Schl�
 
 ## Prüfung
 
-Version 32: **43 Tests bestanden**, einschließlich Sitzungsaufbewahrung, parallelem Start, Cache-Anzeige vor Abschluss der Datenabfragen, Offline-Lesemodus, Kontentrennung, Cloud-Schreibvorgängen, Katalogauswahl und bestätigungspflichtigen Updates. Die vierseitige PDF wurde gerendert und visuell geprüft. Einzelheiten und Grenzen stehen im [Prüfbericht](PRUEFBERICHT.md).
+Version 33: **47 App-Tests und 108 isolierte PostgreSQL-Zugriffsprüfungen bestanden**, einschließlich Sitzungsaufbewahrung, parallelem Start, Cache-Anzeige vor Abschluss der Datenabfragen, Offline-Lesemodus, Kontentrennung, Cloud-Schreibvorgängen, Katalogauswahl und bestätigungspflichtigen Updates. Die vierseitige PDF wurde gerendert und visuell geprüft. Einzelheiten und Grenzen stehen im [Prüfbericht](PRUEFBERICHT.md).
