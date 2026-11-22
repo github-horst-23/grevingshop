@@ -166,3 +166,7 @@ Regression mit der unveränderten, ausgelieferten supabase.js-Bibliothek und lok
 - Variante A umgesetzt: erst Meine privaten Listen, danach Gemeinsame Listen. Eigene Überschrift, Anzahl und Trennlinie pro Bereich; Schloss in privaten Listenkarten. Auch im Archiv konsistent. Kartenreihenfolge innerhalb der Gruppe, Öffnen, Fortschritt und Archivaktionen unverändert. Leere Gruppen mit kurzem Hinweis; vollständig leere Übersicht behält die Anlegen-Aktion.
 - 54 App-Tests bestanden. Neue Prüfungen für Gruppierung, Anzahl, fremde private Liste, gemeinsame Bestandslisten ohne Sichtbarkeitsfeld, Archiv/Löschen und Leerzustände. Kein SQL-Eingriff.
 - Isolierte Browservorschau mit fiktiven Daten, 384 × 832 Pixel: beide Bereiche sichtbar, privates Schloss und Zähler geprüft, kein horizontaler Überlauf. Keine Anmeldung oder Datenänderung in Supabase. README und PDF-Anleitung aktualisiert.
+
+## Version 37 - Reihenfolge der Listenbereiche - 22.11.2026
+
+Gemeinsame Listen stehen jetzt vor den privaten, auch im Archiv. Gruppierungs- und Archivtests auf diese Reihenfolge angepasst. 54 App-Tests bestanden. README und PDF aktualisiert; keine Datenbankänderung.
