@@ -1,12 +1,18 @@
 # GrevingShop. bereitstellen
 
-## 1. Datenbank-Erweiterung für private Listen
+## 1. Datenbank-Erweiterung für Artikel-Ersteller (Version 38)
+
+Einmal `supabase-item-creators.sql` im SQL Editor des gemeinsamen Projekts ausführen. Es liefert die geschützte Zuordnung von Benutzer-ID zu Vorname und schützt den ursprünglichen Ersteller. Keine Kontaktadressen oder Passwörter einsetzen. Die Ausführung übernimmt der Benutzer; diese Fassung ändert die produktive Datenbank nicht automatisch.
+
+Danach die aktualisierten App-Dateien hochladen und das App-Update bestätigen. Auch bestehende Artikel werden anhand ihrer gespeicherten Ersteller-ID zugeordnet. Ohne Erweiterung bleibt die App nutzbar; Namen anderer Konten sind dann möglicherweise noch nicht verfügbar.
+
+## Bereits vorhandene Erweiterung für private Listen
 
 Vor der Nutzung privater Listen `supabase-private-lists.sql` im SQL Editor des gemeinsamen Supabase-Projekts ausführen. Das Skript benötigt keine Kontaktadressen oder Passwörter. Es ergänzt die Sichtbarkeit, zusätzliche restriktive Zugriffsregeln und einen Schutz vor Änderungen an Besitzer und Sichtbarkeit.
 
 Alle vorhandenen Listen erhalten den Standard „Gemeinsam“. Sie werden weder gelöscht noch einzelnen Nutzern entzogen. Private Listen sind erst nach erfolgreicher Installation der Erweiterung auswählbar. Ohne Erweiterung bleiben gemeinsame Listen nutzbar.
 
-Die produktive Ausführung übernimmt der Benutzer. Wurde das SQL bereits erfolgreich ausgeführt, ist beim Update auf Version 37 kein erneuter SQL-Lauf nötig. Version 37 trennt die Übersicht in private und gemeinsame Listen. Die mobile Produktauswahl und das Kästchen „Privat“ bleiben erhalten. Die lokale Datenbankprüfung ersetzt nicht die Prüfung der produktiven Einrichtung.
+Die produktive Ausführung übernimmt der Benutzer. Wurde das SQL bereits erfolgreich ausgeführt, ist beim Update auf Version 38 kein erneuter SQL-Lauf nötig. Die Erweiterung für private Listen muss nicht erneut ausgeführt werden, wenn sie bereits erfolgreich installiert wurde. Für die neue Erstelleranzeige ist separat `supabase-item-creators.sql` erforderlich. Die lokale Datenbankprüfung ersetzt nicht die Prüfung der produktiven Einrichtung.
 
 Für eine neue Installation `supabase-setup.sql` verwenden und dessen Platzhalter nur im geschützten SQL Editor durch die freigegebenen Adressen ersetzen. Niemals private Kontaktadressen oder Zugangsdaten hochladen. Das vollständige Setup und `supabase-update.sql` enthalten die Erweiterung für private Listen ebenfalls am Ende.
 

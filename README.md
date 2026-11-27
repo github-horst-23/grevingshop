@@ -4,7 +4,7 @@ Gemeinsame und private Einkaufslisten sowie ein Warenkatalog für die freigegebe
 
 [App öffnen](https://github-horst-23.github.io/grevingshop/) · [Smartphone-Vorschau](https://github-horst-23.github.io/grevingshop/s24fe.html) · [PDF-Anleitung](GrevingShop-Anleitung.pdf)
 
-**Aktuelle Fassung:** Version 37, Stand 22.11.2026.
+**Aktuelle Fassung:** Version 38, Stand 27.11.2026.
 
 ## Schnellstart
 
@@ -38,6 +38,14 @@ Die automatische Gruppierung folgt dieser allgemeinen Supermarkt-Reihenfolge:
 Eine manuell gewählte Kategorie hat Vorrang. Die Erkennung arbeitet lokal ohne zusätzlichen Dienst. Innerhalb einer Liste werden Bearbeiter und Zeitpunkt der letzten Änderung angezeigt.
 
 Das Menü mit den drei Linien schwebt auf Smartphones unten rechts. Die eigenen Initialen öffnen den persönlichen Startbereich. Das Synchronisieren-Symbol ruft den aktuellen Cloud-Stand ab.
+
+## Wer hat einen Artikel hinzugefügt?
+
+Unter dem Produkt steht beispielsweise **Hinzugefügt von Kathrin**, auch bei besorgten Artikeln und im Einkaufsmodus. Die Angabe bezieht sich auf das ursprüngliche Hinzufügen, nicht auf die letzte Bearbeitung oder das Abhaken. Sie funktioniert für direkte Produkteingaben und für einzelne bzw. gemeinsame Katalogübernahmen.
+
+Einmal [supabase-item-creators.sql](supabase-item-creators.sql) im bestehenden Supabase-Projekt ausführen und danach die App aktualisieren bzw. neu öffnen. Das Skript ordnet die bereits gespeicherten Ersteller-IDs den geschützten Familienprofilen zu. Daher können auch ältere Artikel zugeordnet werden. Fehlende Zuordnungen werden als **Ersteller nicht verfügbar** angezeigt; es wird kein Name erfunden.
+
+Die neue Funktion liefert nur IDs und Vornamen der freigegebenen Konten an angemeldete Familienkonten, keine E-Mail-Adressen. Es gibt keinen direkten Browserzugriff auf die Auth-Benutzertabelle. Ein Trigger setzt bei neuen Artikeln die tatsächliche angemeldete Person und verhindert spätere Erstellerwechsel. Private Listen bleiben durch die vorhandenen Zugriffsregeln geschützt. Im Offline-Cache wird die bereits geladene Zuordnung beim jeweiligen Artikel gespeichert.
 
 ## Gemeinsame und private Listen
 
@@ -117,4 +125,4 @@ Der Publishable Key ist für Browser vorgesehen. Secret Keys, Service-Role-Schl�
 
 ## Prüfung
 
-Version 37: **54 App-Tests und 108 isolierte PostgreSQL-Zugriffsprüfungen bestanden**, einschließlich Sitzungsaufbewahrung, parallelem Start, Cache-Anzeige vor Abschluss der Datenabfragen, Offline-Lesemodus, Kontentrennung, Cloud-Schreibvorgängen, Katalogauswahl und bestätigungspflichtigen Updates. Die vierseitige PDF wurde gerendert und visuell geprüft. Einzelheiten und Grenzen stehen im [Prüfbericht](PRUEFBERICHT.md).
+Version 38: **57 App-Tests, 35 zusätzliche Ersteller-Prüfungen und zuvor 108 isolierte PostgreSQL-Zugriffsprüfungen bestanden**, einschließlich Sitzungsaufbewahrung, parallelem Start, Cache-Anzeige vor Abschluss der Datenabfragen, Offline-Lesemodus, Kontentrennung, Cloud-Schreibvorgängen, Katalogauswahl und bestätigungspflichtigen Updates. Die vierseitige PDF wurde gerendert und visuell geprüft. Einzelheiten und Grenzen stehen im [Prüfbericht](PRUEFBERICHT.md).

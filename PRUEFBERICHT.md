@@ -170,3 +170,12 @@ Regression mit der unveränderten, ausgelieferten supabase.js-Bibliothek und lok
 ## Version 37 - Reihenfolge der Listenbereiche - 22.11.2026
 
 Gemeinsame Listen stehen jetzt vor den privaten, auch im Archiv. Gruppierungs- und Archivtests auf diese Reihenfolge angepasst. 54 App-Tests bestanden. README und PDF aktualisiert; keine Datenbankänderung.
+
+## Version 38 - ursprünglicher Artikel-Ersteller - 27.11.2026
+
+- Kleine Zeile „Hinzugefügt von Vorname“ bei jedem Listenartikel, einschließlich besorgter Artikel und Einkaufsmodus. Keine Erstellerangabe in Katalogzeilen, keine erfundenen Namen bei fehlenden Informationen.
+- Bestehendes shopping_items.created_by bleibt Quelle. Neue geschützte shopping_user_names()-Funktion ordnet Auth-IDs über die bereits freigegebenen Familienprofile zu und gibt nur ID/Vorname aus. SECURITY DEFINER benötigt Zugriff auf auth.users, aber keine Datenbankberechtigung für den Browser; anon gesperrt, fremde angemeldete Konten erhalten keine Zeilen. Die Prüfung nutzt weiterhin die ursprünglichen JWT-Claims des Aufrufers.
+- Trigger erzwingt den tatsächlichen angemeldeten Ersteller bei INSERT und sperrt spätere Änderungen. Bestehende Artikel werden nicht umgeschrieben. Direkte Eingabe, Katalog-RPC und Mehrfach-INSERT abgedeckt.
+- Zuordnung wird parallel zur Anmeldung geladen. Bei fehlender Erweiterung bleibt Anmeldung möglich. Cache bindet Namen an Ersteller-ID und aktuelles Benutzerkonto; Logout entfernt die Zuordnung und den Benutzer-Cache.
+- 57 App-Tests bestanden. Isolierte echte PostgreSQL-Testumgebung: 35 zusätzliche Prüfungen bestanden, darunter vier Konten, anon/Outsider, keine E-Mail-Spalte im Ergebnis, Ersteller-Fälschung beim INSERT, unveränderte Ersteller beim Abhaken/Bearbeiten, Trigger trotz zusätzlich gewährtem UPDATE(created_by), zweimalige Migration. Keine produktiven Daten geändert; SQL-Ausführung durch Benutzer erforderlich.
+- Mobile Browserprüfung bei 384 × 832 mit vier fiktiven Artikeln und allen vier Vornamen: kompakte Erstellerzeilen und Notiz sichtbar. README, SQL-Vorlagen, Upload-Hinweise und PDF-Anleitung aktualisiert.
