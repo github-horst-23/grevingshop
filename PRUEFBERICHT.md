@@ -190,3 +190,10 @@ Gemeinsame Listen stehen jetzt vor den privaten, auch im Archiv. Gruppierungs- u
 - 69 App-Tests bestanden: sofortige Anzeige, parallele und wiederholte Klicks, Teilfehler, bestätigter Cache, veraltete Refresh-/Auth-Daten, Logout, Offline-Sperre, fehlende Änderungsberechtigung, Batch-Konkurrenz und Fehler-/Abbruchfälle. 111 isolierte PostgreSQL-Zugriffsprüfungen bestanden; zusätzlich geprüft: fremde private Artikel per Sammellöschung nicht erreichbar, eigene offene Artikel erhalten. 35 Erstellerprüfungen waren in Version 38 erfolgreich; SQL seitdem unverändert.
 - Mobile lokale Browserprüfung 384 × 832: vier fiktive Artikel, Schreibantworten künstlich 3.500 ms verzögert. Zwei Häkchen und Fortschritt 2/4 sofort sichtbar, während Speichert angezeigt wird. Sammellöschknopf und bereinigte Liste geprüft. Keine Messung auf einem physischen Android-/iOS-Gerät und keine produktiven Datenzugriffe oder Änderungen.
 - Keine neue SQL-Migration erforderlich. Bestehende private/Ersteller-Erweiterungen bleiben Voraussetzung für die jeweiligen Funktionen. Anleitung (4 Seiten), technische Dokumentation (5 Seiten), README und Upload-Anleitung aktualisiert und PDF-Renderings visuell geprüft. ZIP enthält beide PDFs flach im Hauptverzeichnis.
+
+
+## Version 40 - Familienrubrik entfernt - 28.11.2026
+
+- Familienrubrik aus Hauptmenü, Startbereich-Auswahl und Rendering entfernt. Alte Startbereich-Werte family aus lokalem Cache oder Supabase werden durch die vorhandene Normalisierung auf lists abgebildet. Keine SQL-Migration oder Änderung der Konten nötig.
+- Geschützte Profilabfrage für Kontoprüfung, Initialen und Artikel-Ersteller bleibt bestehen. Keine Kontaktübersicht mehr in der App.
+- 70 App-Tests bestanden, einschließlich alter lokaler und serverseitiger Startbereiche sowie unveränderter Personalisierung und Anmeldung. Vorhandene Datenbankregeln unverändert; keine produktiven Daten angefasst. README, Upload-Anleitung und beide PDFs aktualisiert; PDFs gerendert und geprüft. Vollständiges ZIP atomar ersetzt.

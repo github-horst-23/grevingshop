@@ -1,6 +1,6 @@
 # GrevingShop. bereitstellen
 
-## 1. Voraussetzung für Version 39
+## 1. Voraussetzung für Version 40
 
 Für sofortiges Abhaken, Sammellöschung und die bereinigte Listenansicht ist **keine neue SQL-Erweiterung nötig**. Bereits eingerichtete Zugriffsregeln bleiben maßgeblich. Die folgenden Erweiterungen nur installieren, falls sie noch fehlen.
 
@@ -16,7 +16,7 @@ Vor der Nutzung privater Listen `supabase-private-lists.sql` im SQL Editor des g
 
 Alle vorhandenen Listen erhalten den Standard „Gemeinsam“. Sie werden weder gelöscht noch einzelnen Nutzern entzogen. Private Listen sind erst nach erfolgreicher Installation der Erweiterung auswählbar. Ohne Erweiterung bleiben gemeinsame Listen nutzbar.
 
-Die produktive Ausführung übernimmt der Benutzer. Wurde das SQL bereits erfolgreich ausgeführt, ist beim Update auf Version 39 kein erneuter SQL-Lauf nötig. Die Erweiterung für private Listen muss nicht erneut ausgeführt werden, wenn sie bereits erfolgreich installiert wurde. Für die Erstelleranzeige ist separat `supabase-item-creators.sql` erforderlich. Die lokale Datenbankprüfung ersetzt nicht die Prüfung der produktiven Einrichtung.
+Die produktive Ausführung übernimmt der Benutzer. Wurde das SQL bereits erfolgreich ausgeführt, ist beim Update auf Version 40 kein erneuter SQL-Lauf nötig. Die Erweiterung für private Listen muss nicht erneut ausgeführt werden, wenn sie bereits erfolgreich installiert wurde. Für die Erstelleranzeige ist separat `supabase-item-creators.sql` erforderlich. Die lokale Datenbankprüfung ersetzt nicht die Prüfung der produktiven Einrichtung.
 
 Für eine neue Installation `supabase-setup.sql` verwenden und dessen Platzhalter nur im geschützten SQL Editor durch die freigegebenen Adressen ersetzen. Niemals private Kontaktadressen oder Zugangsdaten hochladen. Das vollständige Setup und `supabase-update.sql` enthalten die Erweiterung für private Listen ebenfalls am Ende.
 
@@ -32,6 +32,8 @@ Für eine neue Installation `supabase-setup.sql` verwenden und dessen Platzhalte
 Keinen zusätzlichen App-Ordner und keinen `docs`-Unterordner hochladen. Auch `auth-session.js`, `supabase.js`, Service Worker, Manifest, Icons, Smartphone-Vorschau, Dokumentation und PDF gehören zum vollständigen Paket. Der Benutzer führt den Upload selbst aus.
 
 ## 3. Nach dem Update prüfen
+
+- „Familie“ ist aus Menü und Startbereich-Auswahl entfernt. Bisher dafür gespeicherte Startbereiche öffnen „Meine Listen“.
 
 - In einer Liste gibt es kein Produktsuchfeld und keinen Filter mehr; die Suche im Warenkatalog bleibt erhalten.
 - Beim Abhaken reagieren Häkchen und Fortschritt sofort. Bei „Speichert …“ die App bis zur Bestätigung geöffnet lassen.

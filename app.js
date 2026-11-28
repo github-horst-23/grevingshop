@@ -1,5 +1,5 @@
 'use strict';
-const APP_VERSION='39';
+const APP_VERSION='40';
 const FAMILY={};
 const ITEM_CREATORS={};
 const pendingChecks=new Map();let checkRevision=0,checkSessionEpoch=0;
@@ -27,7 +27,7 @@ let catalog=[],catalogError='',catalogSearch='';
 let user=null,lists=[],items=[],view='lists',selected=null,demo=false,loading=false,lastSync=null,cloudError='',search='',filter='all',shopping=false,wake=null,wakeWanted=false,wakeError='',busy=false,refreshing=false,toastTimer,installEvent;
 function writeLocal(key,value){try{localStorage.setItem(key,value);return true}catch{return false}}
 function removeLocal(key){try{localStorage.removeItem(key)}catch{}}
-const START_PAGES=[['lists','Meine Listen'],['catalog','Warenkatalog'],['archive','Archiv'],['family','Familie']];
+const START_PAGES=[['lists','Meine Listen'],['catalog','Warenkatalog'],['archive','Archiv']];
 const DEFAULT_PREFERENCES={startPage:'lists',theme:'light',scheme:'energy',font:'standard',density:'comfortable'};
 function normalizePreferences(value={}){return {startPage:START_PAGES.some(([key])=>key===value?.startPage)?value.startPage:'lists',theme:value?.theme==='dark'?'dark':'light',scheme:COLOR_SCHEMES.some(([key])=>key===value?.scheme)?value.scheme:'energy',font:value?.font==='large'?'large':'standard',density:value?.density==='compact'?'compact':'comfortable'}}
 function preferenceKey(owner=user){return owner&&!demo?'grevingshop-preferences:'+owner.id:'grevingshop-preferences'}
@@ -50,9 +50,6 @@ function render(){
  if(sessionRestoring&&!user&&!demo)html=`<div class="heading"><h1>GrevingShop.</h1></div><section class="card" role="status"><h2>Anmeldung wird wiederhergestellt</h2><p class="muted">${cloudError?esc(cloudError):'Deine gespeicherte Sitzung wird geladen.'}</p>${cloudError?'<button class="button" data-action="retry-session">Erneut versuchen</button>':''}</section>`;
  else if(view==='catalog'&&(user||demo))html=catalogView();
  else if(view==='settings')html=settings();
- else if(view==='family'&&!user)html=`<div class="heading"><h1>Familie</h1></div><section class="card empty"><p>Die freigegebenen Kontaktdaten sind nach der Anmeldung sichtbar.</p><button class="button" data-action="login">Anmelden</button></section>`;
- else if(view==='family'&&!navigator.onLine)html='<div class="heading"><h1>Familie</h1></div><section class="card"><p>Die freigegebenen Kontaktdaten werden zum Schutz deiner Daten nur online geladen.</p></section>';
- else if(view==='family')html=`<div class="eyebrow">ZUSAMMEN IST ES EINFACHER</div><div class="heading"><div><h1>Unsere Familie.</h1></div></div><section class="card">${Object.entries(FAMILY).map(([n,e])=>`<div class="person"><span class="avatar">${n.slice(0,2)}</span><div><strong>${n}${profile()===n?' · Du':''}</strong><small>${esc(e)}</small></div></div>`).join('')}</section><p class="muted small">Alle Listen werden automatisch mit diesen vier Greving.Fit-Konten geteilt. Jede Person meldet sich mit ihrem bestehenden Passwort an.</p>`;
  else if(!user&&!demo)html=welcome();
  else if(selected&&lists.some(l=>l.id===selected))html=shopping?shoppingDetail():detail();
  else html=overview();

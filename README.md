@@ -4,7 +4,7 @@ Gemeinsame und private Einkaufslisten sowie ein Warenkatalog für die freigegebe
 
 [App öffnen](https://github-horst-23.github.io/grevingshop/) · [Smartphone-Vorschau](https://github-horst-23.github.io/grevingshop/s24fe.html) · [PDF-Anleitung](GrevingShop-Anleitung.pdf) · [Technische Dokumentation](GrevingShop-Dokumentation.pdf)
 
-**Aktuelle Fassung:** Version 39, Stand 28.11.2026.
+**Aktuelle Fassung:** Version 40, Stand 28.11.2026.
 
 ## Schnellstart
 
@@ -14,6 +14,8 @@ Gemeinsame und private Einkaufslisten sowie ein Warenkatalog für die freigegebe
 4. Mit **Einkauf starten** in die konzentrierte Einkaufsansicht wechseln und Produkte abhaken.
 
 Es gibt keinen Testzugang und keine Selbstregistrierung. Neue Konten müssen geschützt in Supabase bereitgestellt und freigegeben werden. Ein automatisches Initialpasswort ist nicht eingerichtet; bestehende Passwörter werden durch die App nicht zurückgesetzt.
+
+Die Rubrik **Familie** entfällt. Ein bisher dafür eingestellter Startbereich öffnet automatisch **Meine Listen**. Konten und Freigaben bleiben erhalten.
 
 ## Funktionen und Bedienung
 
@@ -25,7 +27,6 @@ Es gibt keinen Testzugang und keine Selbstregistrierung. Neue Konten müssen ges
 | Aufräumen | **Besorgte entfernen (Anzahl)** löscht nach Bestätigung die abgehakten Produkte der aktuellen Liste gesammelt |
 | Warenkatalog | Produkte direkt anlegen, suchen und mehrere ausgewählte Produkte gemeinsam auf eine aktive Liste übernehmen |
 | Archiv | Listen wiederherstellen oder nach Bestätigung samt Produkten endgültig für alle löschen |
-| Familie | Geschützte Kontoprofile ausschließlich nach Anmeldung und online anzeigen |
 | Settings | Startbereich, Farbschema, Schriftgröße, Darstellungsdichte, helles/dunkles Design und Kontoverwaltung |
 
 Beim Tippen eines Produktnamens erscheinen passende Katalogprodukte direkt im Formular. Die Vorschlagsliste lässt sich mit dem Finger scrollen; über **Ausblenden** kannst du sie schließen. Beim Antippen werden Name, Menge, Notiz und Kategorie in das Formular übernommen. Mit **Hinzufügen** wird das Produkt anschließend auf der Liste gespeichert. Es gibt kein natives Browser-Vorschlagsfenster mehr.
@@ -82,7 +83,7 @@ Gelöschte Browserdaten, widerrufene Sitzungen oder kürzere Supabase-Limits kö
 
 **Online:** Listen, Produkte, Einstellungen und Katalog werden beim Start frisch aus Supabase geladen. Bestätigte Änderungen werden unmittelbar gespeichert und über Realtime auf anderen geöffneten Geräten nachgeladen. Beim Zurückkehren zur App und nach Wiederherstellung der Verbindung erfolgt ein erneuter Abgleich. Bei konkurrierenden Änderungen desselben Feldes gilt der zuletzt gespeicherte Stand.
 
-**Offline:** Ein auf diesem Gerät zuvor geprüftes Konto kann den gespeicherten Stand lesen, solange die gespeicherte Auth-Sitzung nutzbar ist. Ein Hinweis kennzeichnet den Offline-Modus. Listen- und Produktänderungen sind deaktiviert; es gibt keine Offline-Schreibwarteschlange. Familienkontakte werden offline nicht angezeigt. Ist eine Token-Erneuerung nötig, kann für die Wiederaufnahme der Anmeldung eine Verbindung erforderlich sein.
+**Offline:** Ein auf diesem Gerät zuvor geprüftes Konto kann den gespeicherten Stand lesen, solange die gespeicherte Auth-Sitzung nutzbar ist. Ein Hinweis kennzeichnet den Offline-Modus. Listen- und Produktänderungen sind deaktiviert; es gibt keine Offline-Schreibwarteschlange. Ist eine Token-Erneuerung nötig, kann für die Wiederaufnahme der Anmeldung eine Verbindung erforderlich sein.
 
 Persönliche Darstellungsänderungen werden bei fehlender Verbindung lokal vorgemerkt und nach Rückkehr online gespeichert. Nach dem Abmelden werden der eigene Listen-Cache und das lokal geprüfte Profil entfernt.
 
@@ -134,4 +135,4 @@ Der Publishable Key ist für Browser vorgesehen. Secret Keys, Service-Role-Schl�
 
 ## Prüfung
 
-Version 39: **69 App-Tests und 111 isolierte PostgreSQL-Zugriffsprüfungen bestanden** (zusätzlich 35 Ersteller-Prüfungen aus Version 38), einschließlich Sitzungsaufbewahrung, parallelem Start, Cache-Anzeige vor Abschluss der Datenabfragen, Offline-Lesemodus, Kontentrennung, Cloud-Schreibvorgängen, Katalogauswahl und bestätigungspflichtigen Updates. Anleitung und technische PDF-Dokumentation wurden auf Version 39 aktualisiert, gerendert und visuell geprüft. Die mobile Vorschau wurde mit künstlich um 3,5 Sekunden verzögerten Schreibantworten geprüft. Keine Messung auf einem physischen Smartphone oder Änderung der produktiven Datenbank. Einzelheiten und Grenzen stehen im [Prüfbericht](PRUEFBERICHT.md).
+Version 40: **70 App-Tests und 111 isolierte PostgreSQL-Zugriffsprüfungen bestanden** (zusätzlich 35 Ersteller-Prüfungen aus Version 38), einschließlich Sitzungsaufbewahrung, parallelem Start, Cache-Anzeige vor Abschluss der Datenabfragen, Offline-Lesemodus, Kontentrennung, Cloud-Schreibvorgängen, Katalogauswahl und bestätigungspflichtigen Updates. Anleitung und technische PDF-Dokumentation wurden auf Version 40 aktualisiert, gerendert und visuell geprüft. Die mobile Vorschau wurde mit künstlich um 3,5 Sekunden verzögerten Schreibantworten geprüft. Keine Messung auf einem physischen Smartphone oder Änderung der produktiven Datenbank. Einzelheiten und Grenzen stehen im [Prüfbericht](PRUEFBERICHT.md).
