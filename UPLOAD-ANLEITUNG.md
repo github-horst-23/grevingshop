@@ -1,6 +1,10 @@
 # GrevingShop. bereitstellen
 
-## 1. Datenbank-Erweiterung für Artikel-Ersteller (Version 38)
+## 1. Voraussetzung für Version 39
+
+Für sofortiges Abhaken, Sammellöschung und die bereinigte Listenansicht ist **keine neue SQL-Erweiterung nötig**. Bereits eingerichtete Zugriffsregeln bleiben maßgeblich. Die folgenden Erweiterungen nur installieren, falls sie noch fehlen.
+
+### Artikel-Ersteller (seit Version 38)
 
 Einmal `supabase-item-creators.sql` im SQL Editor des gemeinsamen Projekts ausführen. Es liefert die geschützte Zuordnung von Benutzer-ID zu Vorname und schützt den ursprünglichen Ersteller. Keine Kontaktadressen oder Passwörter einsetzen. Die Ausführung übernimmt der Benutzer; diese Fassung ändert die produktive Datenbank nicht automatisch.
 
@@ -12,7 +16,7 @@ Vor der Nutzung privater Listen `supabase-private-lists.sql` im SQL Editor des g
 
 Alle vorhandenen Listen erhalten den Standard „Gemeinsam“. Sie werden weder gelöscht noch einzelnen Nutzern entzogen. Private Listen sind erst nach erfolgreicher Installation der Erweiterung auswählbar. Ohne Erweiterung bleiben gemeinsame Listen nutzbar.
 
-Die produktive Ausführung übernimmt der Benutzer. Wurde das SQL bereits erfolgreich ausgeführt, ist beim Update auf Version 38 kein erneuter SQL-Lauf nötig. Die Erweiterung für private Listen muss nicht erneut ausgeführt werden, wenn sie bereits erfolgreich installiert wurde. Für die neue Erstelleranzeige ist separat `supabase-item-creators.sql` erforderlich. Die lokale Datenbankprüfung ersetzt nicht die Prüfung der produktiven Einrichtung.
+Die produktive Ausführung übernimmt der Benutzer. Wurde das SQL bereits erfolgreich ausgeführt, ist beim Update auf Version 39 kein erneuter SQL-Lauf nötig. Die Erweiterung für private Listen muss nicht erneut ausgeführt werden, wenn sie bereits erfolgreich installiert wurde. Für die Erstelleranzeige ist separat `supabase-item-creators.sql` erforderlich. Die lokale Datenbankprüfung ersetzt nicht die Prüfung der produktiven Einrichtung.
 
 Für eine neue Installation `supabase-setup.sql` verwenden und dessen Platzhalter nur im geschützten SQL Editor durch die freigegebenen Adressen ersetzen. Niemals private Kontaktadressen oder Zugangsdaten hochladen. Das vollständige Setup und `supabase-update.sql` enthalten die Erweiterung für private Listen ebenfalls am Ende.
 
@@ -29,6 +33,10 @@ Keinen zusätzlichen App-Ordner und keinen `docs`-Unterordner hochladen. Auch `a
 
 ## 3. Nach dem Update prüfen
 
+- In einer Liste gibt es kein Produktsuchfeld und keinen Filter mehr; die Suche im Warenkatalog bleibt erhalten.
+- Beim Abhaken reagieren Häkchen und Fortschritt sofort. Bei „Speichert …“ die App bis zur Bestätigung geöffnet lassen.
+- Nach „Beenden“ erscheint bei abgehakten Produkten „Besorgte entfernen (Anzahl)“. Erst nach der Rückfrage wird gelöscht; offene Produkte bleiben erhalten.
+
 - Unter **Neue Liste** muss das Kästchen **Privat** verfügbar sein, sobald die Datenbank-Erweiterung aktiv ist.
 - Eine private Liste mit Konto A anlegen. Mit Konto B darf sie weder unter „Meine Listen“ noch im Archiv oder als Katalog-Zielliste erscheinen.
 - Bestehende gemeinsame Listen müssen weiterhin für alle freigegebenen Konten verfügbar sein.
@@ -39,6 +47,7 @@ Keinen zusätzlichen App-Ordner und keinen `docs`-Unterordner hochladen. Auch `a
 - Website: https://github-horst-23.github.io/grevingshop/
 - Smartphone-Vorschau: https://github-horst-23.github.io/grevingshop/s24fe.html
 - Bedienung: `GrevingShop-Anleitung.pdf`
+- Technische Dokumentation: `GrevingShop-Dokumentation.pdf`
 - Umsetzung und Grenzen: `README.md` und `PRUEFBERICHT.md`
 
 Lokal: im entpackten Ordner `python3 -m http.server 4173` starten und http://127.0.0.1:4173/ oder http://127.0.0.1:4173/s24fe.html öffnen.

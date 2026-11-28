@@ -2,9 +2,9 @@
 
 Gemeinsame und private Einkaufslisten sowie ein Warenkatalog für die freigegebenen Familienkonten. GrevingShop nutzt dieselben Supabase-Konten wie GrevingFit und übernimmt dessen Farbschemata.
 
-[App öffnen](https://github-horst-23.github.io/grevingshop/) · [Smartphone-Vorschau](https://github-horst-23.github.io/grevingshop/s24fe.html) · [PDF-Anleitung](GrevingShop-Anleitung.pdf)
+[App öffnen](https://github-horst-23.github.io/grevingshop/) · [Smartphone-Vorschau](https://github-horst-23.github.io/grevingshop/s24fe.html) · [PDF-Anleitung](GrevingShop-Anleitung.pdf) · [Technische Dokumentation](GrevingShop-Dokumentation.pdf)
 
-**Aktuelle Fassung:** Version 38, Stand 27.11.2026.
+**Aktuelle Fassung:** Version 39, Stand 28.11.2026.
 
 ## Schnellstart
 
@@ -21,7 +21,8 @@ Es gibt keinen Testzugang und keine Selbstregistrierung. Neue Konten müssen ges
 | --- | --- |
 | Meine Listen | Listen anlegen, über die drei Punkte umbenennen und mit Notizen versehen |
 | Produkte | Name, Menge, Notiz und Kategorie erfassen; bearbeiten, entfernen und abhaken |
-| Einkauf | Große Häkchen, Mengen und Fortschritt; mit **Beenden** zurück zur normalen Ansicht |
+| Einkauf | Sofortige Häkchen und Fortschritt; Hintergrundspeicherung; mit **Beenden** zurück zur normalen Ansicht |
+| Aufräumen | **Besorgte entfernen (Anzahl)** löscht nach Bestätigung die abgehakten Produkte der aktuellen Liste gesammelt |
 | Warenkatalog | Produkte direkt anlegen, suchen und mehrere ausgewählte Produkte gemeinsam auf eine aktive Liste übernehmen |
 | Archiv | Listen wiederherstellen oder nach Bestätigung samt Produkten endgültig für alle löschen |
 | Familie | Geschützte Kontoprofile ausschließlich nach Anmeldung und online anzeigen |
@@ -38,6 +39,14 @@ Die automatische Gruppierung folgt dieser allgemeinen Supermarkt-Reihenfolge:
 Eine manuell gewählte Kategorie hat Vorrang. Die Erkennung arbeitet lokal ohne zusätzlichen Dienst. Innerhalb einer Liste werden Bearbeiter und Zeitpunkt der letzten Änderung angezeigt.
 
 Das Menü mit den drei Linien schwebt auf Smartphones unten rechts. Die eigenen Initialen öffnen den persönlichen Startbereich. Das Synchronisieren-Symbol ruft den aktuellen Cloud-Stand ab.
+
+## Abhaken und besorgte Produkte entfernen
+
+Häkchen und Fortschritt reagieren sofort. Die App speichert die Änderung im Hintergrund in Supabase; **Speichert …** kennzeichnet noch ausstehende Bestätigungen. Verschiedene Artikel können parallel gespeichert werden. Mehrfaches Antippen desselben Artikels wird in der richtigen Reihenfolge verarbeitet. Bei einem Fehler wird nur dieser Artikel auf den letzten bestätigten Stand zurückgesetzt und eine Meldung angezeigt. Bitte die App bis zum Abschluss der Speicherung geöffnet lassen. Unbestätigte Häkchen werden nicht als gesichert in den Offline-Cache geschrieben.
+
+Nach **Beenden** findest du in der normalen Liste **Besorgte entfernen (Anzahl)**. Nach Bestätigung werden die abgehakten Artikel dieser Liste mit einem einzigen Löschaufruf entfernt. Offene Artikel bleiben erhalten. Zwischenzeitlich wieder geöffnete Artikel und erst nach Beginn der Aktion abgehakte Artikel werden nicht mitgelöscht. Bei gemeinsamen Listen wirkt das Löschen für alle; bei privaten Listen nur auf den eigenen Bestand. Es gibt keine Wiederherstellung. Solange Häkchen noch gespeichert werden, ist die Sammellöschung gesperrt.
+
+Einkaufslisten enthalten kein Suchfeld und keinen Filter mehr. Die Kategoriegruppen und der aufklappbare Bereich **Besorgt** bleiben erhalten. **Im Warenkatalog bleibt die Suche verfügbar.**
 
 ## Wer hat einen Artikel hinzugefügt?
 
@@ -125,4 +134,4 @@ Der Publishable Key ist für Browser vorgesehen. Secret Keys, Service-Role-Schl�
 
 ## Prüfung
 
-Version 38: **57 App-Tests, 35 zusätzliche Ersteller-Prüfungen und zuvor 108 isolierte PostgreSQL-Zugriffsprüfungen bestanden**, einschließlich Sitzungsaufbewahrung, parallelem Start, Cache-Anzeige vor Abschluss der Datenabfragen, Offline-Lesemodus, Kontentrennung, Cloud-Schreibvorgängen, Katalogauswahl und bestätigungspflichtigen Updates. Die vierseitige PDF wurde gerendert und visuell geprüft. Einzelheiten und Grenzen stehen im [Prüfbericht](PRUEFBERICHT.md).
+Version 39: **69 App-Tests und 111 isolierte PostgreSQL-Zugriffsprüfungen bestanden** (zusätzlich 35 Ersteller-Prüfungen aus Version 38), einschließlich Sitzungsaufbewahrung, parallelem Start, Cache-Anzeige vor Abschluss der Datenabfragen, Offline-Lesemodus, Kontentrennung, Cloud-Schreibvorgängen, Katalogauswahl und bestätigungspflichtigen Updates. Anleitung und technische PDF-Dokumentation wurden auf Version 39 aktualisiert, gerendert und visuell geprüft. Die mobile Vorschau wurde mit künstlich um 3,5 Sekunden verzögerten Schreibantworten geprüft. Keine Messung auf einem physischen Smartphone oder Änderung der produktiven Datenbank. Einzelheiten und Grenzen stehen im [Prüfbericht](PRUEFBERICHT.md).
